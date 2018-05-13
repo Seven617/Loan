@@ -53,10 +53,15 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         conditionFilterView?.bindChoseArrayDataSource1(_selectedDataSource1Ary, dataSource2: _selectedDataSource2Ary)
         self.view.addSubview(conditionFilterView!)
 //        self.view.insertSubview(conditionFilterView!, at: 1)
-        tableView = UITableView(frame: CGRect(x:0, y:(self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 40 ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x:0, y:(self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 40 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 40), style: UITableViewStyle.plain)
         tableView.dataSource = self
         tableView.delegate = self
+        //禁止拖拽
         tableView.bounces = false
+        //隐藏滚动条
+        tableView.showsVerticalScrollIndicator = false
+        
+
 //        self.view.insertSubview(tableView, belowSubview: conditionFilterView!)
         self.view.addSubview(tableView)
     }
@@ -116,7 +121,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        let alertController = UIAlertController(title: "提示", message: "这是第\(indexPath.row)个cell", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "提示", message: "这是第\(indexPath.row + 1)个cell", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
         let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.default, handler: nil)
         alertController.addAction(cancelAction)
@@ -129,16 +134,14 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     //删除功能的实现
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        
-//        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
-//            (action: UITableViewRowAction,indexPath: NSIndexPath) -> Void in
-//            self.dataArr.removeObjectAtIndex(indexPath.row)
-//            tableView.reloadData()
-//        })
-//        
-//        return [deleteAction]
-//    }
-    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler: {_,_ in
+            ((action: UITableViewRowAction,indexPath: NSIndexPath) -> Void).self
+            self.dataArr.removeObject(at: indexPath.row)
+                        tableView.reloadData()
+        })
+        
+        return [deleteAction]
+    }
     
 }

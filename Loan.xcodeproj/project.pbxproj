@@ -175,11 +175,11 @@
 				041935A920A56BBE006D5CF3 /* dropmenu */,
 				0419359D20A55F57006D5CF3 /* fragment */,
 				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
-				0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */,
 				0419358B20A55D03006D5CF3 /* Main.storyboard */,
 				0419358E20A55D04006D5CF3 /* Assets.xcassets */,
 				0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */,
 				0419359320A55D04006D5CF3 /* Info.plist */,
+				0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */,
 				0419359920A55F38006D5CF3 /* MainTabViewController.swift */,
 				0419359B20A55F4C006D5CF3 /* GuideViewController.swift */,
 			);

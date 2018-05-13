@@ -53,7 +53,7 @@
     _isShow = NO;
     
     // 不用设置默认显示数据，在外边设置 bindChoseArray重置就会刷新
-    _dataSource1Btn = [self buttonWithLeftTitle:@"" titleColor:UIColorFromRGB(0x333333) Font:[UIFont systemFontOfSize:13] backgroundColor:[UIColor whiteColor] RightImageName:@"PR_filter_choice" Frame:CGRectMake(0, 0, (SCREEN_WIDTH-1)/2, 40)];
+    _dataSource1Btn = [self buttonWithLeftTitle:@"" titleColor:UIColorFromRGB(0x333333) Font:[UIFont systemFontOfSize:15] backgroundColor:[UIColor whiteColor] RightImageName:@"PR_filter_choice" Frame:CGRectMake(0, 0, (SCREEN_WIDTH-1)/2, 40)];
     [_dataSource1Btn setTitleColor:UIColorFromRGB(0x00a0ff) forState:UIControlStateSelected];
     [_dataSource1Btn setImage:[UIImage imageNamed:@"PR_filter_choice_top"] forState:UIControlStateSelected];
     [_dataSource1Btn addTarget:self action:@selector(filterChoseData:) forControlEvents:UIControlEventTouchUpInside];
@@ -63,7 +63,7 @@
     middleLine.backgroundColor=UIColorFromRGB(0xe6e6e6);
     [self addSubview:middleLine];
     
-    _dataSource2Btn = [self buttonWithLeftTitle:@"" titleColor:UIColorFromRGB(0x333333) Font:[UIFont systemFontOfSize:13] backgroundColor:[UIColor whiteColor] RightImageName:@"PR_filter_choice" Frame:CGRectMake(_dataSource1Btn.x+_dataSource1Btn.width+0.5, 0, (SCREEN_WIDTH-1)/2, 40)];
+    _dataSource2Btn = [self buttonWithLeftTitle:@"" titleColor:UIColorFromRGB(0x333333) Font:[UIFont systemFontOfSize:15] backgroundColor:[UIColor whiteColor] RightImageName:@"PR_filter_choice" Frame:CGRectMake(_dataSource1Btn.x+_dataSource1Btn.width+0.5, 0, (SCREEN_WIDTH-1)/2, 40)];
     [_dataSource2Btn setTitleColor:UIColorFromRGB(0x00a0ff) forState:UIControlStateSelected];
     [_dataSource2Btn setImage:[UIImage imageNamed:@"PR_filter_choice_top"] forState:UIControlStateSelected];
     [_dataSource2Btn addTarget:self action:@selector(filterChoseData:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,7 +82,7 @@
 {
     
     titleColor=titleColor?:[UIColor blackColor];
-    font=font?:[UIFont systemFontOfSize:13.0];
+    font=font?:[UIFont systemFontOfSize:15.0];
     
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame=frame;
@@ -173,11 +173,11 @@
 -(void)choseSortFromOutsideWithFirstSort:(NSArray *)firstAry WithSecondSort:(NSArray *)secondAry WithThirdSort:(NSArray *)thirdAry
 {
     if (firstAry != nil) {
-        [self changeBtn:_dataSource1Btn Text:[NSString stringWithFormat:@"%@",firstAry.firstObject] Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
+        [self changeBtn:_dataSource1Btn Text:[NSString stringWithFormat:@"%@",firstAry.firstObject] Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
         _dataSource1 = firstAry;
     }
     if (secondAry != nil) {
-        [self changeBtn:_dataSource2Btn Text:[NSString stringWithFormat:@"%@",secondAry.firstObject] Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
+        [self changeBtn:_dataSource2Btn Text:[NSString stringWithFormat:@"%@",secondAry.firstObject] Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
         _dataSource2 = secondAry;
     }
     
@@ -194,11 +194,11 @@
 {
     if (_dataSource1Btn.selected) {
         // 改变btn显示的数据
-        [self changeBtn:_dataSource1Btn Text:[NSString stringWithFormat:@"%@",sortAry.firstObject] Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
+        [self changeBtn:_dataSource1Btn Text:[NSString stringWithFormat:@"%@",sortAry.firstObject] Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
         // 存储显示的数据
         _dataSource1 = sortAry;
     }else if (_dataSource2Btn.selected){
-        [self changeBtn:_dataSource2Btn Text:[NSString stringWithFormat:@"%@",sortAry.firstObject] Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
+        [self changeBtn:_dataSource2Btn Text:[NSString stringWithFormat:@"%@",sortAry.firstObject] Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
         _dataSource2 = sortAry;
     }
     
@@ -260,8 +260,8 @@
     NSString *data1Str = [dataAry1 firstObject];
     NSString *data2Str = [dataAry2 firstObject];
     
-    [self changeBtn:_dataSource1Btn Text:data1Str Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
-    [self changeBtn:_dataSource2Btn Text:data2Str Font:[UIFont systemFontOfSize:13] ImageName:@"PR_filter_choice"];
+    [self changeBtn:_dataSource1Btn Text:data1Str Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
+    [self changeBtn:_dataSource2Btn Text:data2Str Font:[UIFont systemFontOfSize:15] ImageName:@"PR_filter_choice"];
     
 }
 

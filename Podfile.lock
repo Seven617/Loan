@@ -1,0 +1,26 @@
+PODS:
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SnapKit (4.0.0)
+  - Toaster (2.1.1)
+
+DEPENDENCIES:
+  - SDWebImage
+  - SnapKit (~> 4.0.0)
+  - Toaster (~> 2.1.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SDWebImage
+    - SnapKit
+    - Toaster
+
+SPEC CHECKSUMS:
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+
+PODFILE CHECKSUM: 1ebf778343cb19e52f3cc84bee10db9ec8d55857
+
+COCOAPODS: 1.5.0

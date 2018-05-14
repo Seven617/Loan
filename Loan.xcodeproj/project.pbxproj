@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */; };
+		0418C25C20A9A5E6003D28D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0418C25B20A9A5E6003D28D5 /* Assets.xcassets */; };
 		0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419358720A55D03006D5CF3 /* AppDelegate.swift */; };
 		0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419358B20A55D03006D5CF3 /* Main.storyboard */; };
-		0419358F20A55D04006D5CF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0419358E20A55D04006D5CF3 /* Assets.xcassets */; };
 		0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */; };
 		0419359A20A55F38006D5CF3 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359920A55F38006D5CF3 /* MainTabViewController.swift */; };
 		0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359B20A55F4C006D5CF3 /* GuideViewController.swift */; };
@@ -63,17 +64,17 @@
 		0440A9F720A6891500821E31 /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9D920A6891500821E31 /* icon_homepage_search.png */; };
 		0440A9F820A6891500821E31 /* icon_collect_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */; };
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
-		0440AA0520A7D01800821E31 /* CoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */; };
 		04867F9920A945960028CCD1 /* LBSwift_PersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */; };
 		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolTableViewCell.swift; sourceTree = "<group>"; };
+		0418C25B20A9A5E6003D28D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0419358420A55D03006D5CF3 /* Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0419358720A55D03006D5CF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0419358C20A55D03006D5CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0419358E20A55D04006D5CF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0419359120A55D04006D5CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0419359320A55D04006D5CF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0419359920A55F38006D5CF3 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +134,6 @@
 		0440A9D920A6891500821E31 /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
 		0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_collect_highlighted.png; sourceTree = "<group>"; };
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
-		0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoolTableViewCell.swift; path = "../../../Desktop/CoolSlidingMenu-master/CoolSlidingMenuDemo/Demo/resource/CoolTableViewCell.swift"; sourceTree = "<group>"; };
 		04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwift_PersonalPage.swift; sourceTree = "<group>"; };
 		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,10 +180,9 @@
 				0419359D20A55F57006D5CF3 /* fragment */,
 				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
 				0419358B20A55D03006D5CF3 /* Main.storyboard */,
-				0419358E20A55D04006D5CF3 /* Assets.xcassets */,
+				0418C25B20A9A5E6003D28D5 /* Assets.xcassets */,
 				0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */,
 				0419359320A55D04006D5CF3 /* Info.plist */,
-				0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */,
 				0419359920A55F38006D5CF3 /* MainTabViewController.swift */,
 				0419359B20A55F4C006D5CF3 /* GuideViewController.swift */,
 				04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */,
@@ -250,6 +249,7 @@
 				0440A9B620A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.xib */,
 				0440A9B420A6889C00821E31 /* CoolSlidingMenuManager.swift */,
 				0440A9B520A6889C00821E31 /* CoolSlidingMenuView.swift */,
+				0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */,
 			);
 			path = coolslidingmenu;
 			sourceTree = "<group>";
@@ -394,7 +394,7 @@
 				0440A9E620A6891500821E31 /* icon_homepage_shoppingCategory.png in Resources */,
 				0440A9ED20A6891500821E31 /* icon_homepage_foottreatCategory.png in Resources */,
 				0440A9E520A6891500821E31 /* todaySpecialHeaderTitleImage@3x.png in Resources */,
-				0419358F20A55D04006D5CF3 /* Assets.xcassets in Resources */,
+				0418C25C20A9A5E6003D28D5 /* Assets.xcassets in Resources */,
 				0440A9E920A6891500821E31 /* icon_deal_anytime_refund@2x.png in Resources */,
 				0440A9F220A6891500821E31 /* icon_homepage_foodCategory.png in Resources */,
 				041935CC20A57A85006D5CF3 /* PR_filter_choice@2x.png in Resources */,
@@ -469,7 +469,6 @@
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				041935A720A56502006D5CF3 /* LPBannerView.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
-				0440AA0520A7D01800821E31 /* CoolTableViewCell.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				0440A9B920A6889C00821E31 /* CoolSlidingMenuView.swift in Sources */,
 				0440A9B820A6889C00821E31 /* CoolSlidingMenuManager.swift in Sources */,
@@ -479,6 +478,7 @@
 				04867F9920A945960028CCD1 /* LBSwift_PersonalPage.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
 				0419359A20A55F38006D5CF3 /* MainTabViewController.swift in Sources */,
+				0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */,
 				041935DA20A586CB006D5CF3 /* QZFilterDataTableView.m in Sources */,
 				041935D820A586CB006D5CF3 /* QZConditionFilterView.m in Sources */,
 			);

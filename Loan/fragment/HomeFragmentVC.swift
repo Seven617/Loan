@@ -31,7 +31,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         //导航栏
         self.title = "快便贷"
         //设置导航栏背景颜色
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/256.0, green: 176/256.0, blue: 216/256.0, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 50/256.0, green: 220/256.0, blue: 210/256.0, alpha: 1)
         //定义标题颜色与字体大小字典
         let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 25)]
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]

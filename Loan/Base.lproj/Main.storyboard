@@ -42,10 +42,10 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xqb-Ie-bZW">
-                                <rect key="frame" x="0.0" y="180" width="320" height="175"/>
+                                <rect key="frame" x="0.0" y="180" width="320" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="ILg-mD-6Hx"/>
+                                    <constraint firstAttribute="height" constant="200" id="ILg-mD-6Hx"/>
                                 </constraints>
                             </tableView>
                         </subviews>

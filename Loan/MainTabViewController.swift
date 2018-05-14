@@ -23,22 +23,27 @@ class MainTabViewController: UITabBarController {
         viewMine.title = "我的"
         
         //分别声明三个视图控制器定义tab按钮图标和字体大小
+        UITabBarItem.appearance().setTitleTextAttributes([kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: 12)], for: .normal)
+        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor:UIColor(red: 50/256.0, green: 220/256.0, blue: 210/256.0, alpha: 1), kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 12)]
+        
         let main = UINavigationController(rootViewController:viewHome)
-        main.tabBarItem.image = UIImage(named:"home")
-        main.tabBarItem.selectedImage=UIImage(named: "home_press")
-        main.tabBarItem.setTitleTextAttributes([kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: 12)], for: .normal)
-        //定义tab按钮添加个badge小红点值
+        main.tabBarItem.image = UIImage(named:"home")?.withRenderingMode(.alwaysOriginal)
+        main.tabBarItem.selectedImage=UIImage(named: "home_press")?.withRenderingMode(.alwaysOriginal)
+        main.tabBarItem.setTitleTextAttributes( dict as? [NSAttributedStringKey : Any], for: .selected)
+        
         //main.tabBarItem.badgeValue = "!"
         let loan = UINavigationController(rootViewController:viewLoan)
-        loan.tabBarItem.image = UIImage(named:"loan")
-        loan.tabBarItem.selectedImage=UIImage(named: "loan_press")
-        loan.tabBarItem.setTitleTextAttributes([kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: 12)], for: .normal)
+        loan.tabBarItem.image = UIImage(named:"loan")?.withRenderingMode(.alwaysOriginal)
+        loan.tabBarItem.selectedImage=UIImage(named: "loan_press")?.withRenderingMode(.alwaysOriginal)
+        loan.tabBarItem.setTitleTextAttributes( dict as? [NSAttributedStringKey : Any], for: .selected)
+   
         let mine = UINavigationController(rootViewController:viewMine)
-        mine.tabBarItem.image = UIImage(named:"mine")
-        mine.tabBarItem.selectedImage=UIImage(named: "mine_press")
-        mine.tabBarItem.setTitleTextAttributes([kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: 12)], for: .normal)
-        self.viewControllers = [main,loan,mine]
+        mine.tabBarItem.image = UIImage(named:"mine")?.withRenderingMode(.alwaysOriginal)
+        mine.tabBarItem.selectedImage=UIImage(named: "mine_press")?.withRenderingMode(.alwaysOriginal)
+        mine.tabBarItem.setTitleTextAttributes( dict as? [NSAttributedStringKey : Any], for: .selected)
+       
         
+        self.viewControllers = [main,loan,mine]
         //默认选中界面视图
         self.selectedIndex = 0
     }

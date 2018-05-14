@@ -119,14 +119,11 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //cell点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        let alertController = UIAlertController(title: "提示", message: "这是第\(indexPath.row + 1)个cell", preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
-        let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.default, handler: nil)
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let alertController = UIAlertController(title: "提示!",
+             message: "你选中了【\(indexPath.row + 1)】",preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        
         self.present(alertController, animated: true, completion: nil)
         
     }
@@ -136,7 +133,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     //删除功能的实现
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler: {_,_ in
-            ((action: UITableViewRowAction,indexPath: NSIndexPath) -> Void).self
+//            ((action: UITableViewRowAction,indexPath: NSIndexPath) -> Void).self
             self.dataArr.removeObject(at: indexPath.row)
                         tableView.reloadData()
         })

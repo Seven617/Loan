@@ -64,6 +64,8 @@
 		0440A9F820A6891500821E31 /* icon_collect_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */; };
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
 		0440AA0520A7D01800821E31 /* CoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */; };
+		04867F9920A945960028CCD1 /* LBSwift_PersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */; };
+		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,8 @@
 		0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_collect_highlighted.png; sourceTree = "<group>"; };
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
 		0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoolTableViewCell.swift; path = "../../../Desktop/CoolSlidingMenu-master/CoolSlidingMenuDemo/Demo/resource/CoolTableViewCell.swift"; sourceTree = "<group>"; };
+		04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSwift_PersonalPage.swift; sourceTree = "<group>"; };
+		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
 		B5FC0BFA4CB3D541F01922CF /* Pods-Loan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB364E3F5C18939114632395 /* Pods_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +186,8 @@
 				0440AA0420A7D01800821E31 /* CoolTableViewCell.swift */,
 				0419359920A55F38006D5CF3 /* MainTabViewController.swift */,
 				0419359B20A55F4C006D5CF3 /* GuideViewController.swift */,
+				04867F9820A945960028CCD1 /* LBSwift_PersonalPage.swift */,
+				04960B0C20A98471007B58D8 /* SettingViewController.swift */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				0440A9BB20A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				041935A720A56502006D5CF3 /* LPBannerView.swift in Sources */,
+				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
 				0440AA0520A7D01800821E31 /* CoolTableViewCell.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				0440A9B920A6889C00821E31 /* CoolSlidingMenuView.swift in Sources */,
@@ -469,6 +476,7 @@
 				0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */,
 				041935DB20A586CB006D5CF3 /* UIView+Extension.m in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
+				04867F9920A945960028CCD1 /* LBSwift_PersonalPage.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
 				0419359A20A55F38006D5CF3 /* MainTabViewController.swift in Sources */,
 				041935DA20A586CB006D5CF3 /* QZFilterDataTableView.m in Sources */,

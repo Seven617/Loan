@@ -1,19 +1,18 @@
 //
-//  SettingViewController.swift
+//  CustomerServiceViewController.swift
 //  Loan
 //
-//  Created by 冷少白 on 2018/5/14.
+//  Created by 冷少白 on 2018/5/15.
 //  Copyright © 2018年 kbfoo. All rights reserved.
-//
+//  客服界面
 
 import UIKit
 
-class SettingViewController: UIViewController {
+class CustomerServiceViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "客服"
     }
 
     override func didReceiveMemoryWarning() {

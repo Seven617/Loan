@@ -4,7 +4,7 @@
 //
 //  Created by 冷少白 on 2018/5/11.
 //  Copyright © 2018年 kbfoo. All rights reserved.
-//
+//  LoanFragment
 
 import UIKit
 import Toaster
@@ -42,7 +42,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
         
         
-        conditionFilterView?.y += ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height)
+        conditionFilterView?.y += ((self.navigationController?.navigationBar.frame.size.height ?? 0.0)! + UIApplication.shared.statusBarFrame.size.height)
         // 设置初次加载显示的默认数据 即初次加载还没有选择操作之前要显示的标题数据
         _selectedDataSource1Ary = ["金额不限"] as [AnyObject]
         _selectedDataSource2Ary = ["期限不限"] as [AnyObject]
@@ -105,14 +105,10 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     //cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = "cell";
-        
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellID)
         cell.textLabel?.textAlignment = NSTextAlignment.center //文字居中
         cell.textLabel?.text = String(dataArr[indexPath.row] as! String)
         cell.detailTextLabel?.text = "test\(dataArr[indexPath.row])"
-        
-        
-        
         return cell
     }
     

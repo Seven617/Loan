@@ -4,9 +4,10 @@
 //
 //  Created by 冷少白 on 2018/5/11.
 //  Copyright © 2018年 kbfoo. All rights reserved.
-//
+//  MineFragment
 
 import UIKit
+import Toaster
 
 class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
@@ -19,6 +20,8 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //防止导航条跳转时变黑
+        navigationController?.navigationBar.isTranslucent = false
         //初始化数据，这一次数据，我们放在属性列表文件里
         self.allnames =  [
             0:[String]([
@@ -29,11 +32,11 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         ];
         //创建右边按钮
         let rightBtn = UIBarButtonItem(image: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.plain,
-                                       target: self, action: #selector(onRemove))
+                                       target: self, action: #selector(goSetting))
         self.navigationItem.rightBarButtonItem = rightBtn
         print(self.allnames as Any)
         //创建表视图
-        self.tableView = UITableView(frame: CGRect(x:0, y:(self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
+        self.tableView = UITableView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         //禁止拖拽
@@ -42,10 +45,12 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         self.tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
         self.view.addSubview(self.tableView!)
     }
-    //删除导航项函数
-    @objc func onRemove(){
+    //跳转到设置界面
+    @objc func goSetting(){
         let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: SettingViewController())))
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc!, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 
     //在本例中，有2个分区
@@ -80,21 +85,20 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
             if(secno == 0)
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: identify,
-                for: indexPath as IndexPath) as UITableViewCell
+                                                         for: indexPath as IndexPath) as UITableViewCell
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-                let image = UIImage(named:"AppIcon")
+                let image = UIImage(named:"head")
                 cell.imageView?.image = image
-                cell.textLabel?.text = data![indexPath.row]
-                cell.height = 300
+                cell.textLabel?.text = "Seven617"
+//                cell.textLabel?.text = data![indexPath.row]
                 return cell
-            }
-            else
+            }else
             {
                 let adcell = tableView.dequeueReusableCell(
                     withIdentifier: identify, for: indexPath)
                 adcell.accessoryType = .disclosureIndicator
-                var data = self.allnames?[secno]
                 adcell.textLabel?.text = data![indexPath.row]
+                adcell.setSelected(false, animated: false)
                 return adcell
             }
     }
@@ -102,13 +106,30 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     // UITableViewDelegate 方法，处理列表项的选中事件
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.tableView!.deselectRow(at: indexPath, animated: true)
+//        self.tableView!.deselectRow(at: indexPath, animated: true)
+//        let itemString = self.allnames![indexPath.section]![indexPath.row]
+//        let alertController = UIAlertController(title: "提示!",message: "你选中了【\(itemString)】",
+//            preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
         let itemString = self.allnames![indexPath.section]![indexPath.row]
-        let alertController = UIAlertController(title: "提示!",message: "你选中了【\(itemString)】",
-            preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if(itemString == "用户ID")
+        {
+            Toast(text: "你选中了【\(itemString)】").show()
+        }else if(itemString == "联系客服"){
+            let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: CustomerServiceViewController())))
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }else if(itemString == "关于我们"){
+            let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: AboutUsViewController())))
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

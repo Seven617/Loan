@@ -4,7 +4,7 @@
 //
 //  Created by 冷少白 on 2018/5/11.
 //  Copyright © 2018年 kbfoo. All rights reserved.
-//
+//  支持Fragment的住界面
 
 import UIKit
 

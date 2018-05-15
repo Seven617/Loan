@@ -66,9 +66,9 @@
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
 		0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225120AA77C7005AB69E /* AboutUsViewController.swift */; };
 		0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */; };
-		0452225720AA81EA005AB69E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225620AA81EA005AB69E /* BaseViewController.swift */; };
 		0452225A20AAA233005AB69E /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225920AAA233005AB69E /* MyCell.swift */; };
 		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
+		04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D15D3320AAF86500A33F5B /* BackViewController.swift */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,9 +139,9 @@
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
 		0452225120AA77C7005AB69E /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
-		0452225620AA81EA005AB69E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0452225920AAA233005AB69E /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		04D15D3320AAF86500A33F5B /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
 		B5FC0BFA4CB3D541F01922CF /* Pods-Loan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB364E3F5C18939114632395 /* Pods_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,7 +311,7 @@
 		0452225520AA81BF005AB69E /* base */ = {
 			isa = PBXGroup;
 			children = (
-				0452225620AA81EA005AB69E /* BaseViewController.swift */,
+				04D15D3320AAF86500A33F5B /* BackViewController.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -496,12 +496,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */,
 				041935D920A586CB006D5CF3 /* QZSortCell.m in Sources */,
 				041935A820A56502006D5CF3 /* LPBannerCell.swift in Sources */,
 				0440A9BB20A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
-				0452225720AA81EA005AB69E /* BaseViewController.swift in Sources */,
 				041935A720A56502006D5CF3 /* LPBannerView.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,

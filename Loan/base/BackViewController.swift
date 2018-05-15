@@ -1,14 +1,14 @@
 //
-//  BaseViewController.swift
+//  BackViewController.swift
 //  Loan
 //
 //  Created by 冷少白 on 2018/5/15.
 //  Copyright © 2018年 kbfoo. All rights reserved.
-//  BaseViewController
+//  BaseViewController(滑动返回)
 
 import UIKit
 
-class BaseViewController: UIViewController,  UIGestureRecognizerDelegate {
+class BackViewController: UIViewController,  UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()

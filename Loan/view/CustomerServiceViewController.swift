@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomerServiceViewController: BaseViewController {
+class CustomerServiceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

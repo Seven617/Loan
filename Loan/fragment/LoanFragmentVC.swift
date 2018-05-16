@@ -19,7 +19,9 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //定义标题颜色与字体大小字典
+        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 20)]
+        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
         self.view.backgroundColor = UIColor.white
         dataArr = ["1","2","3","4","5","6","7","8","9","10"]
         // FilterBlock 选择下拉菜单选项触发
@@ -42,7 +44,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
         
         
-        conditionFilterView?.y += ((self.navigationController?.navigationBar.frame.size.height ?? 0.0)! + UIApplication.shared.statusBarFrame.size.height)
+        conditionFilterView?.y += 0
         // 设置初次加载显示的默认数据 即初次加载还没有选择操作之前要显示的标题数据
         _selectedDataSource1Ary = ["金额不限"] as [AnyObject]
         _selectedDataSource2Ary = ["期限不限"] as [AnyObject]
@@ -53,7 +55,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         conditionFilterView?.bindChoseArrayDataSource1(_selectedDataSource1Ary, dataSource2: _selectedDataSource2Ary)
         self.view.addSubview(conditionFilterView!)
 //        self.view.insertSubview(conditionFilterView!, at: 1)
-        tableView = UITableView(frame: CGRect(x:0, y:(self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 40 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 40), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x:0, y:40 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 40), style: UITableViewStyle.plain)
         tableView.dataSource = self
         tableView.delegate = self
         //禁止拖拽
@@ -99,7 +101,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80;
+        return 50;
     }
     
     //cell

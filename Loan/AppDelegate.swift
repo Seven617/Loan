@@ -12,32 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var rootNavigationViewController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if !UserDefaults.standard.bool(forKey: "FirstTime_StartApp") {
             UserDefaults.standard.set(true, forKey: "FirstTime_StartApp")
             UserDefaults.standard.synchronize()
             /**  第一次进入*/
             let guideViewController = storyboard.instantiateViewController(withIdentifier: String(describing: type(of: GuideViewController())))
-            let rootNavigationViewController = UINavigationController(rootViewController: guideViewController)
-            self.window!.rootViewController = rootNavigationViewController
-            //            self.window?.rootViewController = guideViewController
-            //            self.window?.makeKeyAndVisible()
-            //            self.present(guideViewController!,animated:true)
+            rootNavigationViewController = UINavigationController(rootViewController: guideViewController)
         } else {
             /**  非第一次进入*/
-            let mainTabViewController = storyboard.instantiateViewController(withIdentifier: String(describing: type(of: MainTabViewController())))
-            self.window?.rootViewController = mainTabViewController
-            self.window?.makeKeyAndVisible()
-        
-//            let mainViewController = storyboard.instantiateViewController(withIdentifier: String(describing: type(of: MainViewController())))
-//            let rootNavigationViewController = UINavigationController(rootViewController: mainViewController)
-//            self.window!.rootViewController = rootNavigationViewController
+            window?.makeKeyAndVisible()
+            let mainController = storyboard.instantiateViewController(withIdentifier: String(describing: type(of: MainController())))
+            rootNavigationViewController = UINavigationController(rootViewController: mainController)
         }
+        window!.rootViewController = rootNavigationViewController
         return true
     }
 

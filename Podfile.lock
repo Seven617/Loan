@@ -1,26 +1,28 @@
 PODS:
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - EasyNavigation (1.0.5)
+  - LTAutoScrollView (0.2.0)
   - SnapKit (4.0.0)
   - Toaster (2.1.1)
 
 DEPENDENCIES:
-  - SDWebImage
+  - EasyNavigation (~> 1.0)
+  - LTAutoScrollView
   - SnapKit (~> 4.0.0)
   - Toaster (~> 2.1.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - SDWebImage
+    - EasyNavigation
+    - LTAutoScrollView
     - SnapKit
     - Toaster
 
 SPEC CHECKSUMS:
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  EasyNavigation: 3414769a995d032e5dd9441f2bdd4eda7dd10089
+  LTAutoScrollView: 74fd22ee3e50565bcd93f641afe61133e8949e34
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 1ebf778343cb19e52f3cc84bee10db9ec8d55857
+PODFILE CHECKSUM: f253a71087f43fd3f27d7704bd71bbc775d2b1a8
 
 COCOAPODS: 1.5.0

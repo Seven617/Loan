@@ -8,8 +8,11 @@ use_frameworks!
 target 'Loan' do
 use_frameworks!
       # 指定库 和 库的版本
-pod 'SDWebImage'
+
+pod 'LTAutoScrollView'
 pod 'SnapKit', '~> 4.0.0'
 pod 'Toaster', '~> 2.1.1'
+pod 'EasyNavigation','~>1.0'
+
 end
 

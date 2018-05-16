@@ -12,13 +12,10 @@
 		0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419358720A55D03006D5CF3 /* AppDelegate.swift */; };
 		0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419358B20A55D03006D5CF3 /* Main.storyboard */; };
 		0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */; };
-		0419359A20A55F38006D5CF3 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359920A55F38006D5CF3 /* MainTabViewController.swift */; };
 		0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359B20A55F4C006D5CF3 /* GuideViewController.swift */; };
 		0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359E20A55F70006D5CF3 /* HomeFragmentVC.swift */; };
 		041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A020A55F7F006D5CF3 /* LoanFragmentVC.swift */; };
 		041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A220A55F8E006D5CF3 /* MineFragmentVC.swift */; };
-		041935A720A56502006D5CF3 /* LPBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A520A56502006D5CF3 /* LPBannerView.swift */; };
-		041935A820A56502006D5CF3 /* LPBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A620A56502006D5CF3 /* LPBannerCell.swift */; };
 		041935CA20A57A85006D5CF3 /* PR_filter_choice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041935C420A57A84006D5CF3 /* PR_filter_choice@3x.png */; };
 		041935CB20A57A85006D5CF3 /* PR_project_ok@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041935C520A57A84006D5CF3 /* PR_project_ok@3x.png */; };
 		041935CC20A57A85006D5CF3 /* PR_filter_choice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041935C620A57A84006D5CF3 /* PR_filter_choice@2x.png */; };
@@ -64,6 +61,15 @@
 		0440A9F720A6891500821E31 /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9D920A6891500821E31 /* icon_homepage_search.png */; };
 		0440A9F820A6891500821E31 /* icon_collect_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */; };
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
+		045202A920ABDE9D008E181C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202A720ABDE9C008E181C /* TabBarController.swift */; };
+		045202F920ABF3A9008E181C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202F820ABF3A9008E181C /* MainController.swift */; };
+		045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FA20ABF3B9008E181C /* DrawerMenuController.swift */; };
+		0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FC20ABF47F008E181C /* UIButton+Extension.swift */; };
+		0452030220ABF47F008E181C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FE20ABF47F008E181C /* UIFont+Extension.swift */; };
+		0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FF20ABF47F008E181C /* UIColor+Extension.swift */; };
+		0452030620ABF49C008E181C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452030420ABF49B008E181C /* Header.swift */; };
+		0452030720ABF49C008E181C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452030520ABF49C008E181C /* BackButton.swift */; };
+		0452030920ABF4C3008E181C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452030820ABF4C3008E181C /* NavigationController.swift */; };
 		0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225120AA77C7005AB69E /* AboutUsViewController.swift */; };
 		0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */; };
 		0452225A20AAA233005AB69E /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225920AAA233005AB69E /* MyCell.swift */; };
@@ -80,13 +86,10 @@
 		0419358C20A55D03006D5CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0419359120A55D04006D5CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0419359320A55D04006D5CF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0419359920A55F38006D5CF3 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		0419359B20A55F4C006D5CF3 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		0419359E20A55F70006D5CF3 /* HomeFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFragmentVC.swift; sourceTree = "<group>"; };
 		041935A020A55F7F006D5CF3 /* LoanFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFragmentVC.swift; sourceTree = "<group>"; };
 		041935A220A55F8E006D5CF3 /* MineFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFragmentVC.swift; sourceTree = "<group>"; };
-		041935A520A56502006D5CF3 /* LPBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPBannerView.swift; sourceTree = "<group>"; };
-		041935A620A56502006D5CF3 /* LPBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPBannerCell.swift; sourceTree = "<group>"; };
 		041935B420A576CF006D5CF3 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
 		041935C420A57A84006D5CF3 /* PR_filter_choice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice@3x.png"; sourceTree = "<group>"; };
 		041935C520A57A84006D5CF3 /* PR_project_ok@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_project_ok@3x.png"; sourceTree = "<group>"; };
@@ -137,6 +140,15 @@
 		0440A9D920A6891500821E31 /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
 		0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_collect_highlighted.png; sourceTree = "<group>"; };
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
+		045202A720ABDE9C008E181C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		045202F820ABF3A9008E181C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		045202FA20ABF3B9008E181C /* DrawerMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerMenuController.swift; sourceTree = "<group>"; };
+		045202FC20ABF47F008E181C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		045202FE20ABF47F008E181C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		045202FF20ABF47F008E181C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0452030420ABF49B008E181C /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		0452030520ABF49C008E181C /* BackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		0452030820ABF4C3008E181C /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0452225120AA77C7005AB69E /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
 		0452225920AAA233005AB69E /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
@@ -181,15 +193,15 @@
 			isa = PBXGroup;
 			children = (
 				0440A9B320A6887600821E31 /* coolslidingmenu */,
-				041935A420A564ED006D5CF3 /* banner */,
 				041935A920A56BBE006D5CF3 /* dropmenu */,
 				0419359D20A55F57006D5CF3 /* fragment */,
 				0452225020AA776F005AB69E /* view */,
 				0452225520AA81BF005AB69E /* base */,
 				0452225820AAA206005AB69E /* cell */,
-				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
-				0419358B20A55D03006D5CF3 /* Main.storyboard */,
+				045202F720ABF395008E181C /* main */,
 				0418C25B20A9A5E6003D28D5 /* Assets.xcassets */,
+				0419358B20A55D03006D5CF3 /* Main.storyboard */,
+				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
 				0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */,
 				0419359320A55D04006D5CF3 /* Info.plist */,
 			);
@@ -206,20 +218,12 @@
 			path = fragment;
 			sourceTree = "<group>";
 		};
-		041935A420A564ED006D5CF3 /* banner */ = {
-			isa = PBXGroup;
-			children = (
-				041935A620A56502006D5CF3 /* LPBannerCell.swift */,
-				041935A520A56502006D5CF3 /* LPBannerView.swift */,
-			);
-			path = banner;
-			sourceTree = "<group>";
-		};
 		041935A920A56BBE006D5CF3 /* dropmenu */ = {
 			isa = PBXGroup;
 			children = (
 				041935C320A57A75006D5CF3 /* images */,
 				041935D020A586CA006D5CF3 /* QZConditionFilterView.h */,
+				041935B420A576CF006D5CF3 /* Loan-Bridging-Header.h */,
 				041935D120A586CB006D5CF3 /* QZConditionFilterView.m */,
 				041935D320A586CB006D5CF3 /* QZFilterDataTableView.h */,
 				041935D520A586CB006D5CF3 /* QZFilterDataTableView.m */,
@@ -227,7 +231,6 @@
 				041935D420A586CB006D5CF3 /* QZSortCell.m */,
 				041935D720A586CB006D5CF3 /* UIView+Extension.h */,
 				041935D620A586CB006D5CF3 /* UIView+Extension.m */,
-				041935B420A576CF006D5CF3 /* Loan-Bridging-Header.h */,
 			);
 			path = dropmenu;
 			sourceTree = "<group>";
@@ -296,10 +299,28 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		045202AB20ABDECC008E181C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				045202FC20ABF47F008E181C /* UIButton+Extension.swift */,
+				045202FF20ABF47F008E181C /* UIColor+Extension.swift */,
+				045202FE20ABF47F008E181C /* UIFont+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		045202F720ABF395008E181C /* main */ = {
+			isa = PBXGroup;
+			children = (
+				045202F820ABF3A9008E181C /* MainController.swift */,
+				045202FA20ABF3B9008E181C /* DrawerMenuController.swift */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		0452225020AA776F005AB69E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				0419359920A55F38006D5CF3 /* MainTabViewController.swift */,
 				0419359B20A55F4C006D5CF3 /* GuideViewController.swift */,
 				04960B0C20A98471007B58D8 /* SettingViewController.swift */,
 				0452225120AA77C7005AB69E /* AboutUsViewController.swift */,
@@ -311,7 +332,12 @@
 		0452225520AA81BF005AB69E /* base */ = {
 			isa = PBXGroup;
 			children = (
+				045202AB20ABDECC008E181C /* Extension */,
+				045202A720ABDE9C008E181C /* TabBarController.swift */,
+				0452030820ABF4C3008E181C /* NavigationController.swift */,
 				04D15D3320AAF86500A33F5B /* BackViewController.swift */,
+				0452030520ABF49C008E181C /* BackButton.swift */,
+				0452030420ABF49B008E181C /* Header.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -474,13 +500,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Loan/Pods-Loan-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/EasyNavigation/EasyNavigation.framework",
+				"${BUILT_PRODUCTS_DIR}/LTAutoScrollView/LTAutoScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyNavigation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTAutoScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
@@ -497,23 +525,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */,
+				045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */,
 				041935D920A586CB006D5CF3 /* QZSortCell.m in Sources */,
-				041935A820A56502006D5CF3 /* LPBannerCell.swift in Sources */,
+				045202F920ABF3A9008E181C /* MainController.swift in Sources */,
 				0440A9BB20A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
+				0452030220ABF47F008E181C /* UIFont+Extension.swift in Sources */,
+				0452030920ABF4C3008E181C /* NavigationController.swift in Sources */,
+				0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
-				041935A720A56502006D5CF3 /* LPBannerView.swift in Sources */,
+				0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
+				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				0440A9B920A6889C00821E31 /* CoolSlidingMenuView.swift in Sources */,
 				0440A9B820A6889C00821E31 /* CoolSlidingMenuManager.swift in Sources */,
 				0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */,
 				041935DB20A586CB006D5CF3 /* UIView+Extension.m in Sources */,
+				0452030720ABF49C008E181C /* BackButton.swift in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
-				0419359A20A55F38006D5CF3 /* MainTabViewController.swift in Sources */,
 				0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */,
 				041935DA20A586CB006D5CF3 /* QZFilterDataTableView.m in Sources */,
+				0452030620ABF49C008E181C /* Header.swift in Sources */,
 				0452225A20AAA233005AB69E /* MyCell.swift in Sources */,
 				041935D820A586CB006D5CF3 /* QZConditionFilterView.m in Sources */,
 				0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */,
@@ -666,10 +700,7 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/dropmenu/Loan-Bridging-Header.h";
@@ -689,10 +720,7 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/dropmenu/Loan-Bridging-Header.h";

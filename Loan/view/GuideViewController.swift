@@ -50,8 +50,7 @@ class GuideViewController: UIViewController {
     }
     
     @IBAction func click(_ sender: UIButton) {
-        let mainTabViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: MainTabViewController())))
-        self.navigationController!.pushViewController(mainTabViewController!,animated:true)
+        navigationController!.pushViewController(MainController(),animated:true)
     }
     
     // 隐藏状态栏

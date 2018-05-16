@@ -16,14 +16,13 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     override func loadView() {
         super.loadView()
-        let item = UIBarButtonItem(title: "返回", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = item
+        //定义标题颜色与字体大小字典
+        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 20)]
+        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //防止导航条跳转时变黑
-        navigationController?.navigationBar.isTranslucent = false
         //初始化数据，这一次数据，我们放在属性列表文件里
         self.allnames =  [
             0:[String]([
@@ -35,8 +34,8 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         //创建右边按钮
         let rightBtn = UIBarButtonItem(image: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.plain,
                                        target: self, action: #selector(goSetting))
-        self.navigationItem.rightBarButtonItem = rightBtn
-        print(self.allnames as Any)
+        navigationItem.rightBarButtonItem = rightBtn
+//        print(self.allnames as Any)
         //创建表视图
         self.tableView = UITableView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
         self.tableView!.delegate = self
@@ -49,10 +48,7 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     //跳转到设置界面
     @objc func goSetting(){
-        let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: SettingViewController())))
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc!, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        navigationController?.pushViewController(SettingViewController(), animated: true)
     }
 
     //在本例中，有2个分区
@@ -107,29 +103,15 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     // UITableViewDelegate 方法，处理列表项的选中事件
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        self.tableView!.deselectRow(at: indexPath, animated: true)
-//        let itemString = self.allnames![indexPath.section]![indexPath.row]
-//        let alertController = UIAlertController(title: "提示!",message: "你选中了【\(itemString)】",
-//            preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        self.present(alertController, animated: true, completion: nil)
         let itemString = self.allnames![indexPath.section]![indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         if(itemString == "用户ID")
         {
             Toast(text: "你选中了【\(itemString)】").show()
         }else if(itemString == "联系客服"){
-            let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: CustomerServiceViewController())))
-            self.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc!, animated: true)
-            self.hidesBottomBarWhenPushed = false
+            navigationController?.pushViewController(CustomerServiceViewController(), animated: true)
         }else if(itemString == "关于我们"){
-            let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: type(of: AboutUsViewController())))
-            self.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc!, animated: true)
-            self.hidesBottomBarWhenPushed = false
+            navigationController?.pushViewController(AboutUsViewController(), animated: true)
         }
         
     }

@@ -9,20 +9,14 @@
 import UIKit
 import Toaster
 
-class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
-    
+class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataSource{
+  
     var tableView:UITableView?
     var allnames:Dictionary<Int, [String]>?
-    
-    override func loadView() {
-        super.loadView()
-        //定义标题颜色与字体大小字典
-        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 20)]
-        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        intiNavigationControlle()
         //初始化数据，这一次数据，我们放在属性列表文件里
         self.allnames =  [
             0:[String]([
@@ -31,13 +25,10 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
                 "联系客服",
                 "关于我们"])
         ];
-        //创建右边按钮
-        let rightBtn = UIBarButtonItem(image: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.plain,
-                                       target: self, action: #selector(goSetting))
-        navigationItem.rightBarButtonItem = rightBtn
-//        print(self.allnames as Any)
+
+        //print(self.allnames as Any)
         //创建表视图
-        self.tableView = UITableView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
+        self.tableView = UITableView(frame: CGRect(x:0, y:navH, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         //禁止拖拽
@@ -45,6 +36,27 @@ class MineFragmentVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         //创建一个重用的单元格
         self.tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
         self.view.addSubview(self.tableView!)
+    }
+    func intiNavigationControlle(){
+        
+        // 自定义导航栏视图
+        let navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
+        navView.backgroundColor = UIColor.Main
+        view.addSubview(navView)
+        
+        // 创建右边按钮
+        let rightBtn = RightButton(target: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal) as Any, action: #selector(goSetting))
+        rightBtn.x = SCREEN_WIDTH - 40
+        rightBtn.centerY = topY + (navH - topY) / 2.0
+        navView.addSubview(rightBtn)
+        
+        // 导航栏标题
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
+        titleLabel.text = "我的"
+        titleLabel.textColor = UIColor.white
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        navView.addSubview(titleLabel)
     }
     //跳转到设置界面
     @objc func goSetting(){

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */; };
-		0418C25C20A9A5E6003D28D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0418C25B20A9A5E6003D28D5 /* Assets.xcassets */; };
 		0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419358720A55D03006D5CF3 /* AppDelegate.swift */; };
 		0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419358B20A55D03006D5CF3 /* Main.storyboard */; };
 		0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */; };
@@ -73,6 +72,10 @@
 		0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225120AA77C7005AB69E /* AboutUsViewController.swift */; };
 		0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */; };
 		0452225A20AAA233005AB69E /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225920AAA233005AB69E /* MyCell.swift */; };
+		04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC520AD2BE300B48E54 /* RightButton.swift */; };
+		04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC720AD2E4E00B48E54 /* BaseViewController.swift */; };
+		04556CDA20AD791500B48E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04556CD920AD791500B48E54 /* Assets.xcassets */; };
+		04556CDC20AD89D200B48E54 /* CCLoopCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */; };
 		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
 		04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D15D3320AAF86500A33F5B /* BackViewController.swift */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
@@ -80,7 +83,6 @@
 
 /* Begin PBXFileReference section */
 		0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolTableViewCell.swift; sourceTree = "<group>"; };
-		0418C25B20A9A5E6003D28D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0419358420A55D03006D5CF3 /* Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0419358720A55D03006D5CF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0419358C20A55D03006D5CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,7 +92,6 @@
 		0419359E20A55F70006D5CF3 /* HomeFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFragmentVC.swift; sourceTree = "<group>"; };
 		041935A020A55F7F006D5CF3 /* LoanFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFragmentVC.swift; sourceTree = "<group>"; };
 		041935A220A55F8E006D5CF3 /* MineFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFragmentVC.swift; sourceTree = "<group>"; };
-		041935B420A576CF006D5CF3 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
 		041935C420A57A84006D5CF3 /* PR_filter_choice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice@3x.png"; sourceTree = "<group>"; };
 		041935C520A57A84006D5CF3 /* PR_project_ok@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_project_ok@3x.png"; sourceTree = "<group>"; };
 		041935C620A57A84006D5CF3 /* PR_filter_choice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice@2x.png"; sourceTree = "<group>"; };
@@ -152,6 +153,11 @@
 		0452225120AA77C7005AB69E /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
 		0452225920AAA233005AB69E /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		04556CC520AD2BE300B48E54 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
+		04556CC720AD2E4E00B48E54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
+		04556CD920AD791500B48E54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoopCollectionView.swift; sourceTree = "<group>"; };
 		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		04D15D3320AAF86500A33F5B /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,18 +198,18 @@
 		0419358620A55D03006D5CF3 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
-				0440A9B320A6887600821E31 /* coolslidingmenu */,
-				041935A920A56BBE006D5CF3 /* dropmenu */,
+				04556CC920AD378300B48E54 /* source */,
 				0419359D20A55F57006D5CF3 /* fragment */,
 				0452225020AA776F005AB69E /* view */,
 				0452225520AA81BF005AB69E /* base */,
 				0452225820AAA206005AB69E /* cell */,
 				045202F720ABF395008E181C /* main */,
-				0418C25B20A9A5E6003D28D5 /* Assets.xcassets */,
 				0419358B20A55D03006D5CF3 /* Main.storyboard */,
+				04556CD920AD791500B48E54 /* Assets.xcassets */,
 				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
 				0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */,
 				0419359320A55D04006D5CF3 /* Info.plist */,
+				04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -223,7 +229,6 @@
 			children = (
 				041935C320A57A75006D5CF3 /* images */,
 				041935D020A586CA006D5CF3 /* QZConditionFilterView.h */,
-				041935B420A576CF006D5CF3 /* Loan-Bridging-Header.h */,
 				041935D120A586CB006D5CF3 /* QZConditionFilterView.m */,
 				041935D320A586CB006D5CF3 /* QZFilterDataTableView.h */,
 				041935D520A586CB006D5CF3 /* QZFilterDataTableView.m */,
@@ -338,6 +343,8 @@
 				04D15D3320AAF86500A33F5B /* BackViewController.swift */,
 				0452030520ABF49C008E181C /* BackButton.swift */,
 				0452030420ABF49B008E181C /* Header.swift */,
+				04556CC520AD2BE300B48E54 /* RightButton.swift */,
+				04556CC720AD2E4E00B48E54 /* BaseViewController.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -348,6 +355,16 @@
 				0452225920AAA233005AB69E /* MyCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		04556CC920AD378300B48E54 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */,
+				041935A920A56BBE006D5CF3 /* dropmenu */,
+				0440A9B320A6887600821E31 /* coolslidingmenu */,
+			);
+			path = source;
 			sourceTree = "<group>";
 		};
 		DE0779B18F9B9CFED2C683CE /* Frameworks */ = {
@@ -453,7 +470,7 @@
 				0440A9E620A6891500821E31 /* icon_homepage_shoppingCategory.png in Resources */,
 				0440A9ED20A6891500821E31 /* icon_homepage_foottreatCategory.png in Resources */,
 				0440A9E520A6891500821E31 /* todaySpecialHeaderTitleImage@3x.png in Resources */,
-				0418C25C20A9A5E6003D28D5 /* Assets.xcassets in Resources */,
+				04556CDA20AD791500B48E54 /* Assets.xcassets in Resources */,
 				0440A9E920A6891500821E31 /* icon_deal_anytime_refund@2x.png in Resources */,
 				0440A9F220A6891500821E31 /* icon_homepage_foodCategory.png in Resources */,
 				041935CC20A57A85006D5CF3 /* PR_filter_choice@2x.png in Resources */,
@@ -500,15 +517,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Loan/Pods-Loan-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyNavigation/EasyNavigation.framework",
 				"${BUILT_PRODUCTS_DIR}/LTAutoScrollView/LTAutoScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyNavigation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTAutoScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
@@ -542,6 +563,8 @@
 				0440A9B820A6889C00821E31 /* CoolSlidingMenuManager.swift in Sources */,
 				0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */,
 				041935DB20A586CB006D5CF3 /* UIView+Extension.m in Sources */,
+				04556CDC20AD89D200B48E54 /* CCLoopCollectionView.swift in Sources */,
+				04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */,
 				0452030720ABF49C008E181C /* BackButton.swift in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
@@ -551,6 +574,7 @@
 				0452225A20AAA233005AB69E /* MyCell.swift in Sources */,
 				041935D820A586CB006D5CF3 /* QZConditionFilterView.m in Sources */,
 				0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */,
+				04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,10 +724,13 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Loan/dropmenu/Loan-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -720,10 +747,13 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Loan/dropmenu/Loan-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -10,15 +10,17 @@ import UIKit
 import Toaster
 import LTAutoScrollView
 
-class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
     var topY: CGFloat = 20
     var navH: CGFloat = 64
     var dataDic:Dictionary<String, Any>! = nil
     var arrIcon:Array<Any>! = nil
     var arrMenu:Array<Any> = Array()
+    var scrollView = UIScrollView()
     var tableView = UITableView()
+    var adView: CCLoopCollectionView!
     // 图片URL 或者 本地图片名称
-    var images = ["WechatIMG2.jpeg","WechatIMG3.jpeg","WechatIMG4.jpeg","WechatIMG5.jpeg","WechatIMG6.jpeg","WechatIMG7.jpeg"]
+    var images = ["WechatIMG1.jpeg"]
     public var pgCtrlNormalColor: UIColor! = UIColor.white
     public var pgCtrlSelectedColor: UIColor! = UIColor.gray
     public var pgCtrlShouldHidden: Bool! = false
@@ -41,27 +43,73 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
         getBanner()
         getTableView()
+        getCollectionView()
+        getScrollView()
     }
-    
+    //获取getScrollView
+    func getScrollView(){
+        scrollView = UIScrollView()
+        //设置代理
+        scrollView.delegate = self
+        scrollView.frame = self.view.bounds
+        //4.设置内容大小
+        scrollView.contentSize = CGSize(width:self.scrollView.bounds.width, height:autoScrollView.frame.height+tableView.frame.height+adView.frame.height)
+        scrollView.bounces = false
+        //隐藏滚动条
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.addSubview(autoScrollView)
+        scrollView.addSubview(tableView)
+        scrollView.addSubview(adView)
+        view.addSubview(scrollView)
+    }
     //获取Banner滚动条
     private func getBanner(){
-        view.addSubview(autoScrollView)
+//        view.addSubview(autoScrollView)
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
+    
     //获取滚动菜单
     private func getTableView(){
-        tableView = UITableView(frame: CGRect(x:0, y:UIScreen.main.bounds.height/4 ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/4 + 10), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x:0, y:autoScrollView.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/4 + 10), style: UITableViewStyle.plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.bounces = false
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
-        self.view.addSubview(tableView)
+//        view.addSubview(tableView)
         setData()
         regReuseView()
     }
     
+    private func getCollectionView(){
+        let tempAry = [#imageLiteral(resourceName: "WechatIMG1.jpeg"), #imageLiteral(resourceName: "WechatIMG2.jpeg"), #imageLiteral(resourceName: "WechatIMG3.jpeg"), #imageLiteral(resourceName: "WechatIMG4.jpeg"), #imageLiteral(resourceName: "WechatIMG5.jpeg")]
+        //根据frame创建view
+        adView = CCLoopCollectionView(frame: CGRect(x: 0, y: tableView.frame.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4))
+        //给轮播图赋值内容（可以为UIImage或UIString）
+        adView.contentAry = tempAry as [AnyObject]
+        //是否开始自动循环
+        adView.enableAutoScroll = true
+        //循环间隔时间
+        adView.timeInterval = 2.0
+        //是否显示UIPageControl
+        adView.showPageControl = false
+        //UIPageControl当前颜色
+        adView.currentPageControlColor = UIColor.brown
+        //UIPageControl其它颜色
+        adView.pageControlTintColor = UIColor.cyan
+        //设置图片显示模式
+        adView.imageShowMode = .scaleAspectFill
+        //添加到父视图
+//        view.addSubview(adView)
+        adView.getClickedIndex { (index) in
+            print("clicked index = \(index)")
+        }
+    }
+    //视图滚动中一直触发
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("x:\(scrollView.contentOffset.x) y:\(scrollView.contentOffset.y)")
+    }
     /*  设置为系统的pageControl样式利用dotType */
     private lazy var autoScrollView: LTAutoScrollView = {
         let autoScrollView = LTAutoScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height/4))

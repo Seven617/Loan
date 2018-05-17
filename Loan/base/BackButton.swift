@@ -12,7 +12,7 @@ import UIKit
 class BackButton: UIButton {
 
     init(target: Any, action: Selector) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 21, height: 21))
+        super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         commonInit(target: target, action: action)
     }
     
@@ -23,8 +23,6 @@ class BackButton: UIButton {
     func commonInit(target: Any, action: Selector) {
         
         self.adjustsImageWhenHighlighted = false
-        self.setBackgroundImage(UIImage(named: "fanhui_new"), for: UIControlState.normal)
-        self.setBackgroundImage(UIImage(named: "fanhui_yin_new"), for: UIControlState.highlighted)
         self.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -(self.width > 20 ? self.width - 20 : self.width), bottom: 0, right:0)
         self.addTarget(target, action: action, for: .touchUpInside)

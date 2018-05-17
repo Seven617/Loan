@@ -8,19 +8,13 @@
 
 import UIKit
 
-class CustomerServiceViewController: UIViewController {
+class CustomerServiceViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
     }
     func intiNavigationControlle(){
-        var topY: CGFloat = 20
-        var navH: CGFloat = 64
-        if SCREEN_HEIGHT == 812 {
-            topY = 44
-            navH = 88
-        }
         // 自定义导航栏视图
         let navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
         navView.backgroundColor = UIColor.lightGray
@@ -30,11 +24,12 @@ class CustomerServiceViewController: UIViewController {
         let backBtn = BackButton(target: self, action: #selector(backBtnClicked))
         backBtn.x = 20
         backBtn.centerY = topY + (navH - topY) / 2.0
+        backBtn.setImage(UIImage(named: "back_black"), for: UIControlState.normal)
         navView.addSubview(backBtn)
         // 导航栏标题
         let titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
         titleLabel.text = "客服"
-        titleLabel.textColor = UIColor.white
+        titleLabel.textColor = UIColor.black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
@@ -48,16 +43,7 @@ class CustomerServiceViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         UIApplication.shared.statusBarStyle = .default
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-    }
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-    }
-    
+    }  
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
         if parent == nil {

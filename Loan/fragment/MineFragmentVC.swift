@@ -104,12 +104,24 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
                 return cell
             }else
             {
-                let adcell = tableView.dequeueReusableCell(
-                    withIdentifier: identify, for: indexPath)
-                adcell.accessoryType = .disclosureIndicator
-                adcell.textLabel?.text = data![indexPath.row]
-                adcell.setSelected(false, animated: false)
-                return adcell
+                if(indexPath.row == 0){
+                    let cell = tableView.dequeueReusableCell(withIdentifier: identify,
+                                                             for: indexPath as IndexPath) as UITableViewCell
+                    cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                    let image = UIImage(named:"kefu")
+                    cell.imageView?.image = image
+                    cell.textLabel?.text = data![indexPath.row]
+                    return cell
+                }else{
+                    let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+                    cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                    let image = UIImage(named:"aboutus")
+                    cell.imageView?.image = image
+                    cell.textLabel?.text = data![indexPath.row]
+                    cell.detailTextLabel?.text = "快来了解一下快便贷"
+                    cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+                    return cell
+                }
             }
     }
     

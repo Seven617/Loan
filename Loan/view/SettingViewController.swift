@@ -10,15 +10,17 @@ import UIKit
 
 
 class SettingViewController: BaseViewController {
+    var navView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
-        intiNavigationControlle()
+        initNavigationControlle()
+        initImg()
     }
-    func intiNavigationControlle(){
+    func initNavigationControlle(){
         // 自定义导航栏视图
-        let navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
+        navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
         navView.backgroundColor = UIColor.lightGray
         view.addSubview(navView)
         
@@ -35,6 +37,31 @@ class SettingViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
+    }
+    
+    func initImg(){
+        let background = UIView(frame: CGRect(x: 0, y: navView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT/3))
+        background.backgroundColor = UIColor.white
+        view.addSubview(background)
+        
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        img.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: navH+10)
+        img.image  = UIImage(named:"AppIcon")
+        img.layer.cornerRadius = 15.0
+        img.clipsToBounds = true
+        background.addSubview(img)
+        
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
+        btn.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: img.frame.maxY + 50)
+//        btn.backgroundColor = UIColor.white
+        btn.setTitle("《快便贷用户服务协议》", for:.normal)
+        btn.setTitleColor(UIColor.Main, for: .normal) //普通状态下文字的颜色
+        btn.setTitleColor(UIColor.MainPress, for: .highlighted) //触摸状态下文字的颜色
+        btn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        background.addSubview(btn)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

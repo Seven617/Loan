@@ -9,6 +9,7 @@
 import UIKit
 import Toaster
 import LTAutoScrollView
+import MJRefresh
 
 class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
     var topY: CGFloat = 20
@@ -16,9 +17,11 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     var dataDic:Dictionary<String, Any>! = nil
     var arrIcon:Array<Any>! = nil
     var arrMenu:Array<Any> = Array()
-    var scrollView = UIScrollView()
+    var MainscrollView = UIScrollView()
     var tableView = UITableView()
     var adView: CCLoopCollectionView!
+    // 顶部刷新
+    let header = MJRefreshNormalHeader()
     // 图片URL 或者 本地图片名称
     var images = ["WechatIMG1.jpeg"]
     public var pgCtrlNormalColor: UIColor! = UIColor.white
@@ -44,27 +47,51 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         getBanner()
         getTableView()
         getCollectionView()
-        getScrollView()
+
+        getMainScrollView()
+        //下拉刷新相关设置
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.setRefreshingTarget(self, refreshingAction: #selector(HomeFragmentVC.headerRefresh))
+        MainscrollView.mj_header = header
     }
-    //获取getScrollView
-    func getScrollView(){
-        scrollView = UIScrollView()
+    //顶部下拉刷新
+    @objc func headerRefresh(){
+        print("下拉刷新.")
+        sleep(2)
+        //重现生成数据
+//        refreshItemData()
+        //结束刷新
+        MainscrollView.mj_header.endRefreshing()
+    }
+
+    //获取getMainScrollView
+    func getMainScrollView(){
+        MainscrollView = UIScrollView()
         //设置代理
-        scrollView.delegate = self
-        scrollView.frame = self.view.bounds
-        //4.设置内容大小
-        scrollView.contentSize = CGSize(width:self.scrollView.bounds.width, height:autoScrollView.frame.height+tableView.frame.height+adView.frame.height)
-        scrollView.bounces = false
+        MainscrollView.delegate = self
+        MainscrollView.frame = self.view.bounds
+        // 点击状态栏时，可以滚动回顶端
+        MainscrollView.scrollsToTop = true
         //隐藏滚动条
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.addSubview(autoScrollView)
-        scrollView.addSubview(tableView)
-        scrollView.addSubview(adView)
-        view.addSubview(scrollView)
+        MainscrollView.showsVerticalScrollIndicator = false
+        let red = UIView(frame: CGRect(x:0, y:adView.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/2))
+        red.backgroundColor = UIColor.Red
+        MainscrollView.addSubview(autoScrollView)
+        MainscrollView.addSubview(tableView)
+        MainscrollView.addSubview(adView)
+        MainscrollView.addSubview(red)
+        //设置内容大小
+        MainscrollView.contentSize = CGSize(width:self.MainscrollView.bounds.width, height:red.frame.maxY + (self.tabBarController?.tabBar.frame.size.height)! + navH)
+        view.addSubview(MainscrollView)
     }
     //获取Banner滚动条
     private func getBanner(){
 //        view.addSubview(autoScrollView)
+        if(images.count<=1){
+            autoScrollView.isDisableScrollGesture = true
+        }else{
+            autoScrollView.isDisableScrollGesture = false
+        }
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -83,7 +110,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     private func getCollectionView(){
-        let tempAry = [#imageLiteral(resourceName: "WechatIMG1.jpeg"), #imageLiteral(resourceName: "WechatIMG2.jpeg"), #imageLiteral(resourceName: "WechatIMG3.jpeg"), #imageLiteral(resourceName: "WechatIMG4.jpeg"), #imageLiteral(resourceName: "WechatIMG5.jpeg")]
+        let tempAry = [#imageLiteral(resourceName: "WechatIMG1.jpeg")]
         //根据frame创建view
         adView = CCLoopCollectionView(frame: CGRect(x: 0, y: tableView.frame.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4))
         //给轮播图赋值内容（可以为UIImage或UIString）
@@ -91,25 +118,27 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         //是否开始自动循环
         adView.enableAutoScroll = true
         //循环间隔时间
-        adView.timeInterval = 2.0
+        adView.timeInterval = 3.5
         //是否显示UIPageControl
-        adView.showPageControl = false
+        adView.showPageControl = true
         //UIPageControl当前颜色
-        adView.currentPageControlColor = UIColor.brown
+        adView.currentPageControlColor = UIColor.white
         //UIPageControl其它颜色
-        adView.pageControlTintColor = UIColor.cyan
+        adView.pageControlTintColor = UIColor.gray
         //设置图片显示模式
-        adView.imageShowMode = .scaleAspectFill
+        adView.imageShowMode = .redraw
         //添加到父视图
 //        view.addSubview(adView)
         adView.getClickedIndex { (index) in
-            print("clicked index = \(index)")
+            print("clicked index = \(index+1)")
         }
     }
+    
     //视图滚动中一直触发
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("x:\(scrollView.contentOffset.x) y:\(scrollView.contentOffset.y)")
     }
+
     /*  设置为系统的pageControl样式利用dotType */
     private lazy var autoScrollView: LTAutoScrollView = {
         let autoScrollView = LTAutoScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height/4))
@@ -121,7 +150,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         autoScrollView.didSelectItemHandle = {
             Toast(text: "点击了第 \($0 + 1) 张图").show()
         }
-        
+
         let layout = LTDotLayout(dotColor: UIColor.lightGray, dotSelectColor: UIColor.white, dotType: .default)
         /*设置dot的间距*/
         layout.dotMargin = 8
@@ -129,7 +158,6 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         layout.dotWidth = 8
         /*如需和系统一致，dot放大效果需手动关闭 */
         layout.isScale = false
-        
         autoScrollView.dotLayout = layout
         return autoScrollView
     }()

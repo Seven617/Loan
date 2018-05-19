@@ -8,11 +8,15 @@
 
 import UIKit
 
-class CustomerServiceViewController: BaseViewController {
+class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    var tableView:UITableView?
+    var line = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
+        initView()
+        initTableView()
     }
     func intiNavigationControlle(){
         // 自定义导航栏视图
@@ -28,12 +32,72 @@ class CustomerServiceViewController: BaseViewController {
         navView.addSubview(backBtn)
         // 导航栏标题
         let titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
-        titleLabel.text = "客服"
+        titleLabel.text = "联系客服"
         titleLabel.textColor = UIColor.black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
         
+    }
+    
+    func initView(){
+        let img = UIImageView(frame: CGRect(x: 20, y: navH+20, width: 25, height: 25))
+        img.image  = UIImage(named:"kefu")
+        img.layer.cornerRadius = 15.0
+        img.clipsToBounds = true
+        view.addSubview(img)
+        
+        let lab1 = UILabel(frame: CGRect(x: img.frame.maxX+10, y: navH+20, width: 200, height: 25))
+        lab1.text = "客服帮助"
+        lab1.textColor = UIColor.Font2nd
+        view.addSubview(lab1)
+        
+        line = UIView(frame: CGRect(x: 0, y: lab1.frame.maxY+15, width: SCREEN_WIDTH, height: 1))
+        line.backgroundColor = UIColor.Line
+        view.addSubview(line)
+    }
+    
+    func initTableView(){
+        //创建表视图
+        tableView = UITableView(frame: CGRect(x:0, y:line.frame.maxY+10, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.plain)
+        tableView!.delegate = self
+        tableView!.dataSource = self
+//        tableView!.bounces = false
+        self.automaticallyAdjustsScrollViewInsets = false
+        tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
+        tableView!.separatorStyle = .none
+        tableView?.backgroundColor = UIColor.clear
+        view.addSubview(self.tableView!)
+    }
+    //返回表格行数（也就是返回控件数）
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    //cell高度
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 50;
+    }
+    //创建各单元显示内容(创建参数indexPath指定的单元）
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
+            //为了提供表格显示性能，已创建完成的单元需重复使用
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+            cell.backgroundColor = UIColor.clear
+            if(indexPath.row == 0){
+                cell.textLabel?.text = "服务时间"
+                cell.detailTextLabel?.text = "9:00-17:00(工作日)"
+            }else if(indexPath.row == 1){
+                cell.textLabel?.text = "联系邮箱"
+                cell.detailTextLabel?.text = "3124703964@qq.com"
+            }else{
+                cell.textLabel?.text = "客服QQ号:"
+                cell.detailTextLabel?.text = "3124703964"
+            }
+            return cell
+    }
+    //选中效果
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

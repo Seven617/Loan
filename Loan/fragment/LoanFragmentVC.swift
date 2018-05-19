@@ -54,17 +54,14 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         // 初次设置默认显示数据(标题)，内部会调用block 进行第一次数据加载
         conditionFilterView?.bindChoseArrayDataSource1(_selectedDataSource1Ary, dataSource2: _selectedDataSource2Ary)
         self.view.addSubview(conditionFilterView!)
-//        self.view.insertSubview(conditionFilterView!, at: 1)
         tableView = UITableView(frame: CGRect(x:0, y:40 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 40), style: UITableViewStyle.plain)
+        tableView.register(SampleCell.self,forCellReuseIdentifier: "SampleCell")
         tableView.dataSource = self
         tableView.delegate = self
         //禁止拖拽
         tableView.bounces = false
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
-        
-
-//        self.view.insertSubview(tableView, belowSubview: conditionFilterView!)
         self.view.addSubview(tableView)
     }
     
@@ -96,21 +93,17 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArr.count;
+        return 30;
     }
     
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50;
+        return 92;
     }
     
     //cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "cell";
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellID)
-        cell.textLabel?.textAlignment = NSTextAlignment.center //文字居中
-        cell.textLabel?.text = String(dataArr[indexPath.row] as! String)
-        cell.detailTextLabel?.text = "test\(dataArr[indexPath.row])"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath) as! SampleCell
         return cell
     }
     
@@ -124,19 +117,6 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         
-    }
-    
-    
-    
-    //删除功能的实现
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler: {_,_ in
-//            ((action: UITableViewRowAction,indexPath: NSIndexPath) -> Void).self
-            self.dataArr.removeObject(at: indexPath.row)
-                        tableView.reloadData()
-        })
-        
-        return [deleteAction]
     }
     
 }

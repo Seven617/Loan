@@ -15,6 +15,7 @@ class AboutUsViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
+        initImg()
     }
     func intiNavigationControlle(){
         // 自定义导航栏视图
@@ -35,7 +36,25 @@ class AboutUsViewController: BaseViewController {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
+    }
+    
+    func initImg(){
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        img.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: SCREEN_HEIGHT/4)
+        img.image  = UIImage(named:"AppIcon")
+        img.layer.cornerRadius = 15.0
+        img.clipsToBounds = true
+        view.addSubview(img)
         
+        let Lab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 30))
+        Lab.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: img.frame.maxY + 40)
+        Lab.text = "杭州快便付信息技术有限公司"
+        Lab.textAlignment=NSTextAlignment.center  
+        Lab.textColor = UIColor.Font2nd
+        Lab.font = UIFont.boldSystemFont(ofSize: 18)
+        view.addSubview(Lab)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

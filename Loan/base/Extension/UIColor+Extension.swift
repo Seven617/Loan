@@ -22,7 +22,7 @@ extension UIColor {
     
     /// 项目主颜色--按压
     class var MainPress: UIColor {
-        return UIColor(red: 44/255.0, green: 126/255.0, blue: 199/255.0, alpha: 1.0)
+        return UIColor(red: 40/255.0, green: 195/255.0, blue: 220/255.0, alpha: 1.0)
     }
     
     /// 红色
@@ -43,6 +43,17 @@ extension UIColor {
     /// 分割线颜色
     class var Line: UIColor {
         return UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+    }
+    class var customBlue:UIColor {
+        get {
+            return UIColor(red:0.421593, green: 0.657718, blue: 0.972549, alpha: 1)
+        }
+    }
+    
+    class var lightBlue:UIColor {
+        get {
+            return UIColor(red:0.700062, green: 0.817345, blue: 0.972549, alpha: 1)
+        }
     }
     
     /// 一级文字颜色

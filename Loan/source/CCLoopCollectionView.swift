@@ -118,7 +118,7 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
         
         //loopPageControl
         if showPageControl {
-            loopPageControl = UIPageControl(frame: CGRect(x: currentFrame.origin.x, y: currentFrame.origin.y+currentFrame.size.height-37.0, width: currentFrame.size.width, height: 37.0))
+            loopPageControl = UIPageControl(frame: CGRect(x: currentFrame.origin.x, y: currentFrame.origin.y+currentFrame.size.height-25.0, width: currentFrame.size.width, height: 30.0))
             loopPageControl.numberOfPages = contentAry.count > 1 ? (contentAry.count - 2) : 1
             loopPageControl.currentPageIndicatorTintColor = currentPageControlColor
             loopPageControl.pageIndicatorTintColor = pageControlTintColor

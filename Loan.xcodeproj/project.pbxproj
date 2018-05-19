@@ -60,6 +60,8 @@
 		0440A9F720A6891500821E31 /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9D920A6891500821E31 /* icon_homepage_search.png */; };
 		0440A9F820A6891500821E31 /* icon_collect_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */; };
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
+		044E979320AEDF1200114530 /* SampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979220AEDF1200114530 /* SampleCell.swift */; };
+		044E979520AEDF8400114530 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979420AEDF8400114530 /* CGRectEx.swift */; };
 		045202A920ABDE9D008E181C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202A720ABDE9C008E181C /* TabBarController.swift */; };
 		045202F920ABF3A9008E181C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202F820ABF3A9008E181C /* MainController.swift */; };
 		045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FA20ABF3B9008E181C /* DrawerMenuController.swift */; };
@@ -141,6 +143,8 @@
 		0440A9D920A6891500821E31 /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
 		0440A9DA20A6891500821E31 /* icon_collect_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_collect_highlighted.png; sourceTree = "<group>"; };
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
+		044E979220AEDF1200114530 /* SampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCell.swift; sourceTree = "<group>"; };
+		044E979420AEDF8400114530 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
 		045202A720ABDE9C008E181C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		045202F820ABF3A9008E181C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		045202FA20ABF3B9008E181C /* DrawerMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerMenuController.swift; sourceTree = "<group>"; };
@@ -307,6 +311,7 @@
 		045202AB20ABDECC008E181C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				044E979420AEDF8400114530 /* CGRectEx.swift */,
 				045202FC20ABF47F008E181C /* UIButton+Extension.swift */,
 				045202FF20ABF47F008E181C /* UIColor+Extension.swift */,
 				045202FE20ABF47F008E181C /* UIFont+Extension.swift */,
@@ -352,6 +357,7 @@
 		0452225820AAA206005AB69E /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				044E979220AEDF1200114530 /* SampleCell.swift */,
 				0452225920AAA233005AB69E /* MyCell.swift */,
 			);
 			path = cell;
@@ -520,6 +526,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyNavigation/EasyNavigation.framework",
 				"${BUILT_PRODUCTS_DIR}/LTAutoScrollView/LTAutoScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
@@ -529,6 +536,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyNavigation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTAutoScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
@@ -570,10 +578,12 @@
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
 				0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */,
 				041935DA20A586CB006D5CF3 /* QZFilterDataTableView.m in Sources */,
+				044E979320AEDF1200114530 /* SampleCell.swift in Sources */,
 				0452030620ABF49C008E181C /* Header.swift in Sources */,
 				0452225A20AAA233005AB69E /* MyCell.swift in Sources */,
 				041935D820A586CB006D5CF3 /* QZConditionFilterView.m in Sources */,
 				0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */,
+				044E979520AEDF8400114530 /* CGRectEx.swift in Sources */,
 				04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

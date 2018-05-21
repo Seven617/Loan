@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0410106E20B262750066903C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410106D20B262750066903C /* UserInfoViewController.swift */; };
+		0410107020B2ACBC0066903C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410106F20B2ACBC0066903C /* UIView+Extension.swift */; };
+		0410108A20B2CD240066903C /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410108220B2CD230066903C /* CZHAddressPickerView.m */; };
+		0410108B20B2CD240066903C /* UIView+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410108420B2CD230066903C /* UIView+CZHExtension.m */; };
+		0410108C20B2CD240066903C /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410108620B2CD240066903C /* UIButton+CZHExtension.m */; };
+		0410108D20B2CD240066903C /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0410108720B2CD240066903C /* city.plist */; };
 		0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */; };
 		0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419358720A55D03006D5CF3 /* AppDelegate.swift */; };
 		0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0419358B20A55D03006D5CF3 /* Main.storyboard */; };
@@ -77,13 +83,22 @@
 		04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC520AD2BE300B48E54 /* RightButton.swift */; };
 		04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC720AD2E4E00B48E54 /* BaseViewController.swift */; };
 		04556CDA20AD791500B48E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04556CD920AD791500B48E54 /* Assets.xcassets */; };
-		04556CDC20AD89D200B48E54 /* CCLoopCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */; };
 		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
 		04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D15D3320AAF86500A33F5B /* BackViewController.swift */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0410106D20B262750066903C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		0410106F20B2ACBC0066903C /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		0410108220B2CD230066903C /* CZHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZHAddressPickerView.m; sourceTree = "<group>"; };
+		0410108320B2CD230066903C /* UIButton+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZHExtension.h"; sourceTree = "<group>"; };
+		0410108420B2CD230066903C /* UIView+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CZHExtension.m"; sourceTree = "<group>"; };
+		0410108520B2CD230066903C /* CZHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHAddressPickerView.h; sourceTree = "<group>"; };
+		0410108620B2CD240066903C /* UIButton+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZHExtension.m"; sourceTree = "<group>"; };
+		0410108720B2CD240066903C /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		0410108820B2CD240066903C /* UIView+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CZHExtension.h"; sourceTree = "<group>"; };
+		0410108920B2CD240066903C /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
 		0418C25920A9A155003D28D5 /* CoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolTableViewCell.swift; sourceTree = "<group>"; };
 		0419358420A55D03006D5CF3 /* Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0419358720A55D03006D5CF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +176,6 @@
 		04556CC720AD2E4E00B48E54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
 		04556CD920AD791500B48E54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoopCollectionView.swift; sourceTree = "<group>"; };
 		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		04D15D3320AAF86500A33F5B /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +195,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0410107120B2C24A0066903C /* citypicker */ = {
+			isa = PBXGroup;
+			children = (
+				0410108920B2CD240066903C /* AddressPickerHeader.h */,
+				0410108720B2CD240066903C /* city.plist */,
+				0410108520B2CD230066903C /* CZHAddressPickerView.h */,
+				0410108220B2CD230066903C /* CZHAddressPickerView.m */,
+				0410108320B2CD230066903C /* UIButton+CZHExtension.h */,
+				0410108620B2CD240066903C /* UIButton+CZHExtension.m */,
+				0410108820B2CD240066903C /* UIView+CZHExtension.h */,
+				0410108420B2CD230066903C /* UIView+CZHExtension.m */,
+			);
+			path = citypicker;
+			sourceTree = "<group>";
+		};
 		0419357B20A55D03006D5CF3 = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +340,7 @@
 		045202AB20ABDECC008E181C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0410106F20B2ACBC0066903C /* UIView+Extension.swift */,
 				044E979420AEDF8400114530 /* CGRectEx.swift */,
 				045202FC20ABF47F008E181C /* UIButton+Extension.swift */,
 				045202FF20ABF47F008E181C /* UIColor+Extension.swift */,
@@ -335,6 +365,7 @@
 				04960B0C20A98471007B58D8 /* SettingViewController.swift */,
 				0452225120AA77C7005AB69E /* AboutUsViewController.swift */,
 				0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */,
+				0410106D20B262750066903C /* UserInfoViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -366,7 +397,7 @@
 		04556CC920AD378300B48E54 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				04556CDB20AD89D200B48E54 /* CCLoopCollectionView.swift */,
+				0410107120B2C24A0066903C /* citypicker */,
 				041935A920A56BBE006D5CF3 /* dropmenu */,
 				0440A9B320A6887600821E31 /* coolslidingmenu */,
 			);
@@ -460,6 +491,7 @@
 				0440A9F620A6891500821E31 /* icon_homepage_KTVCategory.png in Resources */,
 				0440A9F020A6891500821E31 /* icon_merchant_share_normal.png in Resources */,
 				0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */,
+				0410108D20B2CD240066903C /* city.plist in Resources */,
 				0440A9EE20A6891500821E31 /* todaySpecialHeaderTitleImage@2x.png in Resources */,
 				0440A9F420A6891500821E31 /* icon_homepage_beautyCategory.png in Resources */,
 				0440A9E320A6891500821E31 /* icon_homepage_map_old.png in Resources */,
@@ -557,6 +589,7 @@
 				045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */,
 				041935D920A586CB006D5CF3 /* QZSortCell.m in Sources */,
 				045202F920ABF3A9008E181C /* MainController.swift in Sources */,
+				0410108B20B2CD240066903C /* UIView+CZHExtension.m in Sources */,
 				0440A9BB20A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				0452030220ABF47F008E181C /* UIFont+Extension.swift in Sources */,
 				0452030920ABF4C3008E181C /* NavigationController.swift in Sources */,
@@ -569,13 +602,16 @@
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				0440A9B920A6889C00821E31 /* CoolSlidingMenuView.swift in Sources */,
 				0440A9B820A6889C00821E31 /* CoolSlidingMenuManager.swift in Sources */,
+				0410108C20B2CD240066903C /* UIButton+CZHExtension.m in Sources */,
+				0410106E20B262750066903C /* UserInfoViewController.swift in Sources */,
+				0410108A20B2CD240066903C /* CZHAddressPickerView.m in Sources */,
 				0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */,
 				041935DB20A586CB006D5CF3 /* UIView+Extension.m in Sources */,
-				04556CDC20AD89D200B48E54 /* CCLoopCollectionView.swift in Sources */,
 				04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */,
 				0452030720ABF49C008E181C /* BackButton.swift in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
+				0410107020B2ACBC0066903C /* UIView+Extension.swift in Sources */,
 				0418C25A20A9A155003D28D5 /* CoolTableViewCell.swift in Sources */,
 				041935DA20A586CB006D5CF3 /* QZFilterDataTableView.m in Sources */,
 				044E979320AEDF1200114530 /* SampleCell.swift in Sources */,

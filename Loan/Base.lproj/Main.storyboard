@@ -118,6 +118,21 @@
             </objects>
             <point key="canvasLocation" x="2726.25" y="161.61971830985917"/>
         </scene>
+        <!--User Info View Controller-->
+        <scene sceneID="Qgh-PU-lbR">
+            <objects>
+                <viewController storyboardIdentifier="UserInfoViewController" id="Jsp-y2-p2r" customClass="UserInfoViewController" customModule="Loan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3q4-eL-HZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Hma-z9-M7b"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQ8-gp-xRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="888"/>
+        </scene>
         <!--Customer Service View Controller-->
         <scene sceneID="0S6-xc-TpE">
             <objects>

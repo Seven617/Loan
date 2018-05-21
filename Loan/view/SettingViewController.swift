@@ -7,7 +7,7 @@
 //  设置界面
 
 import UIKit
-
+import Toaster
 
 class SettingViewController: BaseViewController {
     var navView = UIView()
@@ -16,7 +16,7 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         initNavigationControlle()
-        initImg()
+        initView()
     }
     func initNavigationControlle(){
         // 自定义导航栏视图
@@ -39,7 +39,7 @@ class SettingViewController: BaseViewController {
         navView.addSubview(titleLabel)
     }
     
-    func initImg(){
+    func initView(){
         let background = UIView(frame: CGRect(x: 0, y: navView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT/3))
         background.backgroundColor = UIColor.white
         view.addSubview(background)
@@ -62,11 +62,30 @@ class SettingViewController: BaseViewController {
         btn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         background.addSubview(btn)
+        
+        let LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: 40)))
+        LoginOutBtn.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: background.frame.maxY + 50)
+        LoginOutBtn.setTitle("退出当前账号", for:.normal)
+        LoginOutBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        LoginOutBtn.backgroundColor = UIColor.Main
+        LoginOutBtn.addTarget(self,action:#selector(loginOut),for:.touchUpInside)
+        LoginOutBtn.setTitleColor(UIColor.white, for: .normal) //普通状态下文字的颜色
+        LoginOutBtn.layer.cornerRadius = 20.0
+        LoginOutBtn.clipsToBounds = true
+        view.addSubview(LoginOutBtn)
+
     }
+    
+    @objc func loginOut(){
+        Toast(text: "你点击了退出！").show()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)

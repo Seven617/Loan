@@ -14,16 +14,16 @@ import MJRefresh
 class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
     var topY: CGFloat = 20
     var navH: CGFloat = 64
-    var dataDic:Dictionary<String, Any>! = nil
     var arrIcon:Array<Any>! = nil
     var arrMenu:Array<Any> = Array()
     var MainscrollView = UIScrollView()
+    var weekNew = UIView()
     var tableView = UITableView()
-    var adView: CCLoopCollectionView!
     // 顶部刷新
     let header = MJRefreshNormalHeader()
     // 图片URL 或者 本地图片名称
-    var images = ["WechatIMG1.jpeg"]
+    var topImages = ["WechatIMG1.jpeg"]
+    var bottomImages = ["WechatIMG1.jpeg"]
     public var pgCtrlNormalColor: UIColor! = UIColor.white
     public var pgCtrlSelectedColor: UIColor! = UIColor.gray
     public var pgCtrlShouldHidden: Bool! = false
@@ -33,6 +33,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.Gray
         if SCREEN_HEIGHT == 812 {
             topY = 44
             navH = 88
@@ -44,10 +45,10 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         //定义标题颜色与字体大小字典
         let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 20)]
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
-        getBanner()
+        getTopBanner()
+        getweekNew()
         getTableView()
-        getCollectionView()
-
+        getBottomBanner()
         getMainScrollView()
         //下拉刷新相关设置
         header.lastUpdatedTimeLabel.isHidden = true
@@ -58,8 +59,6 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     @objc func headerRefresh(){
         print("下拉刷新.")
         sleep(2)
-        //重现生成数据
-//        refreshItemData()
         //结束刷新
         MainscrollView.mj_header.endRefreshing()
     }
@@ -74,80 +73,93 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         MainscrollView.scrollsToTop = true
         //隐藏滚动条
         MainscrollView.showsVerticalScrollIndicator = false
-        let red = UIView(frame: CGRect(x:0, y:adView.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/2))
+        
+        
+        let red = UIView(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/2))
         red.backgroundColor = UIColor.Red
-        MainscrollView.addSubview(autoScrollView)
+        
+        let BottomLab = UILabel(frame: CGRect(x:0, y:red.frame.maxY ,width: UIScreen.main.bounds.width, height:40))
+        BottomLab.text = "———— 我是有底线的 ————"
+        BottomLab.textAlignment=NSTextAlignment.center
+        BottomLab.textColor = UIColor.Line
+        BottomLab.font = UIFont.boldSystemFont(ofSize: 13)
+        
+        MainscrollView.addSubview(topBanner)
+        MainscrollView.addSubview(weekNew)
         MainscrollView.addSubview(tableView)
-        MainscrollView.addSubview(adView)
+        MainscrollView.addSubview(bottomBanner)
         MainscrollView.addSubview(red)
+        MainscrollView.addSubview(BottomLab)
         //设置内容大小
-        MainscrollView.contentSize = CGSize(width:self.MainscrollView.bounds.width, height:red.frame.maxY + (self.tabBarController?.tabBar.frame.size.height)! + navH)
+        MainscrollView.contentSize = CGSize(width:self.MainscrollView.bounds.width, height: BottomLab.frame.maxY + navH)
         view.addSubview(MainscrollView)
     }
-    //获取Banner滚动条
-    private func getBanner(){
-//        view.addSubview(autoScrollView)
-        if(images.count<=1){
-            autoScrollView.isDisableScrollGesture = true
-        }else{
-            autoScrollView.isDisableScrollGesture = false
-        }
-        self.automaticallyAdjustsScrollViewInsets = false
+    
+    private func getweekNew(){
+        weekNew = UIView(frame: CGRect(x:0, y:topBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:40))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:20))
+        icon.backgroundColor = UIColor.Main
+        weekNew.addSubview(icon)
+        
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:20))
+        weekLab.text = "本周上新"
+        weekLab.textColor = UIColor.Font2nd
+        weekLab.font = UIFont.boldSystemFont(ofSize: 13)
+        weekNew.addSubview(weekLab)
     }
     
+    //获取Banner滚动条
+    private func getTopBanner(){
+        if(topImages.count<=1){
+            topBanner.isDisableScrollGesture = true
+        }else{
+            topBanner.isDisableScrollGesture = false
+        }
+    }
+    
+    private func getBottomBanner(){
+        if(bottomImages.count<=1){
+            bottomBanner.isDisableScrollGesture = true
+        }else{
+            bottomBanner.isDisableScrollGesture = false
+        }
+    }
     
     //获取滚动菜单
     private func getTableView(){
-        tableView = UITableView(frame: CGRect(x:0, y:autoScrollView.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/4 + 10), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height/4 + 15), style: UITableViewStyle.plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.bounces = false
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
-//        view.addSubview(tableView)
         setData()
         regReuseView()
     }
     
-    private func getCollectionView(){
-        let tempAry = [#imageLiteral(resourceName: "WechatIMG1.jpeg")]
-        //根据frame创建view
-        adView = CCLoopCollectionView(frame: CGRect(x: 0, y: tableView.frame.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4))
-        //给轮播图赋值内容（可以为UIImage或UIString）
-        adView.contentAry = tempAry as [AnyObject]
-        //是否开始自动循环
-        adView.enableAutoScroll = true
-        //循环间隔时间
-        adView.timeInterval = 3.5
-        //是否显示UIPageControl
-        adView.showPageControl = true
-        //UIPageControl当前颜色
-        adView.currentPageControlColor = UIColor.white
-        //UIPageControl其它颜色
-        adView.pageControlTintColor = UIColor.gray
-        //设置图片显示模式
-        adView.imageShowMode = .redraw
-        //添加到父视图
-//        view.addSubview(adView)
-        adView.getClickedIndex { (index) in
-            print("clicked index = \(index+1)")
-        }
-    }
     
     //视图滚动中一直触发
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("x:\(scrollView.contentOffset.x) y:\(scrollView.contentOffset.y)")
+        // 禁止下拉
+        // if scrollView.contentOffset.y <= 0 {
+        // scrollView.contentOffset.y = 0
+        //
+        // 禁止上拉
+        // if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.size.height {
+        // scrollView.contentOffset.y = scrollView.contentSize.height - scrollView.bounds.size.height
+        // }
     }
-
+    
     /*  设置为系统的pageControl样式利用dotType */
-    private lazy var autoScrollView: LTAutoScrollView = {
-        let autoScrollView = LTAutoScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height/4))
-        autoScrollView.glt_timeInterval = 3.5
-        autoScrollView.images = images
-        autoScrollView.imageHandle = {(imageView, imageName) in
+    private lazy var topBanner: LTAutoScrollView = {
+        let topBanner = LTAutoScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height/4))
+        topBanner.glt_timeInterval = 3.5
+        topBanner.images = topImages
+        topBanner.imageHandle = {(imageView, imageName) in
             imageView.image = UIImage(named: imageName)
         }
-        autoScrollView.didSelectItemHandle = {
+        topBanner.didSelectItemHandle = {
             Toast(text: "点击了第 \($0 + 1) 张图").show()
         }
 
@@ -158,8 +170,30 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         layout.dotWidth = 8
         /*如需和系统一致，dot放大效果需手动关闭 */
         layout.isScale = false
-        autoScrollView.dotLayout = layout
-        return autoScrollView
+        topBanner.dotLayout = layout
+        return topBanner
+    }()
+    
+    private lazy var bottomBanner: LTAutoScrollView = {
+        let bottomBanner = LTAutoScrollView(frame: CGRect(x: 0, y: tableView.frame.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/4))
+        bottomBanner.glt_timeInterval = 3.5
+        bottomBanner.images = bottomImages
+        bottomBanner.imageHandle = {(imageView, imageName) in
+            imageView.image = UIImage(named: imageName)
+        }
+        bottomBanner.didSelectItemHandle = {
+            Toast(text: "点击了第 \($0 + 1) 张图").show()
+        }
+        
+        let layout = LTDotLayout(dotColor: UIColor.lightGray, dotSelectColor: UIColor.white, dotType: .default)
+        /*设置dot的间距*/
+        layout.dotMargin = 8
+        /* 如果需要改变dot的大小，设置dotWidth的宽度即可 */
+        layout.dotWidth = 8
+        /*如需和系统一致，dot放大效果需手动关闭 */
+        layout.isScale = false
+        bottomBanner.dotLayout = layout
+        return bottomBanner
     }()
     
     override func didReceiveMemoryWarning() {
@@ -203,11 +237,10 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return (UIScreen.main.bounds.size.width / CGFloat(countCol) + 8.0) * CGFloat(countRow) + 10.0 // 10.0 用于显示pageControl, 8.0 为单个菜单按钮高度与宽度的差 ,此处数字不需要修改
+            return (UIScreen.main.bounds.size.width / CGFloat(countCol) + 8.0) * CGFloat(countRow) + 15.0 // 10.0 用于显示pageControl, 8.0 为单个菜单按钮高度与宽度的差 ,此处数字不需要修改
         }
         else {
             return 50.0
         }
-        
     }
 }

@@ -9,13 +9,13 @@
 import UIKit
 
 class AboutUsViewController: BaseViewController {
-    var scroll:UIScrollView!
+    var box = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
-        initImg()
+        initView()
     }
     func intiNavigationControlle(){
         // 自定义导航栏视图
@@ -38,7 +38,7 @@ class AboutUsViewController: BaseViewController {
         navView.addSubview(titleLabel)
     }
     
-    func initImg(){
+    func initView(){
         let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
         img.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: SCREEN_HEIGHT/4)
@@ -55,6 +55,17 @@ class AboutUsViewController: BaseViewController {
         Lab.textColor = UIColor.Font2nd
         Lab.font = UIFont.boldSystemFont(ofSize: 18)
         view.addSubview(Lab)
+        
+        let VersionLab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 30))
+        VersionLab.center = CGPoint(x: SCREEN_WIDTH / 2,
+                             y: Lab.frame.maxY + 40)
+        let infoDictionary = Bundle.main.infoDictionary
+        let appVersion = infoDictionary!["CFBundleShortVersionString"]
+        VersionLab.text = "当前版本是:"+String(describing: appVersion!)
+        VersionLab.textAlignment=NSTextAlignment.center
+        VersionLab.textColor = UIColor.Font2nd
+        VersionLab.font = UIFont.boldSystemFont(ofSize: 18)
+        view.addSubview(VersionLab)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

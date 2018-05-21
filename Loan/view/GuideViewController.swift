@@ -66,7 +66,7 @@ extension GuideViewController: UIScrollViewDelegate {
         // 随着滑动改变pageControl的状态
         pageControl.currentPage = Int(offset.x / view.bounds.width)
         // 选中圆点颜色
-        pageControl.currentPageIndicatorTintColor = UIColor.blue
+        pageControl.currentPageIndicatorTintColor = UIColor.Main
         // 未选中圆点颜色
         pageControl.pageIndicatorTintColor = UIColor.gray
         // 因为currentPage是从0开始，所以numOfPages减1

@@ -16,6 +16,7 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
         //初始化数据，这一次数据，我们放在属性列表文件里
         self.allnames =  [
@@ -28,14 +29,18 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
 
         //print(self.allnames as Any)
         //创建表视图
-        self.tableView = UITableView(frame: CGRect(x:0, y:navH, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
-        self.tableView!.delegate = self
-        self.tableView!.dataSource = self
+        tableView = UITableView(frame: CGRect(x:0, y:navH, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
+        tableView!.delegate = self
+        tableView!.dataSource = self
         //禁止拖拽
         //self.tableView!.bounces = false
         //创建一个重用的单元格
-        self.tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
-        self.view.addSubview(self.tableView!)
+        tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
+        tableView?.backgroundColor = UIColor.Gray
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 20))
+        // 设置header
+        tableView!.tableHeaderView = header
+        view.addSubview(self.tableView!)
     }
     func intiNavigationControlle(){
         
@@ -97,7 +102,9 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
                 let cell = tableView.dequeueReusableCell(withIdentifier: identify,
                                                          for: indexPath as IndexPath) as UITableViewCell
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-                let image = UIImage(named:"head")
+                let image = UIImage(named:"touxiang")
+                cell.imageView?.layer.cornerRadius = 30.0
+                cell.imageView?.clipsToBounds = true
                 cell.imageView?.image = image
                 cell.textLabel?.text = "Seven617"
 //                cell.textLabel?.text = data![indexPath.row]
@@ -131,7 +138,8 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         tableView.deselectRow(at: indexPath, animated: true)
         if(itemString == "用户ID")
         {
-            Toast(text: "你选中了【\(itemString)】").show()
+//            Toast(text: "你选中了【\(itemString)】").show()
+            navigationController?.pushViewController(UserInfoViewController(), animated: true)
         }else if(itemString == "联系客服"){
             navigationController?.pushViewController(CustomerServiceViewController(), animated: true)
         }else if(itemString == "关于我们"){

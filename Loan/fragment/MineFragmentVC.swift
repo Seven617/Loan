@@ -50,9 +50,10 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         view.addSubview(navView)
         
         // 创建右边按钮
-        let rightBtn = RightButton(target: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal) as Any, action: #selector(goSetting))
-        rightBtn.x = SCREEN_WIDTH - 40
+        let rightBtn = RightButton(target: self, action: #selector(goSetting))
+        rightBtn.x = SCREEN_WIDTH - 60
         rightBtn.centerY = topY + (navH - topY) / 2.0
+        rightBtn.setImage((UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal) as Any as! UIImage), for: .normal)
         navView.addSubview(rightBtn)
         
         // 导航栏标题

@@ -157,7 +157,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         topBanner.glt_timeInterval = 3.5
         topBanner.images = topImages
         topBanner.imageHandle = {(imageView, imageName) in
-            imageView.image = UIImage(named: imageName)
+        imageView.image = UIImage(named: imageName)
         }
         topBanner.didSelectItemHandle = {
             Toast(text: "点击了第 \($0 + 1) 张图").show()
@@ -179,7 +179,7 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         bottomBanner.glt_timeInterval = 3.5
         bottomBanner.images = bottomImages
         bottomBanner.imageHandle = {(imageView, imageName) in
-            imageView.image = UIImage(named: imageName)
+        imageView.image = UIImage(named: imageName)
         }
         bottomBanner.didSelectItemHandle = {
             Toast(text: "点击了第 \($0 + 1) 张图").show()
@@ -243,4 +243,5 @@ class HomeFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             return 50.0
         }
     }
+    
 }

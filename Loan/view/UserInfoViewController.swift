@@ -10,11 +10,15 @@ import UIKit
 
 class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     var address = "未设置"
+    var idcard = "未设置"
+    var name = "Seven617"
     var province = ""
     var city = ""
     var area = ""
     var navView = UIView()
     var tableView:UITableView?
+    var editable:Bool = false
+    var rightBtn = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +46,29 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
+        
+        // 创建右边按钮
+        rightBtn = RightButton(target: self, action: #selector(goEditting))
+        rightBtn.x = SCREEN_WIDTH - 60
+        rightBtn.centerY = topY + (navH - topY) / 2.0
+        rightBtn.setTitle("编辑",for:.normal)//普通状态下文字
+        rightBtn.setTitleColor(UIColor.blue, for: .normal) //普通状态下文字的颜色
+        rightBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        navView.addSubview(rightBtn)
     }
-
+    //设置可编辑状态
+    @objc func goEditting(){
+        if(editable == false){
+            editable = true
+            rightBtn.setTitle("保存",for:.normal)//普通状态下文字
+            rightBtn.setTitleColor(UIColor.green, for: .normal) //普通状态下文字的颜色
+        }else{
+            editable = false
+            rightBtn.setTitle("编辑",for:.normal)//普通状态下文字
+            rightBtn.setTitleColor(UIColor.blue, for: .normal) //普通状态下文字的颜色
+            //这里做个人信息回传服务器
+        }
+    }
     func initTableView(){
         //创建表视图
         tableView = UITableView(frame: CGRect(x:0, y:navView.frame.maxY, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
@@ -55,8 +80,6 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 20))
         // 设置header
         tableView!.tableHeaderView = header
-//        tableView!.separatorStyle = .none
-//        tableView?.backgroundColor = UIColor.clear
         view.addSubview(self.tableView!)
     }
     //返回表格行数（也就是返回控件数）
@@ -75,14 +98,15 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
             if(indexPath.row == 0){
                 cell.textLabel?.text = "手机号"
                 cell.detailTextLabel?.text = "188****0800"
+                cell.isUserInteractionEnabled = false
             }else if(indexPath.row == 1){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "姓名"
-                cell.detailTextLabel?.text = "Seven617"
+                cell.detailTextLabel?.text = name
             }else if(indexPath.row == 2){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "身份证"
-                cell.detailTextLabel?.text = "未设置"
+                cell.detailTextLabel?.text = idcard
             }else if(indexPath.row == 3){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "现居地址"
@@ -90,47 +114,59 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
             }
             return cell
     }
-    //选中效果
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: false)
-//    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if(indexPath.row == 1)
-        {
-           
-        }else if(indexPath.row == 2){
-            
-        }else if(indexPath.row == 3){
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            CZHAddressPickerView.areaPickerView(withProvince: province, city: city, area: area, areaBlock: {(_ province: String?, _ city: String?, _ area: String?) -> Void in
-                self.province = province!
-                self.city = city!
-                self.area = area!
-                let city = "\(province ?? "")\(city ?? "")\(area ?? "")"
-                print(city)
-                DispatchQueue.main.async {
-                    self.address = city
-                    tableView.reloadRows(at: [indexPath], with: .none)
-                }
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3)) {
-//                    print("3秒后执行");
-//
-//                }
-            })
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        if(editable){
+            if(indexPath.row == 1){
+                let upName:UpdateNameViewController = UpdateNameViewController()
+                upName.str = name
+                upName.testClosure = nameClosure;
+                navigationController?.pushViewController(upName, animated: true)
+            }else if(indexPath.row == 2){
+                let idCadr:IDCardViewController = IDCardViewController()
+                idCadr.str = idcard
+                idCadr.testClosure = idCardClosure;
+                navigationController?.pushViewController(idCadr, animated: true)
+            }else if(indexPath.row == 3){
+                cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                CZHAddressPickerView.areaPickerView(withProvince: province, city: city, area: area, areaBlock: {(_ province: String?, _ city: String?, _ area: String?) -> Void in
+                    self.province = province!
+                    self.city = city!
+                    self.area = area!
+                    let area = "\(province ?? "")\(city ?? "")\(area ?? "")"
+                    print(area)
+                    DispatchQueue.main.async {
+                        self.address = area
+                        tableView.reloadRows(at: [indexPath], with: .none)
+                    }
+                })
+            }
         }
-        
     }
-    
-    
+    //定义一个带字符串参数的闭包
+    func nameClosure(testStr:String)->Void{
+        DispatchQueue.main.async {
+            self.name = testStr
+            let indexPath = NSIndexPath(row: 1, section:0)
+            self.tableView?.reloadRows(at: [indexPath as IndexPath], with: .none)
+        }
+    }
+    //定义一个带字符串参数的闭包
+    func idCardClosure(testStr:String)->Void{
+        DispatchQueue.main.async {
+            self.idcard = testStr
+            let indexPath = NSIndexPath(row: 2, section:0)
+            self.tableView?.reloadRows(at: [indexPath as IndexPath], with: .none)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         UIApplication.shared.statusBarStyle = .default
     }
     override func didMove(toParentViewController parent: UIViewController?) {
@@ -144,3 +180,4 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         navigationController?.popViewController(animated: true)
     }
 }
+

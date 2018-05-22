@@ -73,7 +73,6 @@ class AboutUsViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         UIApplication.shared.statusBarStyle = .default
     }
     override func didMove(toParentViewController parent: UIViewController?) {

@@ -68,6 +68,8 @@
 		0440A9FA20A6899D00821E31 /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0440A9F920A6899D00821E31 /* menuData.plist */; };
 		044E979320AEDF1200114530 /* SampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979220AEDF1200114530 /* SampleCell.swift */; };
 		044E979520AEDF8400114530 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979420AEDF8400114530 /* CGRectEx.swift */; };
+		044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */; };
+		044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73720B421B400497CE9 /* IDCardViewController.swift */; };
 		045202A920ABDE9D008E181C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202A720ABDE9C008E181C /* TabBarController.swift */; };
 		045202F920ABF3A9008E181C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202F820ABF3A9008E181C /* MainController.swift */; };
 		045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FA20ABF3B9008E181C /* DrawerMenuController.swift */; };
@@ -160,6 +162,8 @@
 		0440A9F920A6899D00821E31 /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
 		044E979220AEDF1200114530 /* SampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCell.swift; sourceTree = "<group>"; };
 		044E979420AEDF8400114530 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
+		044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameViewController.swift; sourceTree = "<group>"; };
+		044FA73720B421B400497CE9 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
 		045202A720ABDE9C008E181C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		045202F820ABF3A9008E181C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		045202FA20ABF3B9008E181C /* DrawerMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerMenuController.swift; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 				0452225120AA77C7005AB69E /* AboutUsViewController.swift */,
 				0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */,
 				0410106D20B262750066903C /* UserInfoViewController.swift */,
+				044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */,
+				044FA73720B421B400497CE9 /* IDCardViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 				04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */,
 				045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */,
 				041935D920A586CB006D5CF3 /* QZSortCell.m in Sources */,
+				044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */,
 				045202F920ABF3A9008E181C /* MainController.swift in Sources */,
 				0410108B20B2CD240066903C /* UIView+CZHExtension.m in Sources */,
 				0440A9BB20A6889C00821E31 /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
@@ -602,6 +609,7 @@
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				0440A9B920A6889C00821E31 /* CoolSlidingMenuView.swift in Sources */,
 				0440A9B820A6889C00821E31 /* CoolSlidingMenuManager.swift in Sources */,
+				044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */,
 				0410108C20B2CD240066903C /* UIButton+CZHExtension.m in Sources */,
 				0410106E20B262750066903C /* UserInfoViewController.swift in Sources */,
 				0410108A20B2CD240066903C /* CZHAddressPickerView.m in Sources */,

@@ -51,6 +51,16 @@
     center.y = centerY;
     self.center = center;
 }
+- (void)setBottom:(CGFloat)bootm
+{
+    
+}
+- (void)setRight:(CGFloat)right
+{
+    
+}
+
+
 
 - (CGFloat)centerY
 {

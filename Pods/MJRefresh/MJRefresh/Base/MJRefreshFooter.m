@@ -49,9 +49,9 @@
         // 监听scrollView数据的变化
         if ([self.scrollView isKindOfClass:[UITableView class]] || [self.scrollView isKindOfClass:[UICollectionView class]]) {
             [self.scrollView setMj_reloadDataBlock:^(NSInteger totalDataCount) {
-                if (self.isAutomaticallyHidden) {
-                    self.hidden = (totalDataCount == 0);
-                }
+//                if (self.isAutomaticallyHidden) {
+//                    self.hidden = (totalDataCount == 0);
+//                }
             }];
         }
     }
@@ -79,6 +79,6 @@
 
 - (void)setAutomaticallyHidden:(BOOL)automaticallyHidden
 {
-    _automaticallyHidden = automaticallyHidden;
+    automaticallyHidden= automaticallyHidden;
 }
 @end

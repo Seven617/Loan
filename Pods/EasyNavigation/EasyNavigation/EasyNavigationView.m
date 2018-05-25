@@ -421,7 +421,7 @@ static int easynavigation_button_tag = 1 ; //视图放到数组中的唯一标�
                 [self smoothScrollUpWithContentY:scrollContentY];
             }
             else{
-                EasyLog_N(@"Attention : the change type is know : %zd",self.navigationChangeType );
+                EasyLog_N(@"Attention : the change type is know : %f",(double)self.navigationChangeType );
             }
             
         }
@@ -436,7 +436,7 @@ static int easynavigation_button_tag = 1 ; //视图放到数组中的唯一标�
                 [self smoothScrollDownWithContentY:scrollContentY];
             }
             else{
-                EasyLog_N(@"Attention : the change type is know : %zd",self.navigationChangeType );
+                EasyLog_N(@"Attention : the change type is know : %f",(double)self.navigationChangeType );
             }
             
         }

@@ -41,13 +41,13 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
     }
     
     func initView(){
-        let img = UIImageView(frame: CGRect(x: 20, y: navH+20, width: 25, height: 25))
+        let img = UIImageView(frame: CGRect(x: 20, y: navH+20, width: kWithRelIPhone6(width: 25), height: kHeightRelIPhone6(height: 25)))
         img.image  = UIImage(named:"kefu")
         img.layer.cornerRadius = 15.0
         img.clipsToBounds = true
         view.addSubview(img)
         
-        let lab1 = UILabel(frame: CGRect(x: img.frame.maxX+10, y: navH+20, width: 200, height: 25))
+        let lab1 = UILabel(frame: CGRect(x: img.frame.maxX+10, y: navH+20, width: kWithRelIPhone6(width: 200), height: kHeightRelIPhone6(height: 25)))
         lab1.text = "客服帮助"
         lab1.textColor = UIColor.Font2nd
         view.addSubview(lab1)
@@ -75,7 +75,7 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
     }
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 50;
+            return kHeightRelIPhone6(height: 50);
     }
     //创建各单元显示内容(创建参数indexPath指定的单元）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)

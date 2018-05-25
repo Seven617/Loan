@@ -39,7 +39,7 @@ class AboutUsViewController: BaseViewController {
     }
     
     func initView(){
-        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: kWithRelIPhone6(width: 70), height: kHeightRelIPhone6(height: 70)))
         img.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: SCREEN_HEIGHT/4)
         img.image  = UIImage(named:"AppIcon")
@@ -47,7 +47,7 @@ class AboutUsViewController: BaseViewController {
         img.clipsToBounds = true
         view.addSubview(img)
         
-        let Lab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 30))
+        let Lab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30)))
         Lab.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: img.frame.maxY + 40)
         Lab.text = "杭州快便付信息技术有限公司"
@@ -56,7 +56,7 @@ class AboutUsViewController: BaseViewController {
         Lab.font = UIFont.boldSystemFont(ofSize: 18)
         view.addSubview(Lab)
         
-        let VersionLab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 30))
+        let VersionLab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30)))
         VersionLab.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: Lab.frame.maxY + 40)
         let infoDictionary = Bundle.main.infoDictionary

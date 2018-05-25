@@ -7,7 +7,6 @@
 //  MineFragment
 
 import UIKit
-import Toaster
 
 class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataSource{
   
@@ -37,7 +36,7 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         //创建一个重用的单元格
         tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
         tableView?.backgroundColor = UIColor.Gray
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 20))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height:kHeightRelIPhone6(height: 20)))
         // 设置header
         tableView!.tableHeaderView = header
         view.addSubview(self.tableView!)
@@ -84,9 +83,9 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         let secno = indexPath.section
         if(secno == 0)
         {
-            return 80;
+            return kHeightRelIPhone6(height: 80);
         }else{
-            return 50;
+            return kHeightRelIPhone6(height: 50);
         }
         
     }

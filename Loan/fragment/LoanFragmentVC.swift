@@ -7,7 +7,6 @@
 //  LoanFragment
 
 import UIKit
-import Toaster
 
 class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var _selectedDataSource1Ary: [AnyObject]?
@@ -98,7 +97,7 @@ class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 92;
+        return kHeightRelIPhone6(height:90);
     }
     
     //cell

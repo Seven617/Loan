@@ -77,7 +77,7 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         //        tableView!.bounces = false
         self.automaticallyAdjustsScrollViewInsets = false
         tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 20))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: kHeightRelIPhone6(height:20)))
         // 设置header
         tableView!.tableHeaderView = header
         view.addSubview(self.tableView!)
@@ -88,7 +88,7 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50;
+        return  kHeightRelIPhone6(height:50);
     }
     //创建各单元显示内容(创建参数indexPath指定的单元）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
@@ -179,5 +179,6 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         print("H1自定义返回按钮点击")
         navigationController?.popViewController(animated: true)
     }
+    
 }
 

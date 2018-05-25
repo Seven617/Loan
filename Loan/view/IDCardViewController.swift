@@ -35,7 +35,7 @@ class IDCardViewController: BaseViewController {
         navView.addSubview(backBtn)
         // 导航栏标题
         let titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
-        titleLabel.text = "修改昵称"
+        titleLabel.text = "修改身份证"
         titleLabel.textColor = UIColor.black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
@@ -47,6 +47,7 @@ class IDCardViewController: BaseViewController {
         idCardField = UITextField(frame:CGRect(x:0,y: navH+20,width: SCREEN_WIDTH,height: 50));
         idCardField.backgroundColor = UIColor.white
         idCardField.textAlignment = .left
+        idCardField.placeholder = "请输入身份证号码"
         idCardField.borderStyle = UITextBorderStyle.roundedRect
         idCardField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         idCardField.text = str
@@ -58,28 +59,30 @@ class IDCardViewController: BaseViewController {
         SaveNameBtn.setTitle("保存", for:.normal)
         SaveNameBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         SaveNameBtn.backgroundColor = UIColor.Main
-        SaveNameBtn.addTarget(self,action:#selector(backBtnClicked),for:.touchUpInside)
+        SaveNameBtn.addTarget(self,action:#selector(saveBtnClicked),for:.touchUpInside)
         SaveNameBtn.setTitleColor(UIColor.white, for: .normal) //普通状态下文字的颜色
         SaveNameBtn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
         SaveNameBtn.layer.cornerRadius = 20.0
         SaveNameBtn.clipsToBounds = true
         view.addSubview(SaveNameBtn)
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        /**
-         先判断闭包是否存在，然后再调用
-         */
-        if (testClosure != nil){
-            testClosure!(idCardField.text!)
-        }
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @objc func backBtnClicked() {
-        print("H1自定义返回按钮点击")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func saveBtnClicked() {
+        /**
+         先判断闭包是否存在，然后再调用
+         */
+        if (testClosure != nil){
+            testClosure!(idCardField.text!)
+        }
         navigationController?.popViewController(animated: true)
     }
 }

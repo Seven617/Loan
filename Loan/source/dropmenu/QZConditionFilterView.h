@@ -30,7 +30,7 @@ typedef void (^FilterBlock)(BOOL isFilter, NSArray *dataSource1Ary,NSArray *data
 -(void)bindChoseArrayDataSource1:(NSArray *)dataSource1Ary DataSource2:(NSArray *)dataSource2Ary;
 
 /** 外部手动筛选加载*/
--(void)choseSortFromOutsideWithFirstSort:(NSArray *)firstAry WithSecondSort:(NSArray *)secondAry;
+//-(void)choseSortFromOutsideWithFirstSort:(NSArray *)firstAry ;
 
 /** 消失*/
 -(void)dismiss;

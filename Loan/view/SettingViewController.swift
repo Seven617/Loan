@@ -7,7 +7,6 @@
 //  设置界面
 
 import UIKit
-import Toaster
 
 class SettingViewController: BaseViewController {
     var navView = UIView()
@@ -44,7 +43,7 @@ class SettingViewController: BaseViewController {
         background.backgroundColor = UIColor.white
         view.addSubview(background)
         
-        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: kWithRelIPhone6(width: 70), height: kHeightRelIPhone6(height: 70)))
         img.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: navH+10)
         img.image  = UIImage(named:"AppIcon")
@@ -52,7 +51,7 @@ class SettingViewController: BaseViewController {
         img.clipsToBounds = true
         background.addSubview(img)
         
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.6, height: kHeightRelIPhone6(height: 30)))
         btn.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: img.frame.maxY + 50)
 //        btn.backgroundColor = UIColor.white
@@ -63,7 +62,7 @@ class SettingViewController: BaseViewController {
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         background.addSubview(btn)
         
-        let LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: 40)))
+        let LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: kHeightRelIPhone6(height: 40))))
         LoginOutBtn.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: background.frame.maxY + 50)
         LoginOutBtn.setTitle("退出当前账号", for:.normal)
@@ -78,7 +77,7 @@ class SettingViewController: BaseViewController {
     }
     
     @objc func loginOut(){
-        Toast(text: "你点击了退出！").show()
+        SYIToast.alert(withTitleBottom: "你点击了退出！")
     }
     
     override func didReceiveMemoryWarning() {

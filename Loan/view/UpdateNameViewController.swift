@@ -48,6 +48,7 @@ class UpdateNameViewController: BaseViewController {
         nameField = UITextField(frame:CGRect(x:0,y: navH+20,width: SCREEN_WIDTH,height: 50));
         nameField.backgroundColor = UIColor.white
         nameField.textAlignment = .left
+        nameField.placeholder = "请输入姓名"
         nameField.borderStyle = UITextBorderStyle.roundedRect
         nameField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         nameField.text = str
@@ -60,7 +61,7 @@ class UpdateNameViewController: BaseViewController {
         SaveNameBtn.setTitle("保存", for:.normal)
         SaveNameBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         SaveNameBtn.backgroundColor = UIColor.Main
-        SaveNameBtn.addTarget(self,action:#selector(backBtnClicked),for:.touchUpInside)
+        SaveNameBtn.addTarget(self,action:#selector(saveBtnClicked),for:.touchUpInside)
         SaveNameBtn.setTitleColor(UIColor.white, for: .normal) //普通状态下文字的颜色
         SaveNameBtn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
         SaveNameBtn.layer.cornerRadius = 20.0
@@ -76,22 +77,22 @@ class UpdateNameViewController: BaseViewController {
         }
     }
 
-
-    override func viewWillDisappear(_ animated: Bool) {
-        /**
-         先判断闭包是否存在，然后再调用
-         */
-        if (testClosure != nil){
-            testClosure!(nameField.text!)
-        }
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @objc func backBtnClicked() {
-        print("H1自定义返回按钮点击")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func saveBtnClicked() {
+        /**
+         先判断闭包是否存在，然后再调用
+         */
+        if (testClosure != nil){
+            testClosure!(nameField.text!)
+        }
         navigationController?.popViewController(animated: true)
     }
 }

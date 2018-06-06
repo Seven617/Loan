@@ -9,9 +9,9 @@ target 'Loan' do
 use_frameworks!
       # 指定库 和 库的版本
 pod 'SDWebImage'
+pod 'Kingfisher'
 pod 'MJRefresh'
 pod 'Masonry' 
-pod 'GFCustomView'
 pod 'LTAutoScrollView'
 pod 'SnapKit', '~> 4.0.0'
 pod 'EasyNavigation','~>1.0'

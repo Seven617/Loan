@@ -9,6 +9,20 @@
 import Foundation
 import UIKit
 
+let STATUS_HEIGHT = IPHONEX_DEV ? 44 : 20
+
+let BOTTOM_SAFEAREA_HEIGHT = IPHONEX_DEV ? 34 : 0
+
+let TABBAR_HEIGHT = IPHONEX_DEV ? (49 + 34) : 49
+
+//func VIEWSAFEAREAINSETS(view: Any) {
+//    var i: UIEdgeInsets?
+//    if #available(iOS 11.0, *) {
+//        i = (view as AnyObject).safeAreaInsets
+//    } else {
+//        i = .zero
+//    }
+//}
 //屏幕高度
 let kScreen_Height = UIScreen.main.bounds.size.height;
 
@@ -31,15 +45,28 @@ let IPHONE6p_DEV:Bool! = (UIScreen.main.bounds.size.height == 736.0) ? true : fa
 let IPHONEX_DEV:Bool! = (UIScreen.main.bounds.size.height == 812.0) ? true : false
 
 
+
 //其它屏幕尺寸相对iphone6的宽度
 func kWithRelIPhone6(width: CGFloat) -> CGFloat {
-    return width * kScreen_Width / 375.0;
+    if IPHONEX_DEV{
+        return (kScreen_Width / 375.0)*width
+    }else{
+        return  (kScreen_Width / 375.0)*width ;
+    }
+    
 }
 
 //其它屏幕尺寸相对iphone6的高度
 func kHeightRelIPhone6(height: CGFloat) -> CGFloat {
-    return  (kScreen_Height / 667.0)*height;
+    if IPHONEX_DEV {
+        return (kScreen_Height / 667.0)*height*0.85
+    }else{
+        return  (kScreen_Height / 667.0)*height;
+    }
 }
+
+
+
 
 //RGB 16进制转换
 func UIColorFromRGB(rgbValue: UInt) -> UIColor {

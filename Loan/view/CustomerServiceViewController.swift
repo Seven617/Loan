@@ -63,7 +63,6 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
         tableView!.delegate = self
         tableView!.dataSource = self
 //        tableView!.bounces = false
-        self.automaticallyAdjustsScrollViewInsets = false
         tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
         tableView!.separatorStyle = .none
         tableView?.backgroundColor = UIColor.clear

@@ -75,7 +75,7 @@ static CGFloat sizelabel = 20;
         CGFloat labelHeight = textSize.height + sizelabel - 5;
         self.textlabel.frame = CGRectMake(0, 0, labelWidth, labelHeight);
         self.textlabel.center = CGPointMake(self.backView.frame.size.width / 2,
-                                        self.backView.frame.size.height* 0.9 );
+                                        self.backView.frame.size.height* 0.85 );
         [self.backView addSubview:self.button];
         self.button.frame = self.textlabel.frame;
         

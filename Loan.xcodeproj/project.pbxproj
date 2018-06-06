@@ -34,10 +34,15 @@
 		044D9DE220B6887500A9A519 /* SYIToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D9DE020B6887500A9A519 /* SYIToast.m */; };
 		044D9DE420B6954300A9A519 /* HHConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D9DE320B6954300A9A519 /* HHConstant.swift */; };
 		044E979320AEDF1200114530 /* SampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979220AEDF1200114530 /* SampleCell.swift */; };
-		044E979520AEDF8400114530 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979420AEDF8400114530 /* CGRectEx.swift */; };
+		044E979520AEDF8400114530 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E979420AEDF8400114530 /* CGRect+Extension.swift */; };
+		044F179D20B91D4700BFF5CB /* ZJNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F179C20B91D4700BFF5CB /* ZJNoticeView.swift */; };
+		044F179F20B91D6300BFF5CB /* ZJAutoScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F179E20B91D6300BFF5CB /* ZJAutoScrollLabel.swift */; };
+		044F17A520B927F200BFF5CB /* ASAdverRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F17A420B927F200BFF5CB /* ASAdverRollView.m */; };
 		044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */; };
 		044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73720B421B400497CE9 /* IDCardViewController.swift */; };
 		0450BB0320B56758002780DA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450BB0220B56758002780DA /* WebViewController.swift */; };
+		0451298C20BFD4CD005D8971 /* ScrollActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451298B20BFD4CD005D8971 /* ScrollActionView.m */; };
+		0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451298D20BFECFB005D8971 /* UIScrollView.m */; };
 		045202A920ABDE9D008E181C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202A720ABDE9C008E181C /* TabBarController.swift */; };
 		045202F920ABF3A9008E181C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202F820ABF3A9008E181C /* MainController.swift */; };
 		045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045202FA20ABF3B9008E181C /* DrawerMenuController.swift */; };
@@ -52,15 +57,20 @@
 		0452225A20AAA233005AB69E /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225920AAA233005AB69E /* MyCell.swift */; };
 		04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC520AD2BE300B48E54 /* RightButton.swift */; };
 		04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC720AD2E4E00B48E54 /* BaseViewController.swift */; };
-		04556CDA20AD791500B48E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04556CD920AD791500B48E54 /* Assets.xcassets */; };
+		04939EF320BECD6000996C54 /* GFScrollMenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04939EF220BECD6000996C54 /* GFScrollMenView.m */; };
 		04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04960B0C20A98471007B58D8 /* SettingViewController.swift */; };
+		049DB4DC20C5427B004BE618 /* IWBusinessCategorySV.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DB4D920C5427A004BE618 /* IWBusinessCategorySV.m */; };
+		049DB4DD20C5427B004BE618 /* IWItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DB4DA20C5427A004BE618 /* IWItemButton.m */; };
+		04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A083F320C3070B002C7386 /* SCCycleScrollView.swift */; };
+		04A083F620C3070B002C7386 /* SCCycleScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A083F420C3070B002C7386 /* SCCycleScrollViewCell.swift */; };
 		04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D15D3320AAF86500A33F5B /* BackViewController.swift */; };
 		04EA971D20B7E50400BC12C3 /* WKJSPOST.html in Resources */ = {isa = PBXBuildFile; fileRef = 04EA971A20B7E50400BC12C3 /* WKJSPOST.html */; };
 		04EA971E20B7E50400BC12C3 /* WkwebViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA971B20B7E50400BC12C3 /* WkwebViewConfig.swift */; };
 		04EA971F20B7E50400BC12C3 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA971C20B7E50400BC12C3 /* WebView.swift */; };
-		04EA972320B7E51D00BC12C3 /* Extension+UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972020B7E51D00BC12C3 /* Extension+UIBarButtonItem.swift */; };
+		04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */; };
 		04EA972420B7E51D00BC12C3 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */; };
-		04EA972520B7E51D00BC12C3 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972220B7E51D00BC12C3 /* Extension+String.swift */; };
+		04EA972520B7E51D00BC12C3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972220B7E51D00BC12C3 /* String+Extension.swift */; };
+		04ECEAEC20B89BE9001DFD1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ECEAEB20B89BE9001DFD1B /* Assets.xcassets */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,10 +114,18 @@
 		044D9DE020B6887500A9A519 /* SYIToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYIToast.m; sourceTree = "<group>"; };
 		044D9DE320B6954300A9A519 /* HHConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHConstant.swift; sourceTree = "<group>"; };
 		044E979220AEDF1200114530 /* SampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCell.swift; sourceTree = "<group>"; };
-		044E979420AEDF8400114530 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
+		044E979420AEDF8400114530 /* CGRect+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
+		044F179C20B91D4700BFF5CB /* ZJNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJNoticeView.swift; sourceTree = "<group>"; };
+		044F179E20B91D6300BFF5CB /* ZJAutoScrollLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJAutoScrollLabel.swift; sourceTree = "<group>"; };
+		044F17A320B927F200BFF5CB /* ASAdverRollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAdverRollView.h; sourceTree = "<group>"; };
+		044F17A420B927F200BFF5CB /* ASAdverRollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAdverRollView.m; sourceTree = "<group>"; };
 		044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameViewController.swift; sourceTree = "<group>"; };
 		044FA73720B421B400497CE9 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
 		0450BB0220B56758002780DA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0451298A20BFD4CD005D8971 /* ScrollActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollActionView.h; path = ../../../../../Desktop/WebTest/WebTest/source/scrollmenu/ScrollActionView.h; sourceTree = "<group>"; };
+		0451298B20BFD4CD005D8971 /* ScrollActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollActionView.m; path = ../../../../../Desktop/WebTest/WebTest/source/scrollmenu/ScrollActionView.m; sourceTree = "<group>"; };
+		0451298D20BFECFB005D8971 /* UIScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIScrollView.m; sourceTree = "<group>"; };
+		0451298F20BFED12005D8971 /* UIScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIScrollView.h; sourceTree = "<group>"; };
 		045202A720ABDE9C008E181C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		045202F820ABF3A9008E181C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		045202FA20ABF3B9008E181C /* DrawerMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerMenuController.swift; sourceTree = "<group>"; };
@@ -123,15 +141,23 @@
 		04556CC520AD2BE300B48E54 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
 		04556CC720AD2E4E00B48E54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
-		04556CD920AD791500B48E54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04939EF220BECD6000996C54 /* GFScrollMenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFScrollMenView.m; sourceTree = "<group>"; };
 		04960B0C20A98471007B58D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		049DB4D820C5427A004BE618 /* IWBusinessCategorySV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWBusinessCategorySV.h; sourceTree = "<group>"; };
+		049DB4D920C5427A004BE618 /* IWBusinessCategorySV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWBusinessCategorySV.m; sourceTree = "<group>"; };
+		049DB4DA20C5427A004BE618 /* IWItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWItemButton.m; sourceTree = "<group>"; };
+		049DB4DB20C5427A004BE618 /* IWItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWItemButton.h; sourceTree = "<group>"; };
+		04A083F320C3070B002C7386 /* SCCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCycleScrollView.swift; sourceTree = "<group>"; };
+		04A083F420C3070B002C7386 /* SCCycleScrollViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCycleScrollViewCell.swift; sourceTree = "<group>"; };
 		04D15D3320AAF86500A33F5B /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 		04EA971A20B7E50400BC12C3 /* WKJSPOST.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WKJSPOST.html; sourceTree = "<group>"; };
 		04EA971B20B7E50400BC12C3 /* WkwebViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WkwebViewConfig.swift; sourceTree = "<group>"; };
 		04EA971C20B7E50400BC12C3 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		04EA972020B7E51D00BC12C3 /* Extension+UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIBarButtonItem.swift"; sourceTree = "<group>"; };
+		04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
-		04EA972220B7E51D00BC12C3 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		04EA972220B7E51D00BC12C3 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		04ECEAE820B8664F001DFD1B /* GFScrollMenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFScrollMenView.h; sourceTree = "<group>"; };
+		04ECEAEB20B89BE9001DFD1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3746A3A3E7F0E004FCC250EC /* Pods-Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.release.xcconfig"; sourceTree = "<group>"; };
 		B5FC0BFA4CB3D541F01922CF /* Pods-Loan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Loan/Pods-Loan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB364E3F5C18939114632395 /* Pods_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,7 +218,7 @@
 				0452225820AAA206005AB69E /* cell */,
 				045202F720ABF395008E181C /* main */,
 				0419358B20A55D03006D5CF3 /* Main.storyboard */,
-				04556CD920AD791500B48E54 /* Assets.xcassets */,
+				04ECEAEB20B89BE9001DFD1B /* Assets.xcassets */,
 				0419358720A55D03006D5CF3 /* AppDelegate.swift */,
 				0419359020A55D04006D5CF3 /* LaunchScreen.storyboard */,
 				0419359320A55D04006D5CF3 /* Info.plist */,
@@ -261,14 +287,25 @@
 			path = toast;
 			sourceTree = "<group>";
 		};
+		044F179720B91A7E00BFF5CB /* rollingView */ = {
+			isa = PBXGroup;
+			children = (
+				044F179E20B91D6300BFF5CB /* ZJAutoScrollLabel.swift */,
+				044F179C20B91D4700BFF5CB /* ZJNoticeView.swift */,
+				044F17A320B927F200BFF5CB /* ASAdverRollView.h */,
+				044F17A420B927F200BFF5CB /* ASAdverRollView.m */,
+			);
+			path = rollingView;
+			sourceTree = "<group>";
+		};
 		045202AB20ABDECC008E181C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				04EA972220B7E51D00BC12C3 /* Extension+String.swift */,
-				04EA972020B7E51D00BC12C3 /* Extension+UIBarButtonItem.swift */,
+				04EA972220B7E51D00BC12C3 /* String+Extension.swift */,
+				04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */,
 				04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */,
 				0410106F20B2ACBC0066903C /* UIView+Extension.swift */,
-				044E979420AEDF8400114530 /* CGRectEx.swift */,
+				044E979420AEDF8400114530 /* CGRect+Extension.swift */,
 				045202FC20ABF47F008E181C /* UIButton+Extension.swift */,
 				045202FF20ABF47F008E181C /* UIColor+Extension.swift */,
 				045202FE20ABF47F008E181C /* UIFont+Extension.swift */,
@@ -328,12 +365,41 @@
 		04556CC920AD378300B48E54 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				04A083F220C306F9002C7386 /* banner */,
+				044F179720B91A7E00BFF5CB /* rollingView */,
+				04ECEAE220B8642E001DFD1B /* scrollmenu */,
 				044D9DDC20B6886000A9A519 /* toast */,
 				044D9DD820B66EDB00A9A519 /* webview */,
 				0410107120B2C24A0066903C /* citypicker */,
 				041935A920A56BBE006D5CF3 /* dropmenu */,
+				0451298D20BFECFB005D8971 /* UIScrollView.m */,
+				0451298F20BFED12005D8971 /* UIScrollView.h */,
 			);
 			path = source;
+			sourceTree = "<group>";
+		};
+		04A083F220C306F9002C7386 /* banner */ = {
+			isa = PBXGroup;
+			children = (
+				04A083F320C3070B002C7386 /* SCCycleScrollView.swift */,
+				04A083F420C3070B002C7386 /* SCCycleScrollViewCell.swift */,
+			);
+			path = banner;
+			sourceTree = "<group>";
+		};
+		04ECEAE220B8642E001DFD1B /* scrollmenu */ = {
+			isa = PBXGroup;
+			children = (
+				049DB4D820C5427A004BE618 /* IWBusinessCategorySV.h */,
+				049DB4D920C5427A004BE618 /* IWBusinessCategorySV.m */,
+				049DB4DB20C5427A004BE618 /* IWItemButton.h */,
+				049DB4DA20C5427A004BE618 /* IWItemButton.m */,
+				04ECEAE820B8664F001DFD1B /* GFScrollMenView.h */,
+				04939EF220BECD6000996C54 /* GFScrollMenView.m */,
+				0451298A20BFD4CD005D8971 /* ScrollActionView.h */,
+				0451298B20BFD4CD005D8971 /* ScrollActionView.m */,
+			);
+			path = scrollmenu;
 			sourceTree = "<group>";
 		};
 		DE0779B18F9B9CFED2C683CE /* Frameworks */ = {
@@ -416,11 +482,11 @@
 			files = (
 				04EA971D20B7E50400BC12C3 /* WKJSPOST.html in Resources */,
 				041935CD20A57A85006D5CF3 /* PR_project_ok@2x.png in Resources */,
+				04ECEAEC20B89BE9001DFD1B /* Assets.xcassets in Resources */,
 				0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */,
 				0410108D20B2CD240066903C /* city.plist in Resources */,
 				041935CB20A57A85006D5CF3 /* PR_project_ok@3x.png in Resources */,
 				041935CE20A57A85006D5CF3 /* PR_filter_choice_top@2x.png in Resources */,
-				04556CDA20AD791500B48E54 /* Assets.xcassets in Resources */,
 				041935CC20A57A85006D5CF3 /* PR_filter_choice@2x.png in Resources */,
 				041935CF20A57A85006D5CF3 /* PR_filter_choice_top@3x.png in Resources */,
 				041935CA20A57A85006D5CF3 /* PR_filter_choice@3x.png in Resources */,
@@ -458,7 +524,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Loan/Pods-Loan-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyNavigation/EasyNavigation.framework",
-				"${BUILT_PRODUCTS_DIR}/GFCustomView/GFCustomView.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/LTAutoScrollView/LTAutoScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -469,7 +535,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyNavigation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GFCustomView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTAutoScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
@@ -488,9 +554,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A083F620C3070B002C7386 /* SCCycleScrollViewCell.swift in Sources */,
 				04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */,
 				04EA971F20B7E50400BC12C3 /* WebView.swift in Sources */,
 				045202FB20ABF3B9008E181C /* DrawerMenuController.swift in Sources */,
+				044F179F20B91D6300BFF5CB /* ZJAutoScrollLabel.swift in Sources */,
 				041935D920A586CB006D5CF3 /* QZSortCell.m in Sources */,
 				044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */,
 				045202F920ABF3A9008E181C /* MainController.swift in Sources */,
@@ -499,21 +567,27 @@
 				0452030920ABF4C3008E181C /* NavigationController.swift in Sources */,
 				044D9DE220B6887500A9A519 /* SYIToast.m in Sources */,
 				0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */,
+				0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
 				0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */,
 				04EA972420B7E51D00BC12C3 /* Extension+UIView.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
+				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
 				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,
-				04EA972320B7E51D00BC12C3 /* Extension+UIBarButtonItem.swift in Sources */,
+				04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */,
+				0451298C20BFD4CD005D8971 /* ScrollActionView.m in Sources */,
 				0410108C20B2CD240066903C /* UIButton+CZHExtension.m in Sources */,
 				0410106E20B262750066903C /* UserInfoViewController.swift in Sources */,
+				049DB4DD20C5427B004BE618 /* IWItemButton.m in Sources */,
+				04939EF320BECD6000996C54 /* GFScrollMenView.m in Sources */,
 				0410108A20B2CD240066903C /* CZHAddressPickerView.m in Sources */,
 				0419358820A55D03006D5CF3 /* AppDelegate.swift in Sources */,
 				041935DB20A586CB006D5CF3 /* UIView+Extension.m in Sources */,
 				04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */,
+				049DB4DC20C5427B004BE618 /* IWBusinessCategorySV.m in Sources */,
 				0452030720ABF49C008E181C /* BackButton.swift in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
@@ -526,9 +600,11 @@
 				0452030620ABF49C008E181C /* Header.swift in Sources */,
 				0452225A20AAA233005AB69E /* MyCell.swift in Sources */,
 				041935D820A586CB006D5CF3 /* QZConditionFilterView.m in Sources */,
-				04EA972520B7E51D00BC12C3 /* Extension+String.swift in Sources */,
+				04EA972520B7E51D00BC12C3 /* String+Extension.swift in Sources */,
 				0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */,
-				044E979520AEDF8400114530 /* CGRectEx.swift in Sources */,
+				044F17A520B927F200BFF5CB /* ASAdverRollView.m in Sources */,
+				044E979520AEDF8400114530 /* CGRect+Extension.swift in Sources */,
+				044F179D20B91D4700BFF5CB /* ZJNoticeView.swift in Sources */,
 				04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */,
 				04EA971E20B7E50400BC12C3 /* WkwebViewConfig.swift in Sources */,
 			);
@@ -591,6 +667,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -651,6 +728,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

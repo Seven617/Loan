@@ -9,10 +9,11 @@
 import UIKit
 import WebKit
 
-class WebViewController: BaseViewController {
+class WebViewController: BaseViewController,WKWebViewDelegate {
     var navView = UIView()
     var titleLabel = UILabel()
     var webView = WebView()
+    var url:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
@@ -41,7 +42,7 @@ class WebViewController: BaseViewController {
     }
     
     func intiWebView(){
-        webView=WebView(frame: CGRect(x: 0, y: navH, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-(self.tabBarController?.tabBar.frame.size.height)!))
+        webView=WebView(frame: CGRect(x: 0, y: navH, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-navH))
         // 配置webView样式
         var config = WkwebViewConfig()
         config.isShowScrollIndicator = false
@@ -49,7 +50,7 @@ class WebViewController: BaseViewController {
         webView.delegate = self
         // 加载普通URL
         webView.webConfig = config
-        webView.webloadType(self, .URLString(url: "http://wxjs.gxtechmoney.com/#/proxyReg?inviteCode=A100040"))
+        webView.webloadType(self, .URLString(url: url))
         view.addSubview(webView)
     }
     
@@ -70,13 +71,8 @@ class WebViewController: BaseViewController {
         }
     }
     @objc func backBtnClicked() {
-        print("H1自定义返回按钮点击")
         navigationController?.popViewController(animated: true)
     }
-    
-}
-extension WebViewController:WKWebViewDelegate{
-    
     func webViewUserContentController(_ scriptMessageHandlerArray: [String], didReceive message: WKScriptMessage) {
         print(message.body)
     }
@@ -85,3 +81,4 @@ extension WebViewController:WKWebViewDelegate{
         print("开始加载")
     }
 }
+

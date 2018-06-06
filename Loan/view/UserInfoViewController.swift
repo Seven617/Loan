@@ -75,7 +75,6 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
         tableView!.delegate = self
         tableView!.dataSource = self
         //        tableView!.bounces = false
-        self.automaticallyAdjustsScrollViewInsets = false
         tableView!.register(UITableViewCell.self,forCellReuseIdentifier: "SwiftCell")
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: kHeightRelIPhone6(height:20)))
         // 设置header

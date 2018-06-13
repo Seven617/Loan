@@ -100,7 +100,7 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
             if(secno == 0)
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: identify,
-                                                         for: indexPath as IndexPath) as UITableViewCell
+                for: indexPath as IndexPath) as UITableViewCell
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 let image = UIImage(named:"touxiang")
                 cell.imageView?.layer.cornerRadius = 30.0
@@ -138,7 +138,6 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         tableView.deselectRow(at: indexPath, animated: true)
         if(itemString == "用户ID")
         {
-//            Toast(text: "你选中了【\(itemString)】").show()
             navigationController?.pushViewController(UserInfoViewController(), animated: true)
         }else if(itemString == "联系客服"){
             navigationController?.pushViewController(CustomerServiceViewController(), animated: true)

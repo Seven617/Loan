@@ -93,7 +93,7 @@ class DetilViewController: BaseViewController {
         let commenttext:String = Comment.text!//获取label的text
         let commentattributes = [kCTFontAttributeName: Comment.font!]//计算label的字体
         Comment.frame = labelSize(text: commenttext, attributes: commentattributes)//调用计算label宽高的方法
-        Comment.origin = CGPoint(x: commentIcon.frame.maxX+10, y:commentIcon.frame.maxY+10)
+        Comment.mj_origin = CGPoint(x: commentIcon.frame.maxX+10, y:commentIcon.frame.maxY+10)
         OutView.addSubview(Comment)
         
         let line1 = UIView(frame: CGRect(x: 0, y: Comment.frame.maxY+10, width: kWithRelIPhone6(width: SCREEN_WIDTH), height: kHeightRelIPhone6(height:1)))
@@ -122,7 +122,7 @@ class DetilViewController: BaseViewController {
         let otherInfotext:String = OtherInfo.text!//获取label的text
         let otherInfoattributes = [kCTFontAttributeName: OtherInfo.font!]//计算label的字体
         OtherInfo.frame = labelSize(text: otherInfotext, attributes: otherInfoattributes)//调用计算label宽高的方法
-        OtherInfo.origin = CGPoint(x: otherInfoIcon.frame.maxX+10, y:otherInfoIcon.frame.maxY+10)
+        OtherInfo.mj_origin = CGPoint(x: otherInfoIcon.frame.maxX+10, y:otherInfoIcon.frame.maxY+10)
         OutView.addSubview(OtherInfo)
         
         
@@ -151,7 +151,7 @@ class DetilViewController: BaseViewController {
         let applyConditiontext:String = ApplyCondition.text!//获取label的text
         let applyConditionattributes = [kCTFontAttributeName: ApplyCondition.font!]//计算label的字体
         ApplyCondition.frame = labelSize(text: applyConditiontext, attributes: applyConditionattributes)//调用计算label宽高的方法
-        ApplyCondition.origin = CGPoint(x: applyConditionIcon.frame.maxX+10, y:applyConditionIcon.frame.maxY+10)
+        ApplyCondition.mj_origin = CGPoint(x: applyConditionIcon.frame.maxX+10, y:applyConditionIcon.frame.maxY+10)
         OutView.addSubview(ApplyCondition)
         
         let line3 = UIView(frame: CGRect(x: 0, y: ApplyCondition.frame.maxY+10, width: kWithRelIPhone6(width: SCREEN_WIDTH), height: kHeightRelIPhone6(height:1)))
@@ -180,7 +180,7 @@ class DetilViewController: BaseViewController {
         let descriptiontext:String = Description.text!//获取label的text
         let descriptionattributes = [kCTFontAttributeName: Description.font!]//计算label的字体
         Description.frame = labelSize(text: descriptiontext, attributes: descriptionattributes)//调用计算label宽高的方法
-        Description.origin = CGPoint(x: descriptionIcon.frame.maxX+10, y:descriptionIcon.frame.maxY+10)
+        Description.mj_origin = CGPoint(x: descriptionIcon.frame.maxX+10, y:descriptionIcon.frame.maxY+10)
         OutView.addSubview(Description)
         
         OutView.backgroundColor = UIColor.white
@@ -204,20 +204,6 @@ class DetilViewController: BaseViewController {
         web.url=link
         web.webtitle=navtitle
         self.navigationController?.pushViewController(web, animated: true)
-    }
-    /**
-     计算label的宽度和高度
-     
-     :param: text       label的text的值
-     :param: attributes label设置的字体
-     
-     :returns: 返回计算后label的CGRece
-     */
-    func labelSize(text:String ,attributes : [NSObject : AnyObject]) -> CGRect{
-        var size = CGRect();
-        let size2 = CGSize(width: SCREEN_WIDTH-40, height: 0);//设置label的最大宽度
-        size = text.boundingRect(with: size2, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes as? [NSAttributedStringKey : Any] , context: nil);
-        return size
     }
     
     @objc func backBtnClicked() {

@@ -47,8 +47,10 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     var weekHot = UIView()
     //极速贷款（文字）
     var speedLoan = UIView()
-    //分割线
-    var Introduce = UIView()
+    //精选专题
+    var featuredTopics = UIView()
+    //三个按钮
+    var BtnGroup = UIView()
     
     //本周上新
     var weekNewView: UICollectionView!
@@ -105,10 +107,11 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         intiNavigationControlle()
         initincloudView()
         initTopBanner()
-        getweekNewLab()
-        getweekNewView()
+        getBtnView()
         getLine()
         getRadioView()
+        getweekNewLab()
+        getweekNewView()
         getweekHotLab()
         getweekHotView()
         initBottomBanner()
@@ -272,73 +275,103 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     private func getweekNewLab(){
-        weekNew = UIView(frame: CGRect(x:0, y:topBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
-        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
-        icon.backgroundColor = UIColor.Main
+        weekNew = UIView(frame: CGRect(x:0, y:radioView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
+        icon.image=UIImage(named: "weeknew_icon")
         weekNew.addSubview(icon)
         
-        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 20)))
-        weekLab.text = "本周上新"
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
+        weekLab.text = "今日精选"
         weekLab.textColor = UIColor.Font2nd
-        weekLab.font = UIFont.boldSystemFont(ofSize: 13)
+        weekLab.font = UIFont.boldSystemFont(ofSize: 15)
         weekNew.addSubview(weekLab)
         weekNew.backgroundColor = UIColor.white
         incloudView.addSubview(weekNew)
     }
-    func getLine(){
-        Introduce=UIView(frame: CGRect(x:0, y:weekNewView.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height:40)))
-        Introduce.backgroundColor=UIColor.white
-        incloudView.addSubview(Introduce)
+    
+    func getBtnView(){
+        BtnGroup=UIView(frame: CGRect(x:0, y:topBanner.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height:120)))
+        BtnGroup.backgroundColor=UIColor.white
+        incloudView.addSubview(BtnGroup)
         
-        let line = UIView(frame:CGRect(x: 30, y: 5 , width: kWithRelIPhone6(width:SCREEN_WIDTH - 100), height: kHeightRelIPhone6(height:1)))
-        line.backgroundColor=UIColor.Gray
-        Introduce.addSubview(line)
-        
-        let img1 = UIImageView(frame: CGRect(x:40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
-        img1.image = UIImage(named:"gou")
-        let convenient = UILabel(frame: CGRect(x:img1.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        let img1 = UIImageView(frame: CGRect(x:SCREEN_WIDTH*(1/6)-30, y:20 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:60)))
+        img1.image = UIImage(named:"convenient")
+        let convenient = UILabel(frame: CGRect(x:SCREEN_WIDTH*(1/6)-30, y:img1.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
         convenient.text="借款便利"
         convenient.textAlignment = .center
-        convenient.textColor=UIColor.MainPress
-        convenient.font=UIFont.italicSystemFont(ofSize: 12)
-        Introduce.addSubview(img1)
-        Introduce.addSubview(convenient)
+        convenient.textColor=UIColor.black
+        convenient.font=UIFont.italicSystemFont(ofSize: 13)
+        BtnGroup.addSubview(img1)
+        BtnGroup.addSubview(convenient)
         
-        let img2 = UIImageView(frame: CGRect(x:convenient.frame.right + 40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
-        img2.image = UIImage(named:"gou")
-        let highpassrate = UILabel(frame: CGRect(x:img2.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        let img2 = UIImageView(frame: CGRect(x:SCREEN_WIDTH*(3/6)-30, y:20 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:60)))
+        img2.image = UIImage(named:"highpassrate")
+        let highpassrate = UILabel(frame: CGRect(x:SCREEN_WIDTH*(3/6)-30, y:img2.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
         highpassrate.text="高通过率"
         highpassrate.textAlignment = .center
-        highpassrate.textColor=UIColor.MainPress
-        highpassrate.font=UIFont.italicSystemFont(ofSize: 12)
-        Introduce.addSubview(img2)
-        Introduce.addSubview(highpassrate)
+        highpassrate.textColor=UIColor.black
+        highpassrate.font=UIFont.italicSystemFont(ofSize: 13)
+        BtnGroup.addSubview(img2)
+        BtnGroup.addSubview(highpassrate)
         
-        let img3 = UIImageView(frame: CGRect(x:highpassrate.frame.right + 40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
-        img3.image = UIImage(named:"gou")
-        let sesameloan = UILabel(frame: CGRect(x:img3.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        let img3 = UIImageView(frame: CGRect(x:SCREEN_WIDTH*(5/6)-30, y:20 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:60)))
+        img3.image = UIImage(named:"sesameloan")
+        let sesameloan = UILabel(frame: CGRect(x:SCREEN_WIDTH*(5/6)-30, y:img3.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
         sesameloan.text="芝麻分贷"
         sesameloan.textAlignment = .center
-        sesameloan.textColor=UIColor.MainPress
-        sesameloan.font=UIFont.italicSystemFont(ofSize: 12)
-        Introduce.addSubview(img3)
-        Introduce.addSubview(sesameloan)
+        sesameloan.textColor=UIColor.black
+        sesameloan.font=UIFont.italicSystemFont(ofSize: 13)
+        BtnGroup.addSubview(img3)
+        BtnGroup.addSubview(sesameloan)
+    }
+    
+    func getLine(){
+        featuredTopics = UIView(frame: CGRect(x:0, y:BtnGroup.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 170)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
+        icon.image=UIImage(named: "best_icon")
+        featuredTopics.addSubview(icon)
+        
+        let bestLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
+        bestLab.text = "精选专题"
+        bestLab.textColor = UIColor.Font2nd
+        bestLab.font = UIFont.boldSystemFont(ofSize: 15)
+        featuredTopics.backgroundColor = UIColor.white
+        featuredTopics.addSubview(bestLab)
+        incloudView.addSubview(featuredTopics)
+        
+        let weeknewbtn = UIButton(frame:CGRect(x: SCREEN_WIDTH*0.2/3, y: bestLab.frame.bottom+30 , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:110)))
+        weeknewbtn.setImage(UIImage(named: "weeknew"), for: .normal)
+        featuredTopics.addSubview(weeknewbtn)
+        
+        let weekbestbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: bestLab.frame.bottom+30 , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
+        weekbestbtn.setImage(UIImage(named: "weekbest"), for: .normal)
+        featuredTopics.addSubview(weekbestbtn)
+        
+        let weekhotbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: weekbestbtn.frame.bottom+20 , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
+        weekhotbtn.setImage(UIImage(named: "weekhot"), for: .normal)
+        featuredTopics.addSubview(weekhotbtn)
         
         
     }
     private func getweekHotLab(){
-        weekHot = UIView(frame: CGRect(x:0, y:radioView.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
-        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
-        icon.backgroundColor = UIColor.Main
+        weekHot = UIView(frame: CGRect(x:0, y:weekNewView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
+        icon.image=UIImage(named:"weekhot_icon")
         weekHot.addSubview(icon)
         
-        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 20)))
-        weekLab.text = "本周热门"
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
+        weekLab.text = "热门产品"
         weekLab.textColor = UIColor.Font2nd
-        weekLab.font = UIFont.boldSystemFont(ofSize: 13)
+        weekLab.font = UIFont.boldSystemFont(ofSize: 15)
         weekHot.addSubview(weekLab)
         weekHot.backgroundColor = UIColor.white
         incloudView.addSubview(weekHot)
+        
+        let seemoreBtn = UIButton(frame: CGRect(x:SCREEN_WIDTH-80, y:10 ,width: kWithRelIPhone6(width: 80), height:kHeightRelIPhone6(height: 15)))
+        seemoreBtn.setTitle("查看更多", for:.normal)
+        seemoreBtn.setTitleColor(UIColor.Line, for: .normal) //普通状态下文字的颜色
+        seemoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        weekHot.addSubview(seemoreBtn)
     }
     
     private func getspeedLoanLab(){
@@ -358,7 +391,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     
     
     func getweekNewView(){
-        weekNewView=UICollectionView(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 100)),collectionViewLayout: collectionLayout())
+        weekNewView=UICollectionView(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 70)),collectionViewLayout: collectionLayout())
         weekNewView.backgroundColor = UIColor.white
         weekNewView.isPagingEnabled = true
         weekNewView.showsHorizontalScrollIndicator = true
@@ -383,7 +416,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func getRadioView(){
-        radioView.frame = CGRect(x: 0, y: Introduce.frame.maxY+5, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
+        radioView.frame = CGRect(x: 0, y: featuredTopics.frame.maxY, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
         radioView.backgroundColor = UIColor.white;
         radioView.scrollLabel.setTexts(radiotxt)
         radioView.scrollLabel.resume()
@@ -430,10 +463,10 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     // set up layout
     private func collectionLayout() -> UICollectionViewLayout {
         let layout = CustomLayout()
-        layout.row=1
-        layout.column=4
-        layout.padding=10
-        layout.edgeMargin=10
+        layout.row=1// 每页有多少行
+        layout.column=2// 每页有多少列
+        layout.padding=0// 内部每个cell的间距
+        layout.edgeMargin=10// 边界的间距
         return layout;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -447,6 +480,9 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         cell.img.kf.indicatorType = .activity
         cell.img.kf.setImage(with: url )
         cell.name.text = weeknewlist.name
+        let shit = weeknewlist.maxAmount as! Int
+        print(shit/1000)
+        cell.quota.text = ("\((weeknewlist.minAmount as! Float)/1000) ~ \((weeknewlist.maxAmount as! Float)/1000)万元")
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

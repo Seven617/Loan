@@ -68,7 +68,6 @@
 		049A8F8C20CFD934007BB263 /* MoreDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A8F8920CFD934007BB263 /* MoreDropDownMenu.m */; };
 		049A8F8D20CFD934007BB263 /* MoreDropDownMenuRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A8F8A20CFD934007BB263 /* MoreDropDownMenuRowCell.m */; };
 		049A8F9120CFD94D007BB263 /* NSArray+ZMAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A8F9020CFD94D007BB263 /* NSArray+ZMAdd.m */; };
-		049A8F9420CFDA71007BB263 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A8F9220CFDA71007BB263 /* UIView+Extension.m */; };
 		049DB4DC20C5427B004BE618 /* IWBusinessCategorySV.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DB4D920C5427A004BE618 /* IWBusinessCategorySV.m */; };
 		049DB4DD20C5427B004BE618 /* IWItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DB4DA20C5427A004BE618 /* IWItemButton.m */; };
 		04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A083F320C3070B002C7386 /* SCCycleScrollView.swift */; };
@@ -78,7 +77,6 @@
 		04EA971E20B7E50400BC12C3 /* WkwebViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA971B20B7E50400BC12C3 /* WkwebViewConfig.swift */; };
 		04EA971F20B7E50400BC12C3 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA971C20B7E50400BC12C3 /* WebView.swift */; };
 		04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */; };
-		04EA972420B7E51D00BC12C3 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */; };
 		04EA972520B7E51D00BC12C3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA972220B7E51D00BC12C3 /* String+Extension.swift */; };
 		04ECEAEC20B89BE9001DFD1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ECEAEB20B89BE9001DFD1B /* Assets.xcassets */; };
 		D5D8D6C268815F89B289657E /* Pods_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB364E3F5C18939114632395 /* Pods_Loan.framework */; };
@@ -168,8 +166,6 @@
 		049A8F8B20CFD934007BB263 /* MoreDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreDropDownMenu.h; sourceTree = "<group>"; };
 		049A8F8F20CFD94D007BB263 /* NSArray+ZMAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZMAdd.h"; sourceTree = "<group>"; };
 		049A8F9020CFD94D007BB263 /* NSArray+ZMAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZMAdd.m"; sourceTree = "<group>"; };
-		049A8F9220CFDA71007BB263 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "../../../../../../.Trash/UIView+Extension.m"; sourceTree = "<group>"; };
-		049A8F9320CFDA71007BB263 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "../../../../../../.Trash/UIView+Extension.h"; sourceTree = "<group>"; };
 		049DB4D820C5427A004BE618 /* IWBusinessCategorySV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWBusinessCategorySV.h; sourceTree = "<group>"; };
 		049DB4D920C5427A004BE618 /* IWBusinessCategorySV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWBusinessCategorySV.m; sourceTree = "<group>"; };
 		049DB4DA20C5427A004BE618 /* IWItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWItemButton.m; sourceTree = "<group>"; };
@@ -181,7 +177,6 @@
 		04EA971B20B7E50400BC12C3 /* WkwebViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WkwebViewConfig.swift; sourceTree = "<group>"; };
 		04EA971C20B7E50400BC12C3 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
-		04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		04EA972220B7E51D00BC12C3 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		04ECEAE820B8664F001DFD1B /* GFScrollMenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFScrollMenView.h; sourceTree = "<group>"; };
 		04ECEAEB20B89BE9001DFD1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -317,7 +312,6 @@
 			children = (
 				04EA972220B7E51D00BC12C3 /* String+Extension.swift */,
 				04EA972020B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift */,
-				04EA972120B7E51D00BC12C3 /* Extension+UIView.swift */,
 				0410106F20B2ACBC0066903C /* UIView+Extension.swift */,
 				044E979420AEDF8400114530 /* CGRect+Extension.swift */,
 				045202FC20ABF47F008E181C /* UIButton+Extension.swift */,
@@ -446,8 +440,6 @@
 		049A8F8E20CFD938007BB263 /* tool */ = {
 			isa = PBXGroup;
 			children = (
-				049A8F9320CFDA71007BB263 /* UIView+Extension.h */,
-				049A8F9220CFDA71007BB263 /* UIView+Extension.m */,
 				049A8F8F20CFD94D007BB263 /* NSArray+ZMAdd.h */,
 				049A8F9020CFD94D007BB263 /* NSArray+ZMAdd.m */,
 			);
@@ -645,12 +637,10 @@
 				044D9DE220B6887500A9A519 /* SYIToast.m in Sources */,
 				0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */,
 				0481169820D0C77500644CDE /* MyDIYEmpty.m in Sources */,
-				049A8F9420CFDA71007BB263 /* UIView+Extension.m in Sources */,
 				0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
 				0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */,
-				04EA972420B7E51D00BC12C3 /* Extension+UIView.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
 				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
 				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,

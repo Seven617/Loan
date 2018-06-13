@@ -56,7 +56,7 @@ extension NetworkService: TargetType{
         case .detil(let id):
             return .requestParameters(parameters: ["loanProductId" : id], encoding: URLEncoding.queryString)
         case .query(let periodmax,let periodmin,let amountmax,let amountmin):
-            return .requestParameters(parameters: ["loanPeriodMax":periodmax,"loanPeriodMin":periodmin,"loanAmountMax":amountmax,"loanAmountMin":amountmin],encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["loanPeriodMax":periodmax as Any,"loanPeriodMin":periodmin as Any,"loanAmountMax":amountmax as Any,"loanAmountMin":amountmin as Any],encoding: URLEncoding.queryString)
         }
     }
     

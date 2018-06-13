@@ -18,7 +18,7 @@ class ZJNoticeView: UIView
     }()
     
     lazy private (set) var scrollLabel: ZJAutoScrollLabel = {
-        let scrollLabel = ZJAutoScrollLabel(scrollAttribute: ZJAutoScrollAttribute(textFont:UIFont.systemFont(ofSize: 13), textColor: .red))
+        let scrollLabel = ZJAutoScrollLabel(scrollAttribute: ZJAutoScrollAttribute(textFont:UIFont.boldSystemFont(ofSize: 13), textColor: .red))
         addSubview(scrollLabel)
         return scrollLabel
     }()

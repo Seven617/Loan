@@ -2,8 +2,8 @@
 //  CustomLayout.swift
 //  ScrollItemView
 //
-//  Created by 马超 on 16/7/22.
-//  Copyright © 2016年 qikeyun. All rights reserved.
+//  Created by 冷少白 on 2018/5/11.
+//  Copyright © 2018年 kbfoo. All rights reserved.
 //
 
 import UIKit
@@ -67,7 +67,7 @@ class CustomLayout: UICollectionViewLayout {
         // 计算宽度
         let cellW: CGFloat = (collectW - edgeMargin * 2 - CGFloat(column - 1) * padding) / CGFloat(column)
         // 高度
-        let cellH: CGFloat = cellW
+        let cellH: CGFloat = cellW*CGFloat(column)*0.2
         // x
         let cellX: CGFloat = collectW * CGFloat(pageIndex) + edgeMargin + (cellW + padding) * CGFloat(columnInPage)
         // y

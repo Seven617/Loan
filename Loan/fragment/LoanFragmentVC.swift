@@ -186,8 +186,6 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
         tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
         tableView.dataSource = self
         tableView.delegate = self
-        //禁止拖拽
-//        tableView.bounces = false
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()

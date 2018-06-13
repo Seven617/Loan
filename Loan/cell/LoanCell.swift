@@ -2,8 +2,8 @@
 //  SampleCell.swift
 //  PullToBounce
 //
-//  Created by Takuya Okamoto on 2015/08/12.
-//  Copyright (c) 2015年 Uniface. All rights reserved.
+//  Created by 冷少白 on 2018/5/11.
+//  Copyright © 2018年 kbfoo. All rights reserved.
 //
 
 import UIKit
@@ -39,20 +39,20 @@ class LoanCell: UITableViewCell {
         name.textAlignment = .left
         quotalab.frame = CGRect(x: 0, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 30), height: kHeightRelIPhone6(height:10))
         quotalab.font = UIFont.italicSystemFont(ofSize: 13)
-        quotalab.textAlignment = .center
+        quotalab.textAlignment = .left
         quotalab.text = "额度"
         quota.frame = CGRect(x: quotalab.frame.right, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 80), height: kHeightRelIPhone6(height:10))
         quota.textColor = UIColor.red
-        quota.textAlignment = .center
+        quota.textAlignment = .left
         quota.font = UIFont.boldSystemFont(ofSize: 13)
         
         rateslab.frame = CGRect(x: quota.frame.right+lineMargin*6, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 30), height: kHeightRelIPhone6(height:10))
         rateslab.font = UIFont.italicSystemFont(ofSize: 13)
-        rateslab.textAlignment = .center
+        rateslab.textAlignment = .left
         rateslab.text = "费率"
         rates.frame = CGRect(x: rateslab.frame.right , y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 50), height: kHeightRelIPhone6(height:10))
         rates.textColor = UIColor.red
-        rates.textAlignment = .center
+        rates.textAlignment = .left
         rates.font = UIFont.boldSystemFont(ofSize: 13)
         
         descriptionlab.frame = CGRect(x: 0, y: rates.frame.bottom + lineMargin, width: kWithRelIPhone6(width: LabView.frame.width), height: kHeightRelIPhone6(height:10))

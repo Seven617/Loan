@@ -166,7 +166,7 @@
         <!--Detil View Controller-->
         <scene sceneID="FLl-4v-j49">
             <objects>
-                <viewController id="FaY-Pf-q2u" customClass="DetilViewController" customModule="Loan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetilViewController" id="FaY-Pf-q2u" customClass="DetilViewController" customModule="Loan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pkU-Db-Oyb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -25,3 +25,18 @@ extension String {
     }
 }
 
+/**
+ 计算label的宽度和高度
+ 
+ :param: text       label的text的值
+ :param: attributes label设置的字体
+ 
+ :returns: 返回计算后label的CGRece
+ */
+func labelSize(text:String ,attributes : [NSObject : AnyObject]) -> CGRect{
+    var size = CGRect();
+    let size2 = CGSize(width: SCREEN_WIDTH-40, height: 0);//设置label的最大宽度
+    size = text.boundingRect(with: size2, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes as? [NSAttributedStringKey : Any] , context: nil);
+    return size
+}
+

@@ -151,7 +151,7 @@
 
 - (UIColor *)separatorColor {
     if (!_separatorColor) {
-        _separatorColor = [UIColor blackColor];
+        _separatorColor = [UIColor grayColor];
     }
     return _separatorColor;
 }
@@ -368,7 +368,7 @@
         self.show = NO;
         _fontSize = 14;
         _cellStyle = UITableViewCellStyleValue1;
-        _separatorColor = [UIColor grayColor];
+        _separatorColor = [UIColor colorWithWhite:0.5 alpha:0.3];
         _textColor = KButtonColor;
         _textSelectedColor = KSelectBorderColor;
         _detailTextFont = [UIFont systemFontOfSize:11];
@@ -732,11 +732,11 @@
         
         [UIView animateWithDuration:0.2 animations:^{
             if (haveItems) {
-                self->_leftCollectionView.frame = CGRectMake(self.origin.x, self.frame.origin.y + self.frame.size.height+1, self->_dropDownViewWidth/2, tableViewHeight);
+                self->_leftCollectionView.frame = CGRectMake(self.origin.x, self.frame.origin.y + self.frame.size.height+0.5, self->_dropDownViewWidth/2, tableViewHeight);
             } else {
-                self->_leftCollectionView.frame = CGRectMake(self.origin.x, self.frame.origin.y + self.frame.size.height+1, self->_dropDownViewWidth, tableViewHeight);
+                self->_leftCollectionView.frame = CGRectMake(self.origin.x, self.frame.origin.y + self.frame.size.height+0.5, self->_dropDownViewWidth, tableViewHeight);
             }
-            self->_buttomImageView.frame = CGRectMake(self.origin.x, CGRectGetMaxY(self->_leftCollectionView.frame)+1, self->_dropDownViewWidth, 0.5);
+            self->_buttomImageView.frame = CGRectMake(self.origin.x, CGRectGetMaxY(self->_leftCollectionView.frame)+0.5, self->_dropDownViewWidth, 0.5);
         }];
     } else {
         [UIView animateWithDuration:0.2 animations:^{

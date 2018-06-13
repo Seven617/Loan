@@ -8,7 +8,7 @@
 
 #ifndef Loan_Bridging_Header_h
 #define Loan_Bridging_Header_h
-#import "UIView+Extension.h"
+//#import "UIView+Extension.h"
 #import "CZHAddressPickerView.h"
 #import "AddressPickerHeader.h"
 #import "SYIToast+SYCategory.h"

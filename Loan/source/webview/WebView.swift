@@ -137,6 +137,20 @@ class WebView: UIView {
     public func reload() {
         webView.reload()
     }
+    
+    ///是否可以后退
+    public func Cangoback() -> Bool{
+        ///是否可以返回标志
+        let canback:Bool
+        if webView.canGoBack{
+            canback=true
+            return canback
+        }else{
+            canback=false
+            return canback
+        }
+    }
+    
     /// 后退
     public func goBack() {
         webView.goBack()

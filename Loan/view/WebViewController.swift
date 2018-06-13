@@ -13,6 +13,7 @@ class WebViewController: BaseViewController,WKWebViewDelegate {
     var navView = UIView()
     var titleLabel = UILabel()
     var webView = WebView()
+    var webtitle:String!
     var url:String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class WebViewController: BaseViewController,WKWebViewDelegate {
         navView.addSubview(backBtn)
         // 导航栏标题
         titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
-        titleLabel.text = "测试页面"
+        titleLabel.text = webtitle
         titleLabel.textColor = UIColor.black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
@@ -71,7 +72,11 @@ class WebViewController: BaseViewController,WKWebViewDelegate {
         }
     }
     @objc func backBtnClicked() {
-        navigationController?.popViewController(animated: true)
+        if webView.Cangoback()==true{
+            self.webView.goBack()
+        }else{
+           navigationController?.popViewController(animated: true)
+        }
     }
     func webViewUserContentController(_ scriptMessageHandlerArray: [String], didReceive message: WKScriptMessage) {
         print(message.body)

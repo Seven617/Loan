@@ -16,5 +16,7 @@ pod 'LTAutoScrollView'
 pod 'SnapKit', '~> 4.0.0'
 pod 'EasyNavigation','~>1.0'
 pod 'Alamofire', '~> 4.7'
+pod 'Moya'
+pod 'ObjectMapper'
 end
 

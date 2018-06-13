@@ -7,115 +7,249 @@
 //  LoanFragment
 
 import UIKit
+import MJRefresh
+import Kingfisher
 
-class LoanFragmentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    var _selectedDataSource1Ary: [AnyObject]?
-    var _selectedDataSource2Ary: [AnyObject]?
-    var conditionFilterView: QZConditionFilterView?
+class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDownMenuDelegate,UITableViewDelegate,UITableViewDataSource {
+    //贷款的数量
+    var loanList : [querydata] = []
+    // 顶部刷新
+    let header = MJRefreshNormalHeader()
+    //自定义导航栏
+    var navView = UIView()
+    var menu = MoreDropDownMenu()
+    var amount:[String]=["金额不限","1千以下","1-3千","3-5千","5千-1万","1-3万","3万以上"]
+    var period:[String]=["期限不限","1个月内","1-3个月","3-6个月","6-12个月","12个月以上"]
     var tableView = UITableView()
-    var dataArr = NSMutableArray()
     
+    var periodmax=999
+    var periodmin=0
+    var amountmax=99999
+    var amountmin=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //定义标题颜色与字体大小字典
-        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white, kCTFontAttributeName : UIFont.boldSystemFont(ofSize: 20)]
-        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
-        self.view.backgroundColor = UIColor.white
-        dataArr = ["1","2","3","4","5","6","7","8","9","10"]
-        // FilterBlock 选择下拉菜单选项触发
-        conditionFilterView = QZConditionFilterView(filterBlock: {(_ isFilter: Bool, _ dataSource1Ary: [Any]?, _ dataSource2Ary: [Any]?) -> Void in
-            // 1.isFilter = YES 代表是用户下拉选择了某一项
-            // 2.dataSource1Ary 选择后第一组选择的数据  2 3一次类推
-            // 3.如果你的项目没有清空筛选条件的功能，可以无视else 我们的app有清空之前的条件，重置，所以才有else的逻辑
-            if isFilter {
-                //网络加载请求 存储请求参数
-                self._selectedDataSource1Ary = dataSource1Ary as [AnyObject]?
-                self._selectedDataSource2Ary = dataSource2Ary as [AnyObject]?
-            } else {
-                // 不是筛选，全部赋初值（在这个工程其实是没用的，因为tableView是选中后必选的，即一旦选中就没有空的情况，但是如果可以清空筛选条件的时候就有必要 *重新* reset data）
-                self._selectedDataSource1Ary = ["金额不限"] as [AnyObject]
-                self._selectedDataSource2Ary = ["期限不限"] as [AnyObject]
-            }
-            // 开始网络请求
-            self.startRequest()
-        })
+        intiNavigationControlle()
+        initMenu()
+        initTableView()
+        Query()
+        //下拉刷新相关设置
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.setRefreshingTarget(self, refreshingAction: #selector(LoanFragmentVC.headerRefresh))
+        tableView.mj_header = header
+    }
     
-        
-        
-        conditionFilterView?.y += 0
-        // 设置初次加载显示的默认数据 即初次加载还没有选择操作之前要显示的标题数据
-        _selectedDataSource1Ary = ["金额不限"] as [AnyObject]
-        _selectedDataSource2Ary = ["期限不限"] as [AnyObject]
-        // 传入数据源，对应三个tableView顺序
-        conditionFilterView?.dataAry1 = ["金额不限","1千以下","1-3千","3-5千","5千-1万","1-3万","3万以上"]
-        conditionFilterView?.dataAry2 = ["期限不限","1个月内","1-3个月","3-6个月","6-12个月","12个月以上"]
-        // 初次设置默认显示数据(标题)，内部会调用block 进行第一次数据加载
-        conditionFilterView?.bindChoseArrayDataSource1(_selectedDataSource1Ary, dataSource2: _selectedDataSource2Ary)
-        self.view.addSubview(conditionFilterView!)
-        tableView = UITableView(frame: CGRect(x:0, y:40 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 40), style: UITableViewStyle.plain)
-        tableView.register(SampleCell.self,forCellReuseIdentifier: "SampleCell")
+    func intiNavigationControlle(){
+        // 自定义导航栏视图
+        navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
+        navView.backgroundColor = UIColor.Main
+        view.addSubview(navView)
+        // 导航栏标题
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
+        titleLabel.text = "借贷"
+        titleLabel.textColor = UIColor.white
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        navView.addSubview(titleLabel)
+    }
+    //顶部下拉刷新
+    @objc func headerRefresh(){
+        print("下拉刷新.")
+        Query()
+        sleep(2)
+        //结束刷新
+        tableView.mj_header.endRefreshing()
+    }
+    func initMenu(){
+        menu = MoreDropDownMenu(origin: CGPoint(x: 0, y: navView.frame.maxY), andHeight: kHeightRelIPhone6(height:45))
+        menu.delegate = self
+        menu.dataSource = self
+        view.addSubview(menu)
+    }
+    func numberOfColumns(in menu: MoreDropDownMenu?) -> Int {
+        return 2
+    }
+    
+    func menu(_ menu: MoreDropDownMenu?, numberOfRowsInColumn column: Int) -> Int {
+        if column == 0 {
+            return amount.count
+        } else if column == 1 {
+            return period.count
+        } else {
+            return 1
+        }
+    }
+    func menu(_ menu: MoreDropDownMenu?, titleForRowAt indexPath: MoreIndexPath?) -> String? {
+        if indexPath?.column == 0 {
+            if let aRow = indexPath?.row {
+                return amount[aRow] as String
+            }
+            return nil
+        } else if indexPath?.column == 1 {
+            if let aRow = indexPath?.row {
+                return period[aRow] as String
+            }
+            return nil
+        } else {
+            return nil
+        }
+    }
+    
+    func menu(_ menu: MoreDropDownMenu?, arrayForRowAt indexPath: MoreIndexPath?) -> [Any]? {
+        if indexPath?.column == 0 {
+            return amount
+        } else if indexPath?.column == 1 {
+            return period
+        } else {
+            return nil
+        }
+    }
+    func menu(_ menu: MoreDropDownMenu?, didSelectRowAt indexPath: MoreIndexPath?) {
+        if indexPath?.item ?? 0 >= 0 {
+            if let aColumn = indexPath?.column, let aRow = indexPath?.row, let anItem = indexPath?.item {
+                print("点击了 \(aColumn) - \(aRow) - \(anItem) 项目")
+            }
+        } else {
+            if let aColumn = indexPath?.column, let aRow = indexPath?.row {
+                let x:Int = aColumn
+                let y:Int = aRow
+//                print("点击了 \(aColumn) - \(aRow) 项目")
+                if (x==0){
+                    switch y {
+                    case 0:
+                        amountmax=99999
+                        amountmin=0
+                        break
+                    case 1:
+                        amountmax=999
+                        amountmin=0
+                        break
+                    case 2:
+                        amountmax=2999
+                        amountmin=1000
+                        break
+                    case 3:
+                        amountmax=4999
+                        amountmin=3000
+                        break
+                    case 4:
+                        amountmax=9999
+                        amountmin=5000
+                        break
+                    case 5:
+                        amountmax=29999
+                        amountmin=10000
+                        break
+                    case 6:
+                        amountmax=99999
+                        amountmin=30000
+                        break
+                    default:
+                        break
+                    }
+                }else if (x==1){
+                    switch y {
+                    case 0:
+                        periodmax=99999
+                        periodmin=0
+                        break
+                    case 1:
+                        periodmax=29
+                        periodmin=0
+                        break
+                    case 2:
+                        periodmax=89
+                        periodmin=30
+                        break
+                    case 3:
+                        periodmax=180
+                        periodmin=90
+                        break
+                    case 4:
+                        periodmax=359
+                        periodmin=180
+                        break
+                    case 5:
+                        periodmax=999
+                        periodmin=360
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+            Query()
+        }
+    }
+    func initTableView(){
+        tableView = UITableView(frame: CGRect(x:0, y:menu.frame.maxY+1 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 50), style: UITableViewStyle.plain)
+        tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
         tableView.dataSource = self
         tableView.delegate = self
         //禁止拖拽
-        tableView.bounces = false
+//        tableView.bounces = false
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        tableView.ly_emptyView = MyDIYEmpty.diyNoData()
         self.view.addSubview(tableView)
     }
     
-    func startRequest() {
-        var source1: String? = nil
-        if let anObject = _selectedDataSource1Ary?.first {
-            source1 = "\(anObject)"
+    @objc func Query(){
+        querydata.request(periodmax: periodmax, periodmin: periodmin, amountmax: amountmax, amountmin: amountmin) { (query) in
+            if let query = query {
+                OperationQueue.main.addOperation {
+                    self.loanList = query
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("网络错误")
+            }
         }
-        var source2: String? = nil
-        if let anObject = _selectedDataSource2Ary?.first {
-            source2 = "\(anObject)"
-        }
-    
-        var _: [NSObject : AnyObject] = conditionFilterView!.keyValueDic! as [NSObject : AnyObject]
-        // 可以用字符串在dic换成对应英文key
-//        Toast(text: "\n\(String(describing: source1))  \n\(String(describing: source2))\n").show()
-        print("\n第一个条件:\(String(describing: source1))\n  第二个条件:\(String(describing: source2))\n")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //Section
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
     }
     
     //行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30;
+        return loanList.count;
     }
     
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kHeightRelIPhone6(height:90);
+        return kHeightRelIPhone6(height:70);
     }
     
     //cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath) as! SampleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath) as! LoanCell
+        let news = loanList[indexPath.row]
+        let url = URL(string: news.logo) 
+        cell.img.kf.indicatorType = .activity
+        cell.img.kf.setImage(with: url )
+        cell.name.text = news.name
+        cell.quota.text = ("\(news.minAmount.description!) - \(news.maxAmount.description!)")
+        cell.rates.text = ("\(news.minRate.description!) %")
+        cell.descriptionlab.text = news.comment
         return cell
     }
     
     
     //cell点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-        let alertController = UIAlertController(title: "提示!",
-             message: "你选中了【\(indexPath.row + 1)】",preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-        
+        let news = loanList[indexPath.row]
+        self.tableView.deselectRow(at: indexPath, animated: false)
+//        let alertController = UIAlertController(title: "提示!",
+//             message: "你选中了【\(news.name!)】",preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
+        let detil = DetilViewController()
+        detil.productId=news.id
+        detil.navtitle=news.name
+        self.navigationController?.pushViewController(detil, animated: true)
     }
     
 }

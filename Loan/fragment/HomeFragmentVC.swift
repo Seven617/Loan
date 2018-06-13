@@ -9,56 +9,155 @@
 import UIKit
 import LTAutoScrollView
 import MJRefresh
-import Masonry
+import Kingfisher
 
 
-class HomeFragmentVC: BaseViewController,SCCycleScrollViewDelegate,UIScrollViewDelegate {
+class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,SCCycleScrollViewDelegate,UIScrollViewDelegate {
+    //本周最新贷款的数量
+    var weeknewList : [weeknewdata] = []
+    
+    //自定义导航栏
     var navView = UIView()
-    var arrIcon:Array<Any>! = nil
-    var arrMenu:Array<Any> = Array()
+    
+    //外层scrollView
     var MainscrollView = UIScrollView()
+    
+    //包含UI控件层
+    var incloudView = UIView()
+    
+    //头部banner
+    var topbannerId:[Int]=[]
+    var toptitle:[String]=[]
+    var topImages:[String]=[]
+    var topbannertype:[Int]=[]
+    var topbannerLinke:[String]=[]
     var topBanner : SCCycleScrollView!
+    
+    //底部banner
+    var bottombannerId:[Int]=[]
+    var bottomtitle:[String]=[]
+    var bottomImages:[String]=[]
+    var bottombannertype:[Int]=[]
+    var bottombannerLinke:[String]=[]
     var bottomBanner : SCCycleScrollView!
+    
+    //本周上新（文字）
     var weekNew = UIView()
-    var tableView = UITableView()
-    var scrollMenView = IWBusinessCategorySV()
-    var noticeView = ZJNoticeView()
-    var asView = ASAdverRollView()
-    var red = UIView()
+    //本周热门（文字）
+    var weekHot = UIView()
+    //极速贷款（文字）
+    var speedLoan = UIView()
+    //分割线
+    var Introduce = UIView()
+    
+    //本周上新
+    var weekNewView: UICollectionView!
+    
+    //滚动广播
+    var radiotxt:[String]=[]
+    var radioView = ZJNoticeView()
+    
+    //本周热门
+    var weekHotID:[Int]=[]
+    var weekHotTitle:[String]=[]
+    var weekHotImg:[String]=[]
+    var weekHotLinke:[String]=[]
+    var weekHotView : IWBusinessCategorySV!
+    
+    //本周热门
+    var speedLoanID:[Int]=[]
+    var speedLoanTitle:[String]=[]
+    var speedLoanImg:[String]=[]
+    var speedLoanLinke:[String]=[]
+    var speedLoanView : IWBusinessCategorySV!
+    //底线
     var BottomLab = UILabel()
+    
     // 顶部刷新
     let header = MJRefreshNormalHeader()
-    // 图片URL 或者 本地图片名称
-    var topImages = ["http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/c0b8c738-7e62-497a-b79c-d53d26cb7f34.png"]
-    var bottomImages = ["http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/28b3830f-53bd-45af-9340-74736f9ccbcb.jpg"]
-    var scrollMenViewImg = ["http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/560132b9-e06a-4c31-9cf8-1a99205955ee", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/2f5846d7-62e4-454c-88b3-56d0828e9cf1", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/50be8bf4-2882-46fa-9026-d3873730e3b5", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/3164493f-09cb-4bdc-8ffc-93b4866e9654.png", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/c43074ea-de2e-4203-899c-2849b6f982b5", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/05feec47-10a0-4617-9039-106c572025e1", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/1e91c3f4-25d2-40f1-9a1d-58b30a12d711", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/33526177-597d-44bc-8fa0-63d266db7efe.png", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/4a4c3f10-19e6-4bc1-ab10-5e3aa32f011a.png", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/51147ab9-0546-408b-812f-996c77f1bd54.png", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/a3bc518e-3b8e-413d-8600-754ea2b1ef30.png", "http://ruifo.oss-cn-hangzhou.aliyuncs.com/uploads/355fc1d2-eb48-4c45-9e16-51d50b7b7ff9.png"]
-    var scrollMenViewTitle = ["极速白卡", "金龙钱包", "91借吧", "汪汪贷", "花了呗", "壁虎岩", "联仲花花", "花个够", "大唐贷", "信享乐", "财多多", "简速花"]
-    var radioString = ["134*****263在信享乐成功借款1000.0元", "186*****966在极速白卡成功借款1000.0元", "185*****587在金龙钱包成功借款3000.0元", "151*****666在信享乐成功借款2000.0元", "156*****944在简速花成功借款3000.0元", "187*****721在联仲花花成功借款2000.0元", "188*****401在花个够成功借款900.0元", "187*****325在大唐贷成功借款2000.0元", "185*****451在联仲花花成功借款2000.0元", "137*****811在极速白卡成功借款1000.0元", "133*****871在财多多成功借款4000.0元", "153*****351在壁虎岩成功借款10000.0元", "186*****611在大唐贷成功借款2000.0元", "188*****546在91借吧成功借款4000.0元", "138*****661在信享乐成功借款1000.0元", "150*****373在91借吧成功借款10000.0元", "186*****717在金龙钱包成功借款3000.0元", "133*****564在花个够成功借款700.0元", "186*****223在极速白卡成功借款2000.0元", "152*****131在壁虎岩成功借款5000.0元"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
-//        Thread.sleep(forTimeInterval: 1) //延长1秒
-        intiNavigationControlle()
-        getTopBanner()
-        getweekNew()
-        getScrollMenView()
-        getnoticeView()
-        getBottomBanner()
-        getRed()
-        getBottomLine()
-        getMainScrollView()
+        //        Thread.sleep(forTimeInterval: 1) //延长1秒
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        initView()
+        initData()
         //下拉刷新相关设置
         header.lastUpdatedTimeLabel.isHidden = true
         header.setRefreshingTarget(self, refreshingAction: #selector(HomeFragmentVC.headerRefresh))
         MainscrollView.mj_header = header
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let maxh: CGFloat = navH+BottomLab.frame.maxY
+        if #available(iOS 11.0, *) {
+            MainscrollView.contentSize = CGSize(width:SCREEN_WIDTH, height:maxh)
+        } else {
+            MainscrollView.contentSize = CGSize(width:SCREEN_WIDTH, height:
+                maxh+(self.tabBarController?.tabBar.frame.size.height)!)
+        }
+    }
+    
+    func initView(){
+        intiNavigationControlle()
+        initincloudView()
+        initTopBanner()
+        getweekNewLab()
+        getweekNewView()
+        getLine()
+        getRadioView()
+        getweekHotLab()
+        getweekHotView()
+        initBottomBanner()
+//        getspeedLoanLab()
+//        getspeedLoanView()
+        getBottomLine()
+        getMainScrollView()
+    }
+    func initData(){
+        getBanner()
+        getWeekNew()
+        getRadio()
+        getWeekHot()
+//        getSpeed()
+    }
     //顶部下拉刷新
     @objc func headerRefresh(){
         print("下拉刷新.")
+        dataclear()
+        initData()
         sleep(2)
         //结束刷新
         MainscrollView.mj_header.endRefreshing()
+    }
+    func dataclear(){
+        toptitle=[]
+        topImages=[]
+        topbannerId=[]
+        topbannertype=[]
+        topbannerLinke=[]
+        
+        bottomtitle=[]
+        bottomImages=[]
+        bottombannerId=[]
+        bottombannertype=[]
+        bottombannerLinke=[]
+        
+        
+        radiotxt=[]
+        
+        weekHotID=[]
+        weekHotTitle=[]
+        weekHotImg=[]
+        weekHotLinke=[]
+        
+        speedLoanID=[]
+        speedLoanTitle=[]
+        speedLoanImg=[]
+        speedLoanLinke=[]
     }
     func intiNavigationControlle(){
         // 自定义导航栏视图
@@ -73,6 +172,77 @@ class HomeFragmentVC: BaseViewController,SCCycleScrollViewDelegate,UIScrollViewD
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
     }
+    
+    func getBanner(){
+        bannerdata.request { (banner) in
+            for topbanner in (banner?.bannerList)!{
+                self.toptitle.append(topbanner.title)
+                self.topImages.append(topbanner.image)
+                self.topbannerId.append(topbanner.id)
+                self.topbannertype.append(topbanner.targetType)
+                self.topbannerLinke.append(topbanner.targetContent)
+            }
+//            self.initTopBanner()
+            self.topBanner.imageArray = self.topImages as [AnyObject]
+            for bottombanner in (banner?.classifyList)!{
+                self.bottomtitle.append(bottombanner.title)
+                self.bottomImages.append(bottombanner.image)
+                self.bottombannerId.append(bottombanner.id)
+                self.bottombannertype.append(bottombanner.targetType)
+                self.bottombannerLinke.append(bottombanner.targetContent)
+            }
+            self.initBottomBanner()
+        }
+    }
+    
+    @objc func getWeekNew(){
+        weeknewdata.request { (weeknew) in
+            if let  weeknew = weeknew{
+                OperationQueue.main.addOperation {
+                    self.weeknewList = weeknew
+                    self.weekNewView.reloadData()
+                }
+            }else {
+                print("网络错误")
+            }
+        }
+    }
+    func getSpeed(){
+       weekspeeddata.request { (weekspeed) in
+            for data in weekspeed!{
+                self.speedLoanID.append(data.id)
+                self.speedLoanTitle.append(data.name)
+                self.speedLoanImg.append(data.logo)
+                self.speedLoanLinke.append(data.link)
+            }
+            self.getspeedLoanView()
+        }
+    }
+    func getRadio(){
+        radiodata.request { (radio) in
+            for msg in (radio?.list)!{
+                self.radiotxt.append(msg.descriptionBoard)
+            }
+            self.radioView.scrollLabel.setTexts(self.radiotxt)
+        }
+    }
+    
+    func getWeekHot(){
+        weekhotdata.request { (weekhot) in
+            for data in weekhot!{
+                self.weekHotID.append(data.id)
+                self.weekHotTitle.append(data.name)
+                self.weekHotImg.append(data.logo)
+                self.weekHotLinke.append(data.link)
+            }
+            self.getweekHotView()
+        }
+    }
+    
+    func initincloudView(){
+        incloudView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT*3))
+    }
+    
     //获取getMainScrollView
     func getMainScrollView(){
         MainscrollView = UIScrollView(frame: CGRect(x:0, y:navH, width:SCREEN_WIDTH, height:SCREEN_HEIGHT))
@@ -83,36 +253,25 @@ class HomeFragmentVC: BaseViewController,SCCycleScrollViewDelegate,UIScrollViewD
         //隐藏滚动条
         MainscrollView.showsVerticalScrollIndicator = false
         view.addSubview(MainscrollView)
-        MainscrollView.addSubview(topBanner)
-        MainscrollView.addSubview(weekNew)
-        MainscrollView.addSubview(scrollMenView)
-        MainscrollView.addSubview(noticeView)
-        MainscrollView.addSubview(bottomBanner)
-        MainscrollView.addSubview(red)
-        MainscrollView.addSubview(BottomLab)
+        MainscrollView.addSubview(incloudView)
         //设置内容大小
-        if #available(iOS 11.0, *) {
-            MainscrollView.contentSize = CGSize(width:SCREEN_WIDTH, height:
-                navH+red.frame.maxY)
-        } else {
-            MainscrollView.contentSize = CGSize(width:SCREEN_WIDTH, height:
-                navH+red.frame.maxY+(self.tabBarController?.tabBar.frame.size.height)!)
-        }
+        
         
     }
     //获取Banner滚动条
     /*  设置为系统的pageControl样式利用dotType */
-    func getTopBanner(){
-        let placeholderImage = UIImage(named: "WechatIMG1")
+    func initTopBanner(){
+        let placeholderImage = UIImage(named: " ")
         topBanner = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:0, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 150)),delegate: self,placeholderImage: placeholderImage)
         topBanner.delegate = self
         topBanner.timeInterval = 3.5
         topBanner.imageArray = topImages as [AnyObject]
         topBanner.pageControlBottomMargin = 5
         topBanner.pageControlRightMargin = (UIScreen.main.bounds.width - topBanner.pageControlSize.width) / 2.0
+        incloudView.addSubview(topBanner)
     }
     
-    private func getweekNew(){
+    private func getweekNewLab(){
         weekNew = UIView(frame: CGRect(x:0, y:topBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
         icon.backgroundColor = UIColor.Main
@@ -124,82 +283,201 @@ class HomeFragmentVC: BaseViewController,SCCycleScrollViewDelegate,UIScrollViewD
         weekLab.font = UIFont.boldSystemFont(ofSize: 13)
         weekNew.addSubview(weekLab)
         weekNew.backgroundColor = UIColor.white
+        incloudView.addSubview(weekNew)
+    }
+    func getLine(){
+        Introduce=UIView(frame: CGRect(x:0, y:weekNewView.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height:40)))
+        Introduce.backgroundColor=UIColor.white
+        incloudView.addSubview(Introduce)
+        
+        let line = UIView(frame:CGRect(x: 30, y: 5 , width: kWithRelIPhone6(width:SCREEN_WIDTH - 100), height: kHeightRelIPhone6(height:1)))
+        line.backgroundColor=UIColor.Gray
+        Introduce.addSubview(line)
+        
+        let img1 = UIImageView(frame: CGRect(x:40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
+        img1.image = UIImage(named:"gou")
+        let convenient = UILabel(frame: CGRect(x:img1.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        convenient.text="借款便利"
+        convenient.textAlignment = .center
+        convenient.textColor=UIColor.MainPress
+        convenient.font=UIFont.italicSystemFont(ofSize: 12)
+        Introduce.addSubview(img1)
+        Introduce.addSubview(convenient)
+        
+        let img2 = UIImageView(frame: CGRect(x:convenient.frame.right + 40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
+        img2.image = UIImage(named:"gou")
+        let highpassrate = UILabel(frame: CGRect(x:img2.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        highpassrate.text="高通过率"
+        highpassrate.textAlignment = .center
+        highpassrate.textColor=UIColor.MainPress
+        highpassrate.font=UIFont.italicSystemFont(ofSize: 12)
+        Introduce.addSubview(img2)
+        Introduce.addSubview(highpassrate)
+        
+        let img3 = UIImageView(frame: CGRect(x:highpassrate.frame.right + 40, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height:15)))
+        img3.image = UIImage(named:"gou")
+        let sesameloan = UILabel(frame: CGRect(x:img3.frame.right+5, y:line.frame.bottom+10 ,width: kWithRelIPhone6(width: 60), height:kHeightRelIPhone6(height:15)))
+        sesameloan.text="芝麻分贷"
+        sesameloan.textAlignment = .center
+        sesameloan.textColor=UIColor.MainPress
+        sesameloan.font=UIFont.italicSystemFont(ofSize: 12)
+        Introduce.addSubview(img3)
+        Introduce.addSubview(sesameloan)
+        
+        
+    }
+    private func getweekHotLab(){
+        weekHot = UIView(frame: CGRect(x:0, y:radioView.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        icon.backgroundColor = UIColor.Main
+        weekHot.addSubview(icon)
+        
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 20)))
+        weekLab.text = "本周热门"
+        weekLab.textColor = UIColor.Font2nd
+        weekLab.font = UIFont.boldSystemFont(ofSize: 13)
+        weekHot.addSubview(weekLab)
+        weekHot.backgroundColor = UIColor.white
+        incloudView.addSubview(weekHot)
     }
     
-    func getScrollMenView(){
-        scrollMenView = IWBusinessCategorySV(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 190)),imageArray: scrollMenViewImg, titleArray: scrollMenViewTitle, target: self, action: #selector(HomeFragmentVC.clickBusinessCategoryBtn(_:)))
+    private func getspeedLoanLab(){
+        speedLoan = UIView(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        icon.backgroundColor = UIColor.Main
+        speedLoan.addSubview(icon)
+        
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 20)))
+        weekLab.text = "极速贷款"
+        weekLab.textColor = UIColor.Font2nd
+        weekLab.font = UIFont.boldSystemFont(ofSize: 13)
+        speedLoan.addSubview(weekLab)
+        speedLoan.backgroundColor = UIColor.white
+        incloudView.addSubview(speedLoan)
     }
-    @objc func clickBusinessCategoryBtn(_ sender: UIButton?) {
+    
+    
+    func getweekNewView(){
+        weekNewView=UICollectionView(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 100)),collectionViewLayout: collectionLayout())
+        weekNewView.backgroundColor = UIColor.white
+        weekNewView.isPagingEnabled = true
+        weekNewView.showsHorizontalScrollIndicator = true
+        weekNewView.delegate = self
+        weekNewView.dataSource = self
+        incloudView.addSubview(weekNewView)
+        weekNewView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+    }
+    
+    func getspeedLoanView(){
+        speedLoanView = IWBusinessCategorySV(frame: CGRect(x:0, y:speedLoan.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 190)),imageArray: speedLoanImg, titleArray: speedLoanTitle, target: self, action: #selector(HomeFragmentVC.clickgetspeedLoan(_:)))
+        incloudView.addSubview(speedLoanView)
+    }
+    
+    @objc func clickgetspeedLoan(_ sender: UIButton?) {
         let tag = (sender?.tag ?? 0) - Int(KCategoryTag)
-        SYIToast.alert(withTitleBottom: scrollMenViewTitle[tag])
+        //        SYIToast.alert(withTitleBottom: weekNewTitle[tag])
+        let detil = DetilViewController()
+        detil.productId=speedLoanID[tag]
+        detil.navtitle=speedLoanTitle[tag]
+        self.navigationController?.pushViewController(detil, animated: true)
     }
     
-    func getnoticeView(){
-        noticeView.frame = CGRect(x: 0, y: scrollMenView.frame.maxY, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
-        noticeView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5);
-        noticeView.scrollLabel.setTexts(radioString)
-        noticeView.scrollLabel.resume()
-
-
-//        asView = ASAdverRollView(frame: CGRect(x: 0, y: noticeView.frame.maxY, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30)))
-//        asView.adverTitles = ["关关雎鸠，在河之洲。窈窕淑女，君子好逑。",
-//                              "参差荇菜，左右流之。窈窕淑女，寤寐求之。",
-//                              "求之不得，寤寐思服。悠哉悠哉，辗转反侧。",
-//                              "参差荇菜，左右采之。窈窕淑女，琴瑟友之。",
-//                              "参差荇菜，左右芼之。窈窕淑女，钟鼓乐之。"]
-//        asView.asBGColor = UIColor.lightGray.withAlphaComponent(0.5)
-//        asView.fontColor = UIColor.red
-//        asView.alignment = .center
-//        MainscrollView.addSubview(asView)
-//        asView.startScroll()
+    func getRadioView(){
+        radioView.frame = CGRect(x: 0, y: Introduce.frame.maxY+5, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
+        radioView.backgroundColor = UIColor.white;
+        radioView.scrollLabel.setTexts(radiotxt)
+        radioView.scrollLabel.resume()
+        incloudView.addSubview(radioView)
     }
     
-    //视图滚动中一直触发
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print("x:\(scrollView.contentOffset.x) y:\(scrollView.contentOffset.y)")
-        // 禁止下拉
-        // if scrollView.contentOffset.y <= 0 {
-        // scrollView.contentOffset.y = 0
-        //
-        //禁止上拉
-        //if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.size.height {
-        //scrollView.contentOffset.y = scrollView.contentSize.height - scrollView.bounds.size.height
-        //}
-    }
-
-    func getBottomBanner() {
-        let placeholderImage = UIImage(named: "WechatIMG1")
-        bottomBanner = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:noticeView.frame.maxY, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 180)),delegate: self,placeholderImage: placeholderImage)
+    func initBottomBanner() {
+        let placeholderImage = UIImage(named: " ")
+        bottomBanner = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:weekHotView.frame.maxY, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 180)),delegate: self,placeholderImage: placeholderImage)
         bottomBanner.delegate = self
         bottomBanner.timeInterval = 3.5
         bottomBanner.imageArray = bottomImages as [AnyObject]
         bottomBanner.pageControlBottomMargin = 5
         bottomBanner.pageControlRightMargin = (UIScreen.main.bounds.width - bottomBanner.pageControlSize.width) / 2.0
+        incloudView.addSubview(bottomBanner)
     }
+    
     func cycleScrollView(_ cycleScrollView: SCCycleScrollView, didSelectItemAt index: Int) {
         let web = WebViewController()
+        let detil = DetilViewController()
         if cycleScrollView==topBanner{
-            web.url="https://ecentre.spdbccc.com.cn/creditcard/indexActivity.htm?data=I2362551&itemcode=shmr050001"
-        
+            if topbannertype[index]==2{
+                detil.navtitle=toptitle[index]
+                detil.productId=Int(topbannerLinke[index])!
+                self.navigationController?.pushViewController(detil, animated: true)
+            }else if topbannertype[index]==3{
+                web.url=topbannerLinke[index]
+                web.webtitle=toptitle[index]
+                self.navigationController?.pushViewController(web, animated: true)
+            }
         }else{
-            web.url = "https://hualebei-agent.yylky.cn/mobile/gotodownload?2BA8B11C47DE5DAA204A6DE2D13225045E6D7230953AF0860263E1BCE0943B64="
+            if bottombannertype[index]==2{
+                detil.navtitle=bottomtitle[index]
+                detil.productId=Int(bottombannerLinke[index])
+                self.navigationController?.pushViewController(detil, animated: true)
+            }else if bottombannertype[index]==3{
+                web.webtitle=bottomtitle[index]
+                web.url = bottombannerLinke[index]
+                self.navigationController?.pushViewController(web, animated: true)
+            }
         }
-        self.navigationController?.pushViewController(web, animated: true)
+        
+    }
+    // set up layout
+    private func collectionLayout() -> UICollectionViewLayout {
+        let layout = CustomLayout()
+        layout.row=1
+        layout.column=4
+        layout.padding=10
+        layout.edgeMargin=10
+        return layout;
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return weeknewList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        let weeknewlist = weeknewList[indexPath.row]
+        let url = URL(string: weeknewlist.logo)
+        cell.img.kf.indicatorType = .activity
+        cell.img.kf.setImage(with: url )
+        cell.name.text = weeknewlist.name
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let weeknewlist = weeknewList[indexPath.row]
+        let detil = DetilViewController()
+        detil.productId=weeknewlist.id
+        detil.navtitle=weeknewlist.name
+        self.navigationController?.pushViewController(detil, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func getRed(){
-        red = UIView(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 180)))
-        red.backgroundColor = UIColor.Red
+    func getweekHotView(){
+        weekHotView = IWBusinessCategorySV(frame: CGRect(x: 0, y: weekHot.frame.maxY, width: view.bounds.width, height: 200), imageArray: weekHotImg, titleArray: weekHotTitle, target: self, action: #selector(HomeFragmentVC.clickWeekHotBtn(_:)))
+        incloudView.addSubview(weekHotView)
+    }
+    @objc func clickWeekHotBtn(_ sender: UIButton?) {
+        let tag = (sender?.tag ?? 0) - Int(KCategoryTag)
+        //        SYIToast.alert(withTitleBottom: weekHotTitle[tag])
+        let detil = DetilViewController()
+        detil.productId=weekHotID[tag]
+        detil.navtitle=weekHotTitle[tag]
+        self.navigationController?.pushViewController(detil, animated: true)
     }
     func getBottomLine(){
-        BottomLab = UILabel(frame: CGRect(x:0, y:red.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 40)))
-        BottomLab.text = "———— 我是有底线的 ————"
+        BottomLab = UILabel(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 40)))
+        BottomLab.text = "———— 到底了哦 ————"
         BottomLab.textAlignment=NSTextAlignment.center
         BottomLab.textColor = UIColor.Line
         BottomLab.font = UIFont.boldSystemFont(ofSize: 13)
+        incloudView.addSubview(BottomLab)
     }
 }

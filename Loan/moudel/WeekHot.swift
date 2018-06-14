@@ -36,6 +36,9 @@ struct weekhotdata: Mappable {
     var link : String!
     var logo : String!
     var comment : String!
+    var maxAmount : AnyObject!
+    var minAmount : AnyObject!
+    var minRate : AnyObject!
     
     init?(map: Map) {
         
@@ -45,7 +48,10 @@ struct weekhotdata: Mappable {
         name <- map["name"]
         link <- map["link"]
         logo <- map["logo"]
+        maxAmount <- map["maxAmount"]
+        minAmount <- map["minAmount"]
         comment <- map["comment"]
+        minRate <- map["minRate"]
     }
 }
 

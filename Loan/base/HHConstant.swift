@@ -91,3 +91,8 @@ func imageWithColor(color:UIColor, size:CGSize) -> UIImage {
     return img!;
 }
 
+//去除小数点后没用的0
+func forTrailingZero(temp: Float) -> String {
+    let tempVar = String(format: "%g", temp)
+    return tempVar
+}

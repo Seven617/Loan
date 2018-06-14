@@ -41,6 +41,9 @@ struct detildata:Mappable {
     var applyCondition : String!
     //产品介绍
     var description : String!
+    var maxAmount : AnyObject!
+    var minAmount : AnyObject!
+    var minRate : AnyObject!
     
     init?(map: Map) {
         
@@ -54,6 +57,9 @@ struct detildata:Mappable {
         otherInfo <- map["otherInfo"]
         applyCondition <- map["applyCondition"]
         description <- map["description"]
+        maxAmount <- map["maxAmount"]
+        minAmount <- map["minAmount"]
+        minRate <- map["minRate"]
     }
 }
 

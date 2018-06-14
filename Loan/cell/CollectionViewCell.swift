@@ -41,20 +41,20 @@ class CollectionViewCell: UICollectionViewCell {
         img.clipsToBounds = true
         addSubview(img)
         
-        let lineLeft:CGFloat = img.frame.right + 10
-        let lineMargin:CGFloat = 10
+        let lineLeft:CGFloat = img.frame.right + kWithRelIPhone6(width: 10)
+        let lineMargin:CGFloat = kHeightRelIPhone6(height: 10)
         
         LabView.frame = CGRect(x: lineLeft, y: 0, width: kWithRelIPhone6(width:SCREEN_WIDTH - img.frame.width), height: kHeightRelIPhone6(height:50))
         addSubview(LabView)
         
         
-        name.frame = CGRect(x: 0, y: lineMargin, width:  kWithRelIPhone6(width: 60), height: kHeightRelIPhone6(height: 10))
-        name.font = UIFont.italicSystemFont(ofSize: 15)
+        name.frame = CGRect(x: 0, y: lineMargin, width:  kWithRelIPhone6(width: 80), height: kHeightRelIPhone6(height: 10))
+        name.font = UIFont.systemFont(ofSize: 14)
         name.textAlignment = .left
         LabView.addSubview(name)
         
         quotalab.frame = CGRect(x: 0, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 28), height: kHeightRelIPhone6(height:10))
-        quotalab.font = UIFont.italicSystemFont(ofSize: 13)
+        quotalab.font = UIFont.systemFont(ofSize: 13)
         quotalab.textAlignment = .left
         quotalab.text = "额度"
         let quotalabtext:String = quotalab.text!//获取label的text
@@ -65,9 +65,9 @@ class CollectionViewCell: UICollectionViewCell {
         
         quota.frame = CGRect(x: quotalab.frame.right, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 100), height: kHeightRelIPhone6(height:10))
         quota.textColor = UIColor.red
-        quota.textAlignment = .center
+        quota.textAlignment = .left
         quota.text = "Wait loading..."
-        quota.font = UIFont.boldSystemFont(ofSize: 13)
+        quota.font = UIFont.systemFont(ofSize: 13)
         let quotatext:String = quota.text!//获取label的text
         let quotaattributes = [kCTFontAttributeName: quota.font!]//计算label的字体
         quota.frame = labelSize(text: quotatext, attributes: quotaattributes)//调用计算label宽高的方法

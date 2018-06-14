@@ -38,6 +38,7 @@ struct weeknewdata: Mappable {
     var comment : String!
     var maxAmount : AnyObject!
     var minAmount : AnyObject!
+    var minRate : AnyObject!
     
     init?(map: Map) {
 
@@ -50,6 +51,7 @@ struct weeknewdata: Mappable {
         comment <- map["comment"]
         maxAmount <- map["maxAmount"]
         minAmount <- map["minAmount"]
+        minRate <- map["minRate"]
     }
 }
 

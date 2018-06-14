@@ -18,10 +18,10 @@ extension UIFont {
     class func systemFont(ofSize fontSize: CGFloat) -> UIFont {
         var fontSize = fontSize
         //根据屏幕尺寸判断的设备，然后字体设置为0.8倍
-        if SCREEN_HEIGHT < 568 {
-            fontSize = fontSize * 0.8
+        if IPHONEX_DEV{
+            fontSize = (kScreen_Height / 667.0)*fontSize*0.85
         }else{
-            fontSize = fontSize * 1.2
+            fontSize = (kScreen_Height / 667.0)*fontSize
         }
         let newFont: UIFont? = UIFont.preferredFont(forTextStyle: .body)
         let ctfFont: UIFontDescriptor? = newFont?.fontDescriptor

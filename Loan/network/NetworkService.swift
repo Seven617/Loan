@@ -85,7 +85,7 @@ extension NetworkService: TargetType{
         case .detil:
             return "/loanProduct/detail"
         case .query:
-            return "loanProduct/query"
+            return "/loanProduct/query"
         }
     }
     var method: Moya.Method {

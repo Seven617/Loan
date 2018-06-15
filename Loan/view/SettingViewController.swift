@@ -59,14 +59,14 @@ class SettingViewController: BaseViewController {
         btn.setTitleColor(UIColor.Main, for: .normal) //普通状态下文字的颜色
         btn.setTitleColor(UIColor.MainPress, for: .highlighted) //触摸状态下文字的颜色
         btn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         background.addSubview(btn)
         
         let LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: kHeightRelIPhone6(height: 40))))
         LoginOutBtn.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: background.frame.maxY + 50)
         LoginOutBtn.setTitle("退出当前账号", for:.normal)
-        LoginOutBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        LoginOutBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         LoginOutBtn.backgroundColor = UIColor.Main
         LoginOutBtn.addTarget(self,action:#selector(loginOut),for:.touchUpInside)
         LoginOutBtn.setTitleColor(UIColor.white, for: .normal) //普通状态下文字的颜色

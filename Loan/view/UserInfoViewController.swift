@@ -98,26 +98,26 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
                 cell.textLabel?.text = "手机号"
                 cell.detailTextLabel?.text = "188****0800"
                 cell.isUserInteractionEnabled = false
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }else if(indexPath.row == 1){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "姓名"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
                 cell.detailTextLabel?.text = name
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }else if(indexPath.row == 2){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "身份证"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
                 cell.detailTextLabel?.text = idcard
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }else if(indexPath.row == 3){
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 cell.textLabel?.text = "现居地址"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
                 cell.detailTextLabel?.text = address
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }
             return cell
     }

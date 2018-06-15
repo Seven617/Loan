@@ -46,6 +46,10 @@
 		0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */; };
 		04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC520AD2BE300B48E54 /* RightButton.swift */; };
 		04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC720AD2E4E00B48E54 /* BaseViewController.swift */; };
+		047E0ACB20D35E7800FDE00F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E0ACA20D35E7800FDE00F /* LoginViewController.swift */; };
+		047E0ACD20D3668400FDE00F /* WeekNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E0ACC20D3668400FDE00F /* WeekNewViewController.swift */; };
+		047E0ACF20D36E5900FDE00F /* WeekHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E0ACE20D36E5900FDE00F /* WeekHotViewController.swift */; };
+		047E0AD120D36ED500FDE00F /* WeekBestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E0AD020D36ED500FDE00F /* WeekBestViewController.swift */; };
 		0481169520D0C77500644CDE /* LYEmptyBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481168B20D0C77400644CDE /* LYEmptyBaseView.m */; };
 		0481169620D0C77500644CDE /* UIView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481169020D0C77500644CDE /* UIView+Empty.m */; };
 		0481169720D0C77500644CDE /* LYEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481169120D0C77500644CDE /* LYEmptyView.m */; };
@@ -134,6 +138,10 @@
 		04556CC520AD2BE300B48E54 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
 		04556CC720AD2E4E00B48E54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
+		047E0ACA20D35E7800FDE00F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		047E0ACC20D3668400FDE00F /* WeekNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekNewViewController.swift; sourceTree = "<group>"; };
+		047E0ACE20D36E5900FDE00F /* WeekHotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHotViewController.swift; sourceTree = "<group>"; };
+		047E0AD020D36ED500FDE00F /* WeekBestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBestViewController.swift; sourceTree = "<group>"; };
 		0481168A20D0C77400644CDE /* LYEmptyViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEmptyViewHeader.h; sourceTree = "<group>"; };
 		0481168B20D0C77400644CDE /* LYEmptyBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEmptyBaseView.m; sourceTree = "<group>"; };
 		0481168C20D0C77400644CDE /* LYEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEmptyView.h; sourceTree = "<group>"; };
@@ -343,6 +351,10 @@
 				044FA73720B421B400497CE9 /* IDCardViewController.swift */,
 				0450BB0220B56758002780DA /* WebViewController.swift */,
 				0486660820C92AA400BF4DED /* DetilViewController.swift */,
+				047E0ACA20D35E7800FDE00F /* LoginViewController.swift */,
+				047E0ACC20D3668400FDE00F /* WeekNewViewController.swift */,
+				047E0AD020D36ED500FDE00F /* WeekBestViewController.swift */,
+				047E0ACE20D36E5900FDE00F /* WeekHotViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -588,6 +600,7 @@
 				"${BUILT_PRODUCTS_DIR}/EasyNavigation/EasyNavigation.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/LTAutoScrollView/LTAutoScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -602,6 +615,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyNavigation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTAutoScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -634,7 +648,9 @@
 				0486660120C8DE8E00BF4DED /* WeekHot.swift in Sources */,
 				0452030220ABF47F008E181C /* UIFont+Extension.swift in Sources */,
 				0452030920ABF4C3008E181C /* NavigationController.swift in Sources */,
+				047E0ACF20D36E5900FDE00F /* WeekHotViewController.swift in Sources */,
 				044D9DE220B6887500A9A519 /* SYIToast.m in Sources */,
+				047E0ACD20D3668400FDE00F /* WeekNewViewController.swift in Sources */,
 				0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */,
 				0481169820D0C77500644CDE /* MyDIYEmpty.m in Sources */,
 				0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */,
@@ -644,6 +660,7 @@
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
 				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
 				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,
+				047E0AD120D36ED500FDE00F /* WeekBestViewController.swift in Sources */,
 				04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */,
@@ -686,6 +703,7 @@
 				044E979520AEDF8400114530 /* CGRect+Extension.swift in Sources */,
 				0481169920D0C77500644CDE /* UIView+LYExtension.m in Sources */,
 				044F179D20B91D4700BFF5CB /* ZJNoticeView.swift in Sources */,
+				047E0ACB20D35E7800FDE00F /* LoginViewController.swift in Sources */,
 				0486660320C8DE8E00BF4DED /* Radio.swift in Sources */,
 				04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */,
 				04EA971E20B7E50400BC12C3 /* WkwebViewConfig.swift in Sources */,
@@ -840,10 +858,7 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";
@@ -863,10 +878,7 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";

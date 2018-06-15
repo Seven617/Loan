@@ -80,17 +80,24 @@ class DetilViewController: BaseViewController {
     //关键提示
     private func getInfoLab(){
         
-        let topHead=UIView(frame: CGRect(x:0, y:navView.frame.bottom,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: kHeightRelIPhone6(height: 150))))
+        let topHead=UIView(frame: CGRect(x:0, y:navView.frame.bottom,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 130)))
         topHead.backgroundColor=UIColor.Main
         self.view.addSubview(topHead)
         
-        let img=UIImageView(frame: CGRect(x:SCREEN_WIDTH/2 - kWithRelIPhone6(width: 25), y: kHeightRelIPhone6(height: 10), width: kWithRelIPhone6(width: 60), height: kHeightRelIPhone6(height:60)))
+        let img=UIImageView(frame: CGRect(x:SCREEN_WIDTH/6 - kWithRelIPhone6(width: 25), y: kHeightRelIPhone6(height: 10), width: kWithRelIPhone6(width: 60), height: kHeightRelIPhone6(height:60)))
         let url = URL(string: detillogo)
         img.kf.indicatorType = .activity
         img.kf.setImage(with: url )
         img.layer.cornerRadius = 10
         img.clipsToBounds = true
         topHead.addSubview(img)
+        
+        let name = UILabel(frame: CGRect(x:img.frame.right+kWithRelIPhone6(width: 10), y:  kHeightRelIPhone6(height: (img.frame.height+10)/2), width: kWithRelIPhone6(width: 100), height: kHeightRelIPhone6(height:10)))
+        name.font = UIFont.systemFont(ofSize: 18)
+        name.textColor=UIColor.white
+        name.textAlignment = .left
+        name.text = navtitle
+        topHead.addSubview(name)
         
         
         let quota = UILabel(frame: CGRect(x:0, y: img.frame.bottom + kHeightRelIPhone6(height: 10), width: SCREEN_WIDTH/2, height: kHeightRelIPhone6(height:15)))
@@ -123,7 +130,7 @@ class DetilViewController: BaseViewController {
         
         let OutView = UIView(frame: CGRect(x:0, y:topHead.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 350)))
         
-        let commentIcon = UIImageView(frame: CGRect(x:20, y:kHeightRelIPhone6(height: 10) ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        let commentIcon = UIImageView(frame: CGRect(x:20, y:kHeightRelIPhone6(height: 10) ,width: kWithRelIPhone6(width: 5), height:kHeightRelIPhone6(height: 20)))
         commentIcon.backgroundColor = UIColor.Main
         OutView.addSubview(commentIcon)
         
@@ -152,7 +159,7 @@ class DetilViewController: BaseViewController {
         line1.backgroundColor=UIColor.Gray
         OutView.addSubview(line1)
         
-        let otherInfoIcon = UIImageView(frame: CGRect(x:20, y:line1.frame.maxY+kHeightRelIPhone6(height: 10) ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        let otherInfoIcon = UIImageView(frame: CGRect(x:20, y:line1.frame.maxY+kHeightRelIPhone6(height: 10) ,width: kWithRelIPhone6(width: 5), height:kHeightRelIPhone6(height: 20)))
         otherInfoIcon.backgroundColor = UIColor.Main
         OutView.addSubview(otherInfoIcon)
         
@@ -182,7 +189,7 @@ class DetilViewController: BaseViewController {
         line2.backgroundColor=UIColor.Gray
         OutView.addSubview(line2)
         
-        let applyConditionIcon = UIImageView(frame: CGRect(x:20, y:line2.frame.maxY+kHeightRelIPhone6(height: 10) ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        let applyConditionIcon = UIImageView(frame: CGRect(x:20, y:line2.frame.maxY+kHeightRelIPhone6(height: 10) ,width: kWithRelIPhone6(width: 5), height:kHeightRelIPhone6(height: 20)))
         applyConditionIcon.backgroundColor = UIColor.Main
         OutView.addSubview(applyConditionIcon)
         
@@ -211,7 +218,7 @@ class DetilViewController: BaseViewController {
         OutView.addSubview(line3)
         
         
-        let descriptionIcon = UIImageView(frame: CGRect(x:20, y:line3.frame.maxY+kHeightRelIPhone6(height: 10) ,width: 5, height:kHeightRelIPhone6(height: 20)))
+        let descriptionIcon = UIImageView(frame: CGRect(x:20, y:line3.frame.maxY+kHeightRelIPhone6(height: 10) ,width: kWithRelIPhone6(width: 5), height:kHeightRelIPhone6(height: 20)))
         descriptionIcon.backgroundColor = UIColor.Main
         OutView.addSubview(descriptionIcon)
         

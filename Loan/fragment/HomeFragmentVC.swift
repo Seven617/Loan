@@ -12,34 +12,21 @@ import MJRefresh
 import Kingfisher
 
 
-class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,SCCycleScrollViewDelegate,UIScrollViewDelegate {
+class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,SCCycleScrollViewDelegate,UIScrollViewDelegate ,UITableViewDelegate,UITableViewDataSource{
     //本周最新贷款的数量
     var weeknewList : [weeknewdata] = []
-    
+    //本周最火贷款数量
+    var weekhotList : [weekhotdata] = []
+    //Banner
+    var bannerList : [classifyList] = []
     //自定义导航栏
     var navView = UIView()
-    
     //外层scrollView
     var MainscrollView = UIScrollView()
-    
     //包含UI控件层
     var incloudView = UIView()
-    
-    //头部banner
-    var topbannerId:[Int]=[]
-    var toptitle:[String]=[]
-    var topImages:[String]=[]
-    var topbannertype:[Int]=[]
-    var topbannerLinke:[String]=[]
-    var topBanner : SCCycleScrollView!
-    
-    //底部banner
-    var bottombannerId:[Int]=[]
-    var bottomtitle:[String]=[]
-    var bottomImages:[String]=[]
-    var bottombannertype:[Int]=[]
-    var bottombannerLinke:[String]=[]
-    var bottomBanner : SCCycleScrollView!
+    //banner
+    var BannerView : SCCycleScrollView!
     
     //本周上新（文字）
     var weekNew = UIView()
@@ -51,30 +38,16 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     var featuredTopics = UIView()
     //三个按钮
     var BtnGroup = UIView()
-    
     //本周上新
-    var weekNewView: UICollectionView!
-    
+    var weekNewView:UICollectionView!
     //滚动广播
-    var radiotxt:[String]=[]
     var radioView = ZJNoticeView()
-    
     //本周热门
-    var weekHotID:[Int]=[]
-    var weekHotTitle:[String]=[]
-    var weekHotImg:[String]=[]
-    var weekHotLinke:[String]=[]
-    var weekHotView : IWBusinessCategorySV!
-    
-    //本周热门
-    var speedLoanID:[Int]=[]
-    var speedLoanTitle:[String]=[]
-    var speedLoanImg:[String]=[]
-    var speedLoanLinke:[String]=[]
-    var speedLoanView : IWBusinessCategorySV!
+    var tableView:UITableView!
+    //用户数量
+    var amountofusers:UIView!
     //底线
     var BottomLab = UILabel()
-    
     // 顶部刷新
     let header = MJRefreshNormalHeader()
     
@@ -106,62 +79,33 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     func initView(){
         intiNavigationControlle()
         initincloudView()
-        initTopBanner()
-        getBtnView()
-        getLine()
-        getRadioView()
-        getweekNewLab()
-        getweekNewView()
-        getweekHotLab()
-        getweekHotView()
-        initBottomBanner()
-//        getspeedLoanLab()
-//        getspeedLoanView()
-        getBottomLine()
-        getMainScrollView()
+        initBanner()
+        initBtnView()
+        initLine()
+        initRadioView()
+        initweekNewLab()
+        initweekNewView()
+        initweekHotLab()
+        initweekHotView()
+        initAmountofusers()
+        initBottomLine()
+        initMainScrollView()
     }
     func initData(){
         getBanner()
         getWeekNew()
         getRadio()
         getWeekHot()
-//        getSpeed()
     }
     //顶部下拉刷新
     @objc func headerRefresh(){
         print("下拉刷新.")
-        dataclear()
         initData()
         sleep(2)
         //结束刷新
         MainscrollView.mj_header.endRefreshing()
     }
-    func dataclear(){
-        toptitle=[]
-        topImages=[]
-        topbannerId=[]
-        topbannertype=[]
-        topbannerLinke=[]
-        
-        bottomtitle=[]
-        bottomImages=[]
-        bottombannerId=[]
-        bottombannertype=[]
-        bottombannerLinke=[]
-        
-        
-        radiotxt=[]
-        
-        weekHotID=[]
-        weekHotTitle=[]
-        weekHotImg=[]
-        weekHotLinke=[]
-        
-        speedLoanID=[]
-        speedLoanTitle=[]
-        speedLoanImg=[]
-        speedLoanLinke=[]
-    }
+    
     func intiNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
@@ -176,25 +120,20 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         navView.addSubview(titleLabel)
     }
     
-    func getBanner(){
+    @objc func getBanner(){
         bannerdata.request { (banner) in
-            for topbanner in (banner?.bannerList)!{
-                self.toptitle.append(topbanner.title)
-                self.topImages.append(topbanner.image)
-                self.topbannerId.append(topbanner.id)
-                self.topbannertype.append(topbanner.targetType)
-                self.topbannerLinke.append(topbanner.targetContent)
+            if let banner = banner{
+                if let classifyList = banner.classifyList{
+                    OperationQueue.main.addOperation {
+                        self.bannerList = classifyList
+                        var bottomImages:[String]=[]
+                        for img in self.bannerList{
+                            bottomImages.append(img.image)
+                        }
+                        self.BannerView.imageArray=bottomImages as [AnyObject]
+                    }
+                }
             }
-//            self.initTopBanner()
-            self.topBanner.imageArray = self.topImages as [AnyObject]
-            for bottombanner in (banner?.classifyList)!{
-                self.bottomtitle.append(bottombanner.title)
-                self.bottomImages.append(bottombanner.image)
-                self.bottombannerId.append(bottombanner.id)
-                self.bottombannertype.append(bottombanner.targetType)
-                self.bottombannerLinke.append(bottombanner.targetContent)
-            }
-            self.initBottomBanner()
         }
     }
     
@@ -210,35 +149,27 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
             }
         }
     }
-    func getSpeed(){
-       weekspeeddata.request { (weekspeed) in
-            for data in weekspeed!{
-                self.speedLoanID.append(data.id)
-                self.speedLoanTitle.append(data.name)
-                self.speedLoanImg.append(data.logo)
-                self.speedLoanLinke.append(data.link)
-            }
-            self.getspeedLoanView()
-        }
-    }
+    
     func getRadio(){
         radiodata.request { (radio) in
+            var radiotxt:[String]=[]
             for msg in (radio?.list)!{
-                self.radiotxt.append(msg.descriptionBoard)
+                radiotxt.append(msg.descriptionBoard)
             }
-            self.radioView.scrollLabel.setTexts(self.radiotxt)
+            self.radioView.scrollLabel.setTexts(radiotxt)
         }
     }
     
-    func getWeekHot(){
+    @objc func getWeekHot(){
         weekhotdata.request { (weekhot) in
-            for data in weekhot!{
-                self.weekHotID.append(data.id)
-                self.weekHotTitle.append(data.name)
-                self.weekHotImg.append(data.logo)
-                self.weekHotLinke.append(data.link)
+            if let weekhot = weekhot{
+                OperationQueue.main.addOperation {
+                    self.weekhotList = weekhot
+                    self.tableView.reloadData()
+                }
+            }else {
+                print("网络错误")
             }
-            self.getweekHotView()
         }
     }
     
@@ -247,7 +178,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     //获取getMainScrollView
-    func getMainScrollView(){
+    func initMainScrollView(){
         MainscrollView = UIScrollView(frame: CGRect(x:0, y:navH, width:SCREEN_WIDTH, height:SCREEN_HEIGHT))
         //设置代理
         MainscrollView.delegate = self
@@ -261,20 +192,8 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         
     }
-    //获取Banner滚动条
-    /*  设置为系统的pageControl样式利用dotType */
-    func initTopBanner(){
-        let placeholderImage = UIImage(named: "WechatIMG1")
-        topBanner = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:0, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 150)),delegate: self,placeholderImage: placeholderImage)
-        topBanner.delegate = self
-        topBanner.timeInterval = 3.5
-        topBanner.imageArray = topImages as [AnyObject]
-        topBanner.pageControlBottomMargin = 5
-        topBanner.pageControlRightMargin = (UIScreen.main.bounds.width - topBanner.pageControlSize.width) / 2.0
-        incloudView.addSubview(topBanner)
-    }
     
-    private func getweekNewLab(){
+    private func initweekNewLab(){
         weekNew = UIView(frame: CGRect(x:0, y:radioView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named: "weeknew_icon")
@@ -282,15 +201,15 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:kHeightRelIPhone6(height: 10) ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
         weekLab.text = "今日精选"
-        weekLab.textColor = UIColor.Font2nd
+        weekLab.textColor = UIColor.Font1st
         weekLab.font = UIFont.systemFont(ofSize: 14)
         weekNew.addSubview(weekLab)
         weekNew.backgroundColor = UIColor.white
         incloudView.addSubview(weekNew)
     }
     
-    func getBtnView(){
-        BtnGroup=UIView(frame: CGRect(x:0, y:topBanner.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height:120)))
+    func initBtnView(){
+        BtnGroup=UIView(frame: CGRect(x:0, y:BannerView.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height:120)))
         BtnGroup.backgroundColor=UIColor.white
         incloudView.addSubview(BtnGroup)
         
@@ -325,7 +244,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         BtnGroup.addSubview(sesameloan)
     }
     
-    func getLine(){
+    func initLine(){
         featuredTopics = UIView(frame: CGRect(x:0, y:BtnGroup.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 170)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named: "best_icon")
@@ -333,7 +252,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let bestLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
         bestLab.text = "精选专题"
-        bestLab.textColor = UIColor.Font2nd
+        bestLab.textColor = UIColor.Font1st
         bestLab.font = UIFont.systemFont(ofSize: 14)
         featuredTopics.backgroundColor = UIColor.white
         featuredTopics.addSubview(bestLab)
@@ -341,19 +260,35 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let weeknewbtn = UIButton(frame:CGRect(x: SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+30) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:110)))
         weeknewbtn.setImage(UIImage(named: "weeknew"), for: .normal)
+        
+        weeknewbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
+        weeknewbtn.tag=1
         featuredTopics.addSubview(weeknewbtn)
         
         let weekbestbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+30) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
         weekbestbtn.setImage(UIImage(named: "weekbest"), for: .normal)
+        weekbestbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
+        weekbestbtn.tag=2
         featuredTopics.addSubview(weekbestbtn)
         
         let weekhotbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: weekbestbtn.frame.bottom+kHeightRelIPhone6(height:20) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
         weekhotbtn.setImage(UIImage(named: "weekhot"), for: .normal)
+        weekhotbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
+        weekhotbtn.tag=2
         featuredTopics.addSubview(weekhotbtn)
-        
-        
     }
-    private func getweekHotLab(){
+    @objc func touchDownWithButton(button:UIButton) {
+        if (button.tag==1) {
+            navigationController?.pushViewController(WeekNewViewController(), animated: true)
+        }
+        if (button.tag==2) {
+            navigationController?.pushViewController(WeekBestViewController(), animated: true)
+        }
+        if (button.tag==3) {
+            navigationController?.pushViewController(WeekHotViewController(), animated: true)
+        }
+    }
+    private func initweekHotLab(){
         weekHot = UIView(frame: CGRect(x:0, y:weekNewView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named:"weekhot_icon")
@@ -361,7 +296,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
         weekLab.text = "热门产品"
-        weekLab.textColor = UIColor.Font2nd
+        weekLab.textColor = UIColor.Font1st
         weekLab.font = UIFont.systemFont(ofSize: 14)
         weekHot.addSubview(weekLab)
         weekHot.backgroundColor = UIColor.white
@@ -369,28 +304,12 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let seemoreBtn = UIButton(frame: CGRect(x:SCREEN_WIDTH-80, y:10 ,width: kWithRelIPhone6(width: 80), height:kHeightRelIPhone6(height: 15)))
         seemoreBtn.setTitle("查看更多", for:.normal)
-        seemoreBtn.setTitleColor(UIColor.Line, for: .normal) //普通状态下文字的颜色
-        seemoreBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        seemoreBtn.setTitleColor(UIColor.Font3rd, for: .normal) //普通状态下文字的颜色
+        seemoreBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         weekHot.addSubview(seemoreBtn)
     }
-    
-    private func getspeedLoanLab(){
-        speedLoan = UIView(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
-        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: 5, height:kHeightRelIPhone6(height: 20)))
-        icon.backgroundColor = UIColor.Main
-        speedLoan.addSubview(icon)
-        
-        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 20)))
-        weekLab.text = "极速贷款"
-        weekLab.textColor = UIColor.Font2nd
-        weekLab.font = UIFont.systemFont(ofSize: 14)
-        speedLoan.addSubview(weekLab)
-        speedLoan.backgroundColor = UIColor.white
-        incloudView.addSubview(speedLoan)
-    }
-    
-    
-    func getweekNewView(){
+ 
+    func initweekNewView(){
         weekNewView=UICollectionView(frame: CGRect(x:0, y:weekNew.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 80)),collectionViewLayout: collectionLayout())
         weekNewView.backgroundColor = UIColor.white
         weekNewView.isPagingEnabled = true
@@ -401,72 +320,39 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         weekNewView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
     }
     
-    func getspeedLoanView(){
-        speedLoanView = IWBusinessCategorySV(frame: CGRect(x:0, y:speedLoan.frame.maxY ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 190)),imageArray: speedLoanImg, titleArray: speedLoanTitle, target: self, action: #selector(HomeFragmentVC.clickgetspeedLoan(_:)))
-        incloudView.addSubview(speedLoanView)
-    }
     
-    @objc func clickgetspeedLoan(_ sender: UIButton?) {
-        let tag = (sender?.tag ?? 0) - Int(KCategoryTag)
-        //        SYIToast.alert(withTitleBottom: weekNewTitle[tag])
-        let detil = DetilViewController()
-        detil.productId=speedLoanID[tag]
-        detil.navtitle=speedLoanTitle[tag]
-        self.navigationController?.pushViewController(detil, animated: true)
-    }
-    
-    func getRadioView(){
+    func initRadioView(){
         radioView.frame = CGRect(x: 0, y: featuredTopics.frame.maxY, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
         radioView.backgroundColor = UIColor.white;
-        radioView.scrollLabel.setTexts(radiotxt)
+        radioView.scrollLabel.setTexts([" "])
         radioView.scrollLabel.resume()
         incloudView.addSubview(radioView)
     }
     
-    func initBottomBanner() {
+    func initBanner() {
         let placeholderImage = UIImage(named: "WechatIMG1")
-        bottomBanner = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:weekHotView.frame.maxY, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 180)),delegate: self,placeholderImage: placeholderImage)
-        bottomBanner.delegate = self
-        bottomBanner.timeInterval = 3.5
-        bottomBanner.imageArray = bottomImages as [AnyObject]
-        bottomBanner.pageControlBottomMargin = 5
-        bottomBanner.pageControlRightMargin = (UIScreen.main.bounds.width - bottomBanner.pageControlSize.width) / 2.0
-        incloudView.addSubview(bottomBanner)
+        BannerView = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:0, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 150)),delegate: self,placeholderImage: placeholderImage)
+        BannerView.delegate = self
+        BannerView.timeInterval = 3.5
+        BannerView.imageArray = nil
+        BannerView.pageControlBottomMargin = 5
+        BannerView.pageControlRightMargin = (UIScreen.main.bounds.width - BannerView.pageControlSize.width) / 2.0
+        incloudView.addSubview(BannerView)
     }
     
     func cycleScrollView(_ cycleScrollView: SCCycleScrollView, didSelectItemAt index: Int) {
         let web = WebViewController()
         let detil = DetilViewController()
-        if cycleScrollView==topBanner{
-            if topImages.count>0{
-                if topbannertype[index]==2{
-                    detil.navtitle=toptitle[index]
-                    detil.productId=Int(topbannerLinke[index])!
-                    self.navigationController?.pushViewController(detil, animated: true)
-                }else if topbannertype[index]==3{
-                    web.url=topbannerLinke[index]
-                    web.webtitle=toptitle[index]
-                    self.navigationController?.pushViewController(web, animated: true)
-                }
-            }else{
-                print("没有图片")
-            }
-        }else{
-            if bottomImages.count>0{
-                if bottombannertype[index]==2{
-                    detil.navtitle=bottomtitle[index]
-                    detil.productId=Int(bottombannerLinke[index])
-                    self.navigationController?.pushViewController(detil, animated: true)
-                }else if bottombannertype[index]==3{
-                    web.webtitle=bottomtitle[index]
-                    web.url = bottombannerLinke[index]
-                    self.navigationController?.pushViewController(web, animated: true)
-                }
-            }else{
-                print("没有图片")
-            }
+        let classify = bannerList[index]
+        if classify.targetType==2{
+            detil.navtitle=classify.title
+            detil.productId=Int(classify.targetContent)
+            self.navigationController?.pushViewController(detil, animated: true)
+        }else if classify.targetType==3{
+            web.webtitle=classify.title
+            web.url = classify.targetContent
+            self.navigationController?.pushViewController(web, animated: true)
         }
-        
     }
     // set up layout
     private func collectionLayout() -> UICollectionViewLayout {
@@ -491,7 +377,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         cell.quota.text = ("\(forTrailingZero(temp: (weeknewlist.minAmount as! Float)/1000)) ~ \(forTrailingZero(temp: (weeknewlist.maxAmount as! Float)/1000))万元")
         return cell
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let weeknewlist = weeknewList[indexPath.row]
         let detil = DetilViewController()
@@ -503,24 +389,98 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func getweekHotView(){
-        weekHotView = IWBusinessCategorySV(frame: CGRect(x: 0, y: weekHot.frame.maxY, width: view.bounds.width, height: 200), imageArray: weekHotImg, titleArray: weekHotTitle, target: self, action: #selector(HomeFragmentVC.clickWeekHotBtn(_:)))
-        incloudView.addSubview(weekHotView)
+    func initweekHotView(){
+        tableView = UITableView(frame: CGRect(x: 0, y: weekHot.frame.maxY, width: view.bounds.width, height: kHeightRelIPhone6(height: 350)), style: UITableViewStyle.plain)
+        tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        //隐藏滚动条
+        tableView.showsVerticalScrollIndicator = false
+        //禁止拖动
+        tableView.bounces=false
+        tableView.tableFooterView = UIView()
+        tableView.ly_emptyView = MyDIYEmpty.diyNoData()
+        incloudView.addSubview(tableView)
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
-    @objc func clickWeekHotBtn(_ sender: UIButton?) {
-        let tag = (sender?.tag ?? 0) - Int(KCategoryTag)
-        //        SYIToast.alert(withTitleBottom: weekHotTitle[tag])
+    //行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weekhotList.prefix(5).count
+    }    
+    
+    //cell高度
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kHeightRelIPhone6(height:70)
+    }
+    
+    //cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath) as! LoanCell
+        let news = weekhotList.prefix(5)[indexPath.row]
+        let url = URL(string: news.logo)
+        cell.img.kf.indicatorType = .activity
+        cell.img.kf.setImage(with: url )
+        cell.name.text = news.name
+        cell.quota.text = ("\(news.minAmount.description!) - \(news.maxAmount.description!)")
+        cell.rates.text = ("\(news.minRate.description!) %")
+        cell.descriptionlab.text = news.comment
+        return cell
+    }
+    
+    
+    //cell点击
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let news = weekhotList[indexPath.row]
+        self.tableView.deselectRow(at: indexPath, animated: false)
         let detil = DetilViewController()
-        detil.productId=weekHotID[tag]
-        detil.navtitle=weekHotTitle[tag]
+        detil.productId=news.id
+        detil.navtitle=news.name
         self.navigationController?.pushViewController(detil, animated: true)
     }
-    func getBottomLine(){
-        BottomLab = UILabel(frame: CGRect(x:0, y:bottomBanner.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 40)))
-        BottomLab.text = "———— 到底了哦 ————"
+    
+    func initAmountofusers(){
+        amountofusers = UIView(frame: CGRect(x:0, y:tableView.frame.maxY+10,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 100)))
+        amountofusers.backgroundColor=UIColor.white
+        incloudView.addSubview(amountofusers)
+        
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
+        icon.image=UIImage(named:"save_icon")
+        amountofusers.addSubview(icon)
+        
+        let safeLab = UILabel(frame: CGRect(x:icon.frame.right+10, y:kHeightRelIPhone6(height: 10)  ,width: kWithRelIPhone6(width: 80), height:kHeightRelIPhone6(height: 15)))
+        safeLab.text = "安全透明"
+        safeLab.textColor = UIColor.Font1st
+        safeLab.font = UIFont.systemFont(ofSize: 14)
+        amountofusers.addSubview(safeLab)
+
+        let useheart = UILabel(frame: CGRect(x:safeLab.frame.right, y:kHeightRelIPhone6(height: 10) ,width: kWithRelIPhone6(width: 180), height:kHeightRelIPhone6(height: 15)))
+        useheart.text="随心 用心 放心"
+        useheart.textAlignment = .left
+        useheart.textColor=UIColor.Font3rd
+        useheart.font = UIFont.systemFont(ofSize: 12)
+        amountofusers.addSubview(useheart)
+        
+        let user = UILabel(frame: CGRect(x:0,y:useheart.frame.bottom+kHeightRelIPhone6(height: 15) ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 20)))
+        user.text="234万6578位"
+        user.textAlignment = .center
+        user.textColor=UIColor.orange
+        user.font = UIFont.systemFont(ofSize: 18)
+        amountofusers.addSubview(user)
+        
+        let leb = UILabel(frame: CGRect(x:0,y:user.frame.bottom+kHeightRelIPhone6(height: 15) ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 10)))
+        leb.text="平台用户数"
+        leb.textAlignment = .center
+        leb.textColor=UIColor.Font3rd
+        leb.font = UIFont.systemFont(ofSize: 12)
+        amountofusers.addSubview(leb)
+    }
+    
+    func initBottomLine(){
+        BottomLab = UILabel(frame: CGRect(x:0, y:amountofusers.frame.maxY ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 40)))
+        BottomLab.text = "没有更多内容了"
         BottomLab.textAlignment=NSTextAlignment.center
-        BottomLab.textColor = UIColor.Line
-        BottomLab.font = UIFont.boldSystemFont(ofSize: 13)
+        BottomLab.textColor = UIColor.Font3rd
+        BottomLab.font = UIFont.systemFont(ofSize: 13)
         incloudView.addSubview(BottomLab)
     }
 }

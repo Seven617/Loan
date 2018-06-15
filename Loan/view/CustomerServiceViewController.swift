@@ -50,7 +50,7 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
         let lab1 = UILabel(frame: CGRect(x: img.frame.maxX+10, y: navH+20, width: kWithRelIPhone6(width: 200), height: kHeightRelIPhone6(height: 25)))
         lab1.text = "客服帮助"
         lab1.textColor = UIColor.Font2nd
-        lab1.font=UIFont.systemFont(ofSize: 16)
+        lab1.font=UIFont.systemFont(ofSize: 15)
         view.addSubview(lab1)
         
         line = UIView(frame: CGRect(x: 0, y: lab1.frame.maxY+15, width: SCREEN_WIDTH, height: 1))
@@ -86,18 +86,18 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
             if(indexPath.row == 0){
                 cell.textLabel?.text = "服务时间"
                 cell.detailTextLabel?.text = "9:00-17:00(工作日)"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }else if(indexPath.row == 1){
                 cell.textLabel?.text = "联系邮箱"
                 cell.detailTextLabel?.text = "3124703964@qq.com"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }else{
                 cell.textLabel?.text = "客服QQ号:"
                 cell.detailTextLabel?.text = "3124703964"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+                cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             }
             return cell
     }

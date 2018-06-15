@@ -25,7 +25,7 @@ class CustomLayout: UICollectionViewLayout {
     var page: Int {
         get {
             let numOfPage: Int = column * row
-            return totalCount / numOfPage + 1
+            return totalCount / numOfPage
         }
     }
     

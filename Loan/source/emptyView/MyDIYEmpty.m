@@ -60,7 +60,7 @@
 
 - (void)prepare{
     [super prepare];
-    
+    self.autoShowEmptyView = NO;
     self.subViewMargin = 20.f;
     
     self.titleLabFont = [UIFont systemFontOfSize:25];

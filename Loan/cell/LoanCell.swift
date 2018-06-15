@@ -40,6 +40,7 @@ class LoanCell: UITableViewCell {
         quotalab.frame = CGRect(x: 0, y: name.frame.bottom, width: kWithRelIPhone6(width: 30), height: kHeightRelIPhone6(height:10))
         quotalab.font = UIFont.systemFont(ofSize: 13)
         quotalab.textAlignment = .left
+        quotalab.textColor=UIColor.Font2nd
         quotalab.text = "额度"
         let quotalabtext:String = quotalab.text!//获取label的text
         let quotalabattributes = [kCTFontAttributeName: quotalab.font!]//计算label的字体
@@ -60,6 +61,7 @@ class LoanCell: UITableViewCell {
         rateslab.frame = CGRect(x: quota.frame.right, y: name.frame.bottom, width: kWithRelIPhone6(width: 30), height: kHeightRelIPhone6(height:10))
         rateslab.font = UIFont.systemFont(ofSize: 13)
         rateslab.textAlignment = .left
+        rateslab.textColor=UIColor.Font2nd
         rateslab.text = "费率"
         let rateslabtext:String = quotalab.text!//获取label的text
         let rateslabattributes = [kCTFontAttributeName: rateslab.font!]//计算label的字体
@@ -77,6 +79,7 @@ class LoanCell: UITableViewCell {
         
         descriptionlab.frame = CGRect(x: 0, y: rates.frame.bottom + lineMargin, width: kWithRelIPhone6(width: LabView.frame.width), height: kHeightRelIPhone6(height:10))
         descriptionlab.textAlignment = .left
+        descriptionlab.textColor=UIColor.Font2nd
         descriptionlab.font = UIFont.systemFont(ofSize: 13)
         
         LabView.addSubview(name)

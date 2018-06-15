@@ -53,7 +53,7 @@ class AboutUsViewController: BaseViewController {
         Lab.text = "杭州快便付信息技术有限公司"
         Lab.textAlignment=NSTextAlignment.center  
         Lab.textColor = UIColor.Font2nd
-        Lab.font = UIFont.systemFont(ofSize: 16)
+        Lab.font = UIFont.systemFont(ofSize: 15)
         view.addSubview(Lab)
         
         let VersionLab = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30)))
@@ -64,7 +64,7 @@ class AboutUsViewController: BaseViewController {
         VersionLab.text = "当前版本是:"+String(describing: appVersion!)
         VersionLab.textAlignment=NSTextAlignment.center
         VersionLab.textColor = UIColor.Font2nd
-        VersionLab.font = UIFont.systemFont(ofSize: 16)
+        VersionLab.font = UIFont.systemFont(ofSize: 14)
         view.addSubview(VersionLab)
     }
     override func didReceiveMemoryWarning() {

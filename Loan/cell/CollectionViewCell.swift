@@ -36,7 +36,7 @@ class CollectionViewCell: UICollectionViewCell {
 
     
     func initialFromXib() {
-        img.frame = CGRect(x: 5, y: 0, width:kWithRelIPhone6(width: 50) , height: kHeightRelIPhone6(height: 50))
+        img.frame = CGRect(x: kWithRelIPhone6(width: 10), y: 0, width:kWithRelIPhone6(width: 50) , height: kHeightRelIPhone6(height: 50))
         img.layer.cornerRadius = 10
         img.clipsToBounds = true
         addSubview(img)
@@ -56,6 +56,7 @@ class CollectionViewCell: UICollectionViewCell {
         quotalab.frame = CGRect(x: 0, y: name.frame.bottom + lineMargin, width: kWithRelIPhone6(width: 28), height: kHeightRelIPhone6(height:10))
         quotalab.font = UIFont.systemFont(ofSize: 13)
         quotalab.textAlignment = .left
+        quotalab.textColor=UIColor.Font2nd
         quotalab.text = "额度"
         let quotalabtext:String = quotalab.text!//获取label的text
         let quotalabattributes = [kCTFontAttributeName: quotalab.font!]//计算label的字体

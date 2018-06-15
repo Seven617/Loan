@@ -118,7 +118,7 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
                     cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                     let image = UIImage(named:"kefu")
                     cell.imageView?.image = image
-                    cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                    cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
                     cell.textLabel?.text = data![indexPath.row]
                     return cell
                 }else{
@@ -127,7 +127,7 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
                     let image = UIImage(named:"aboutus")
                     cell.imageView?.image = image
                     cell.textLabel?.text = data![indexPath.row]
-                    cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                    cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
                     cell.detailTextLabel?.text = "快来了解一下快便贷"
                     cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
                     return cell

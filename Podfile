@@ -18,5 +18,6 @@ pod 'EasyNavigation','~>1.0'
 pod 'Alamofire', '~> 4.7'
 pod 'Moya'
 pod 'ObjectMapper'
+pod 'MBProgressHUD'
 end
 

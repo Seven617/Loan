@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import Kingfisher
+import MBProgressHUD
 
 class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDownMenuDelegate,UITableViewDelegate,UITableViewDataSource {
     //贷款的数量
@@ -189,16 +190,23 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
+        //1.先设置样式
         tableView.ly_emptyView = MyDIYEmpty.diyNoData()
+        //2.关闭自动显隐（此步可封装进自定义类中，相关调用就可省去这步）
+//        tableView.ly_emptyView.autoShowEmptyView = false
         self.view.addSubview(tableView)
     }
     
     @objc func Query(){
+        tableView.ly_startLoading()
+        MBProgressHUD.showAdded(to: view, animated: true)
         querydata.request(periodmax: periodmax, periodmin: periodmin, amountmax: amountmax, amountmin: amountmin) { (query) in
             if let query = query {
                 OperationQueue.main.addOperation {
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     self.loanList = query
                     self.tableView.reloadData()
+                    self.tableView.ly_endLoading()
                 }
             } else {
                 print("网络错误")

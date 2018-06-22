@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import MJRefresh
 
-class WeekBestViewController: BaseViewController {
+class WeekBestViewController: BaseViewController,SCCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource {
+    var bannerList : [classifyList] = []
+    var weekBestList : [weekspeeddata] = []
+    var BannerView : SCCycleScrollView!
     var navView = UIView()
+    var tableView:UITableView!
+    // 顶部刷新
+    let header = MJRefreshNormalHeader()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         initNavigationControlle()
+        initView()
+        initData()
     }
+    
+    func initView(){
+        initBanner()
+        initTableView()
+    }
+    
+    func initData(){
+        getBanner()
+    }
+    
     func initNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
@@ -35,16 +56,140 @@ class WeekBestViewController: BaseViewController {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         navView.addSubview(titleLabel)
     }
+    
+    @objc func getBanner(){
+        bannerdata.request { (banner) in
+            if let banner = banner{
+                if let classifyList = banner.classifyList{
+                    OperationQueue.main.addOperation {
+                        self.bannerList = classifyList
+                        var bottomImages:[String]=[]
+                        for img in self.bannerList{
+                            bottomImages.append(img.image)
+                        }
+                        self.BannerView.imageArray=bottomImages as [AnyObject]
+                    }
+                }
+            }else {
+                print("网络错误")
+            }
+        }
+    }
+    
+    @objc func getWeekBest(){
+        weekspeeddata.request { (weekbest) in
+            if let weekbest = weekbest{
+                OperationQueue.main.addOperation {
+                    self.weekBestList = weekbest
+                    //结束刷新
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.reloadData()
+                }
+            }else {
+                DispatchQueue.main.asyncAfter(deadline: .now()+3, execute:
+                    {
+                        SYIToast.alert(withTitleBottom: "网络错误！")
+                        //结束刷新
+                        self.tableView.mj_header.endRefreshing()
+                })
+            }
+        }
+    }
+    
+    func initBanner() {
+        let placeholderImage = UIImage(named: "loading")
+        BannerView = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:navH, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 150)),delegate: self,placeholderImage: placeholderImage)
+        BannerView.delegate = self
+        BannerView.timeInterval = 3.5
+        BannerView.imageArray = nil
+        BannerView.pageControlBottomMargin = 5
+        BannerView.pageControlRightMargin = (UIScreen.main.bounds.width - BannerView.pageControlSize.width) / 2.0
+        self.view.addSubview(BannerView)
+    }
+    
+    func cycleScrollView(_ cycleScrollView: SCCycleScrollView, didSelectItemAt index: Int) {
+        if BannerView.imageArray == nil{
+            
+        }else{
+            let web = WebViewController()
+            let detil = DetilViewController()
+            let classify = bannerList[index]
+            if classify.targetType==2{
+                detil.navtitle=classify.title
+                detil.productId=Int(classify.targetContent)
+                self.navigationController?.pushViewController(detil, animated: true)
+            }else if classify.targetType==3{
+                web.webtitle=classify.title
+                web.url = classify.targetContent
+                self.navigationController?.pushViewController(web, animated: true)
+            }
+        }
+    }
+    
+    func initTableView(){
+        tableView = UITableView(frame: CGRect(x: 0, y: BannerView.frame.bottom, width: view.bounds.width, height: SCREEN_HEIGHT - kHeightRelIPhone6(height: 150) - kHeightRelIPhone6(height: navH)), style: UITableViewStyle.plain)
+        tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        //隐藏滚动条
+        tableView.showsVerticalScrollIndicator = false
+        //禁止拖动
+        //tableView.bounces=false
+        tableView.tableFooterView = UIView()
+        tableView.ly_emptyView = MyDIYEmpty.diyNoData()
+        self.view.addSubview(tableView)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        //下拉刷新相关设置
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.setRefreshingTarget(self, refreshingAction: #selector(WeekNewViewController.headerRefresh))
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
+        tableView.ly_startLoading()
+    }
+    //顶部下拉刷新
+    @objc func headerRefresh(){
+        getWeekBest()
+    }
+    //行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weekBestList.count
+    }
+    
+    //cell高度
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kHeightRelIPhone6(height:70)
+    }
+    
+    //cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath) as! LoanCell
+        let news = weekBestList[indexPath.row]
+        let url = URL(string: news.logo)
+        cell.img.kf.indicatorType = .activity
+        cell.img.kf.setImage(with: url )
+        cell.name.text = news.name
+        cell.quota.text = ("\(news.minAmount.description!) - \(news.maxAmount.description!)")
+        cell.rates.text = ("\(news.minRate.description!) %")
+        cell.descriptionlab.text = news.comment
+        return cell
+    }
+    
+    
+    //cell点击
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let news = weekBestList[indexPath.row]
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        let detil = DetilViewController()
+        detil.productId=news.id
+        detil.navtitle=news.name
+        self.navigationController?.pushViewController(detil, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .default
     }
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        if parent == nil {
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-    }
+
     @objc func backBtnClicked() {
         navigationController?.popViewController(animated: true)
     }

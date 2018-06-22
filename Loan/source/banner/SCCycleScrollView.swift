@@ -224,7 +224,7 @@ open class SCCycleScrollView: UIView {
         // pageControl只和cell类型有关和滚动方向无关
         if cellType == .Image {
             //pageControl高度是33,
-            pageControl.frame.origin.x = self.frame.width - pageControl.frame.width - pageControlRightMargin
+            pageControl.frame.origin.x = self.frame.width/2 - pageControl.frame.width/2 
             
             pageControl.frame.origin.y = self.frame.height - pageControl.frame.height - pageControlBottomMargin + 15
             

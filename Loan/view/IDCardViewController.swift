@@ -7,8 +7,9 @@
 //
 
 import UIKit
+
 typealias idCardClosure=(_ string:String)->Void
-class IDCardViewController: BaseViewController {
+class IDCardViewController: BaseViewController,UITextFieldDelegate {
     var str:String?
     var idCardField:UITextField!
     var SaveNameBtn:UIButton!
@@ -48,10 +49,21 @@ class IDCardViewController: BaseViewController {
         idCardField.backgroundColor = UIColor.white
         idCardField.textAlignment = .left
         idCardField.placeholder = "请输入身份证号码"
-        idCardField.borderStyle = UITextBorderStyle.roundedRect
+        idCardField.borderStyle = .roundedRect
         idCardField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         idCardField.text = str
         view.addSubview(idCardField);
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
+        idCardField.leftView = paddingView
+        idCardField.leftViewMode = .always
+        idCardField.becomeFirstResponder()
+      
+        let accessoryView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width, height: kHeightRelIPhone6(height: 1))))
+        accessoryView.backgroundColor = UIColor.Line
+        let keyboard = DigitalKeyboard(view, accessoryView: accessoryView, field: idCardField)
+        idCardField.inputView = keyboard
+        idCardField.becomeFirstResponder()
+        idCardField.delegate = self
         
         //创建一个保存按钮
         SaveNameBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.5, height: 40)))
@@ -65,6 +77,15 @@ class IDCardViewController: BaseViewController {
         SaveNameBtn.layer.cornerRadius = 20.0
         SaveNameBtn.clipsToBounds = true
         view.addSubview(SaveNameBtn)
+    }
+ 
+    // 利用代理方法控制字符数量
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else{
+            return true
+        }
+        let textLength = text.count + string.count - range.length
+        return textLength<=18
     }
     
     override func didReceiveMemoryWarning() {

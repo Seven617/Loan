@@ -20,6 +20,11 @@
 		0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419359E20A55F70006D5CF3 /* HomeFragmentVC.swift */; };
 		041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A020A55F7F006D5CF3 /* LoanFragmentVC.swift */; };
 		041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041935A220A55F8E006D5CF3 /* MineFragmentVC.swift */; };
+		042336A620DA11DF00108E55 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042336A520DA11DF00108E55 /* WebService.swift */; };
+		042336A820DA4D0A00108E55 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042336A720DA4D0A00108E55 /* UserInfo.swift */; };
+		0443B52B20D8D0FA00F094CC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443B52A20D8D0FA00F094CC /* Login.swift */; };
+		0443B52D20D8D32C00F094CC /* AuthCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443B52C20D8D32C00F094CC /* AuthCode.swift */; };
+		0443B52F20D8ECD300F094CC /* CheckToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443B52E20D8ECD300F094CC /* CheckToken.swift */; };
 		044D9DE120B6887500A9A519 /* SYIToast+SYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D9DDE20B6887500A9A519 /* SYIToast+SYCategory.m */; };
 		044D9DE220B6887500A9A519 /* SYIToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D9DE020B6887500A9A519 /* SYIToast.m */; };
 		044D9DE420B6954300A9A519 /* HHConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D9DE320B6954300A9A519 /* HHConstant.swift */; };
@@ -30,6 +35,14 @@
 		044F17A520B927F200BFF5CB /* ASAdverRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F17A420B927F200BFF5CB /* ASAdverRollView.m */; };
 		044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */; };
 		044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73720B421B400497CE9 /* IDCardViewController.swift */; };
+		044FE44320DC9E04001FBC7A /* DigitalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */; };
+		044FE44520DC9E1E001FBC7A /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */; };
+		044FE44C20DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */; };
+		044FE44D20DC9E3D001FBC7A /* Keyboard_Backspace@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */; };
+		044FE44E20DC9E3D001FBC7A /* Keyboard_Backspace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */; };
+		044FE44F20DC9E3D001FBC7A /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */; };
+		044FE45020DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */; };
+		044FE45220DCFB2B001FBC7A /* ProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FE45120DCFB2B001FBC7A /* ProtocolViewController.swift */; };
 		0450BB0320B56758002780DA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450BB0220B56758002780DA /* WebViewController.swift */; };
 		0451298C20BFD4CD005D8971 /* ScrollActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451298B20BFD4CD005D8971 /* ScrollActionView.m */; };
 		0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451298D20BFECFB005D8971 /* UIScrollView.m */; };
@@ -44,6 +57,7 @@
 		0452030920ABF4C3008E181C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452030820ABF4C3008E181C /* NavigationController.swift */; };
 		0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225120AA77C7005AB69E /* AboutUsViewController.swift */; };
 		0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */; };
+		045552D320DB87DD0024668F /* InfoSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045552D220DB87DD0024668F /* InfoSave.swift */; };
 		04556CC620AD2BE300B48E54 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC520AD2BE300B48E54 /* RightButton.swift */; };
 		04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04556CC720AD2E4E00B48E54 /* BaseViewController.swift */; };
 		047E0ACB20D35E7800FDE00F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E0ACA20D35E7800FDE00F /* LoginViewController.swift */; };
@@ -106,6 +120,11 @@
 		0419359E20A55F70006D5CF3 /* HomeFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFragmentVC.swift; sourceTree = "<group>"; };
 		041935A020A55F7F006D5CF3 /* LoanFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFragmentVC.swift; sourceTree = "<group>"; };
 		041935A220A55F8E006D5CF3 /* MineFragmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFragmentVC.swift; sourceTree = "<group>"; };
+		042336A520DA11DF00108E55 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		042336A720DA4D0A00108E55 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		0443B52A20D8D0FA00F094CC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		0443B52C20D8D32C00F094CC /* AuthCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCode.swift; sourceTree = "<group>"; };
+		0443B52E20D8ECD300F094CC /* CheckToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckToken.swift; sourceTree = "<group>"; };
 		044D9DDD20B6887400A9A519 /* SYIToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYIToast.h; sourceTree = "<group>"; };
 		044D9DDE20B6887500A9A519 /* SYIToast+SYCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SYIToast+SYCategory.m"; sourceTree = "<group>"; };
 		044D9DDF20B6887500A9A519 /* SYIToast+SYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SYIToast+SYCategory.h"; sourceTree = "<group>"; };
@@ -119,6 +138,14 @@
 		044F17A420B927F200BFF5CB /* ASAdverRollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAdverRollView.m; sourceTree = "<group>"; };
 		044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameViewController.swift; sourceTree = "<group>"; };
 		044FA73720B421B400497CE9 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
+		044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalKeyboard.swift; sourceTree = "<group>"; };
+		044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DigitalKeyboard.bundle; sourceTree = "<group>"; };
+		044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
+		044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@3x.png"; sourceTree = "<group>"; };
+		044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@2x.png"; sourceTree = "<group>"; };
+		044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
+		044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
+		044FE45120DCFB2B001FBC7A /* ProtocolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolViewController.swift; sourceTree = "<group>"; };
 		0450BB0220B56758002780DA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0451298A20BFD4CD005D8971 /* ScrollActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollActionView.h; path = ../../../../../Desktop/WebTest/WebTest/source/scrollmenu/ScrollActionView.h; sourceTree = "<group>"; };
 		0451298B20BFD4CD005D8971 /* ScrollActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollActionView.m; path = ../../../../../Desktop/WebTest/WebTest/source/scrollmenu/ScrollActionView.m; sourceTree = "<group>"; };
@@ -135,6 +162,7 @@
 		0452030820ABF4C3008E181C /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0452225120AA77C7005AB69E /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0452225320AA7D6F005AB69E /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
+		045552D220DB87DD0024668F /* InfoSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSave.swift; sourceTree = "<group>"; };
 		04556CC520AD2BE300B48E54 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
 		04556CC720AD2E4E00B48E54 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04556CD720AD3C8200B48E54 /* Loan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loan-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -315,6 +343,28 @@
 			path = rollingView;
 			sourceTree = "<group>";
 		};
+		044FE43C20DC95EA001FBC7A /* keyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				044FE44620DC9E2A001FBC7A /* images */,
+				044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */,
+				044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */,
+			);
+			path = keyBoard;
+			sourceTree = "<group>";
+		};
+		044FE44620DC9E2A001FBC7A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */,
+				044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */,
+				044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */,
+				044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */,
+				044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		045202AB20ABDECC008E181C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +405,7 @@
 				047E0ACC20D3668400FDE00F /* WeekNewViewController.swift */,
 				047E0AD020D36ED500FDE00F /* WeekBestViewController.swift */,
 				047E0ACE20D36E5900FDE00F /* WeekHotViewController.swift */,
+				044FE45120DCFB2B001FBC7A /* ProtocolViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -387,6 +438,7 @@
 		04556CC920AD378300B48E54 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				044FE43C20DC95EA001FBC7A /* keyBoard */,
 				0481168920D0C6F800644CDE /* emptyView */,
 				048665FB20C8DE0100BF4DED /* scrollview */,
 				04A083F220C306F9002C7386 /* banner */,
@@ -437,6 +489,11 @@
 				049615AA20CE642B003F6C63 /* WeekSpeed.swift */,
 				0486660A20C941EC00BF4DED /* Detil.swift */,
 				049615A620CCD260003F6C63 /* Query.swift */,
+				0443B52A20D8D0FA00F094CC /* Login.swift */,
+				0443B52C20D8D32C00F094CC /* AuthCode.swift */,
+				0443B52E20D8ECD300F094CC /* CheckToken.swift */,
+				042336A720DA4D0A00108E55 /* UserInfo.swift */,
+				045552D220DB87DD0024668F /* InfoSave.swift */,
 			);
 			path = moudel;
 			sourceTree = "<group>";
@@ -445,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				0486660620C8DEC400BF4DED /* NetworkService.swift */,
+				042336A520DA11DF00108E55 /* WebService.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -560,9 +618,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044FE44C20DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png in Resources */,
 				04EA971D20B7E50400BC12C3 /* WKJSPOST.html in Resources */,
 				04ECEAEC20B89BE9001DFD1B /* Assets.xcassets in Resources */,
 				0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */,
+				044FE44E20DC9E3D001FBC7A /* Keyboard_Backspace@2x.png in Resources */,
+				044FE45020DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png in Resources */,
+				044FE44F20DC9E3D001FBC7A /* Keyboard_DismissKey.png in Resources */,
+				044FE44D20DC9E3D001FBC7A /* Keyboard_Backspace@3x.png in Resources */,
+				044FE44520DC9E1E001FBC7A /* DigitalKeyboard.bundle in Resources */,
 				0410108D20B2CD240066903C /* city.plist in Resources */,
 				0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */,
 			);
@@ -636,6 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042336A820DA4D0A00108E55 /* UserInfo.swift in Sources */,
 				04A083F620C3070B002C7386 /* SCCycleScrollViewCell.swift in Sources */,
 				04D15D3420AAF86500A33F5B /* BackViewController.swift in Sources */,
 				04EA971F20B7E50400BC12C3 /* WebView.swift in Sources */,
@@ -651,9 +716,12 @@
 				047E0ACF20D36E5900FDE00F /* WeekHotViewController.swift in Sources */,
 				044D9DE220B6887500A9A519 /* SYIToast.m in Sources */,
 				047E0ACD20D3668400FDE00F /* WeekNewViewController.swift in Sources */,
+				0443B52B20D8D0FA00F094CC /* Login.swift in Sources */,
 				0452030320ABF47F008E181C /* UIColor+Extension.swift in Sources */,
 				0481169820D0C77500644CDE /* MyDIYEmpty.m in Sources */,
+				0443B52F20D8ECD300F094CC /* CheckToken.swift in Sources */,
 				0451298E20BFECFB005D8971 /* UIScrollView.m in Sources */,
+				045552D320DB87DD0024668F /* InfoSave.swift in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
 				0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */,
@@ -661,6 +729,7 @@
 				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
 				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,
 				047E0AD120D36ED500FDE00F /* WeekBestViewController.swift in Sources */,
+				044FE44320DC9E04001FBC7A /* DigitalKeyboard.swift in Sources */,
 				04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */,
@@ -685,9 +754,11 @@
 				0452030720ABF49C008E181C /* BackButton.swift in Sources */,
 				041935A320A55F8E006D5CF3 /* MineFragmentVC.swift in Sources */,
 				0486660220C8DE8E00BF4DED /* Banner.swift in Sources */,
+				0443B52D20D8D32C00F094CC /* AuthCode.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
 				0481169620D0C77500644CDE /* UIView+Empty.m in Sources */,
 				0410107020B2ACBC0066903C /* UIView+Extension.swift in Sources */,
+				044FE45220DCFB2B001FBC7A /* ProtocolViewController.swift in Sources */,
 				044D9DE120B6887500A9A519 /* SYIToast+SYCategory.m in Sources */,
 				044D9DE420B6954300A9A519 /* HHConstant.swift in Sources */,
 				0450BB0320B56758002780DA /* WebViewController.swift in Sources */,
@@ -696,6 +767,7 @@
 				0452030620ABF49C008E181C /* Header.swift in Sources */,
 				0486660920C92AA400BF4DED /* DetilViewController.swift in Sources */,
 				04EA972520B7E51D00BC12C3 /* String+Extension.swift in Sources */,
+				042336A620DA11DF00108E55 /* WebService.swift in Sources */,
 				049615A720CCD260003F6C63 /* Query.swift in Sources */,
 				0486660420C8DE8E00BF4DED /* WeekNew.swift in Sources */,
 				0452225420AA7D6F005AB69E /* CustomerServiceViewController.swift in Sources */,
@@ -858,7 +930,10 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";
@@ -878,7 +953,10 @@
 				DEVELOPMENT_TEAM = EEQB59Y365;
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbfoo.Loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Loan/Loan-Bridging-Header.h";

@@ -10,7 +10,7 @@ import UIKit
 
 typealias sendValueClosure=(_ string:String)->Void
 
-class UpdateNameViewController: BaseViewController {
+class UpdateNameViewController: BaseViewController,UITextFieldDelegate {
     var str:String?
     var nameField:UITextField!
     var SaveNameBtn:UIButton!
@@ -49,11 +49,15 @@ class UpdateNameViewController: BaseViewController {
         nameField.backgroundColor = UIColor.white
         nameField.textAlignment = .left
         nameField.placeholder = "请输入姓名"
-        nameField.borderStyle = UITextBorderStyle.roundedRect
+        nameField.borderStyle = UITextBorderStyle.none
         nameField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         nameField.text = str
-        nameField.addTarget(self,action:#selector(clearPasswordTextFieldAndRememberPwd), for: .editingChanged)
+        nameField.delegate = self
+//        nameField.addTarget(self,action:#selector(clearname), for: .editingChanged)
         view.addSubview(nameField);
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
+        nameField.leftView = paddingView
+        nameField.leftViewMode = .always
         
         //创建一个保存按钮
         SaveNameBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.5, height: 40)))
@@ -68,14 +72,21 @@ class UpdateNameViewController: BaseViewController {
         SaveNameBtn.clipsToBounds = true
         view.addSubview(SaveNameBtn)
     }
-    
-    @objc func clearPasswordTextFieldAndRememberPwd(textField: UITextField) {
-        if(nameField.text == str){
-            print("不能点击")
-        }else{
-            print("可以点击")
+    // 利用代理方法控制字符数量
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else{
+            return true
         }
+        let textLength = text.count + string.count - range.length
+        return textLength<=8
     }
+//    @objc func clearname(textField: UITextField) {
+//        if(nameField.text == str){
+//            print("不能点击")
+//        }else{
+//            print("可以点击")
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -113,12 +113,7 @@ class CustomerServiceViewController: BaseViewController, UITableViewDelegate, UI
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .default
     }  
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        if parent == nil {
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-    }
+ 
     @objc func backBtnClicked() {
         print("H1自定义返回按钮点击")
         navigationController?.popViewController(animated: true)

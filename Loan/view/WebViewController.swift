@@ -64,13 +64,6 @@ class WebViewController: BaseViewController,WKWebViewDelegate {
         UIApplication.shared.statusBarStyle = .default
     }
     
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        if parent == nil {
-            UIApplication.shared.statusBarStyle = .lightContent
-            navigationController?.setNavigationBarHidden(false, animated: false)
-        }
-    }
     @objc func backBtnClicked() {
         if webView.Cangoback()==true{
             self.webView.goBack()

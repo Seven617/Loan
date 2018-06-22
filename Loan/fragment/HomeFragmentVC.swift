@@ -17,8 +17,10 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     var weeknewList : [weeknewdata] = []
     //本周最火贷款数量
     var weekhotList : [weekhotdata] = []
-    //Banner
-    var bannerList : [classifyList] = []
+    //BannerList
+    var bannerList : [bannerList] = []
+    //RadioList
+    var radioList : [radiolist] = []
     //自定义导航栏
     var navView = UIView()
     //外层scrollView
@@ -40,6 +42,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     var BtnGroup = UIView()
     //本周上新
     var weekNewView:UICollectionView!
+    var pageControl: UIPageControl!
     //滚动广播
     var radioView = ZJNoticeView()
     //本周热门
@@ -50,19 +53,23 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     var BottomLab = UILabel()
     // 顶部刷新
     let header = MJRefreshNormalHeader()
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
-        //        Thread.sleep(forTimeInterval: 1) //延长1秒
+        Thread.sleep(forTimeInterval: 0.8) //延长1秒
         view.setNeedsLayout()
         view.layoutIfNeeded()
         initView()
-        initData()
         //下拉刷新相关设置
         header.lastUpdatedTimeLabel.isHidden = true
         header.setRefreshingTarget(self, refreshingAction: #selector(HomeFragmentVC.headerRefresh))
         MainscrollView.mj_header = header
+        initData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,15 +89,17 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         initBanner()
         initBtnView()
         initLine()
-        initRadioView()
         initweekNewLab()
         initweekNewView()
+        initpageControl()
+        initRadioView()
         initweekHotLab()
         initweekHotView()
         initAmountofusers()
         initBottomLine()
         initMainScrollView()
     }
+    
     func initData(){
         getBanner()
         getWeekNew()
@@ -100,10 +109,13 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     //顶部下拉刷新
     @objc func headerRefresh(){
         print("下拉刷新.")
-        initData()
-        sleep(2)
-        //结束刷新
-        MainscrollView.mj_header.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute:
+            {
+                self.getBanner()
+                self.getWeekNew()
+                self.getRadio()
+                self.getWeekHot()
+        })
     }
     
     func intiNavigationControlle(){
@@ -123,7 +135,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     @objc func getBanner(){
         bannerdata.request { (banner) in
             if let banner = banner{
-                if let classifyList = banner.classifyList{
+                if let classifyList = banner.bannerList{
                     OperationQueue.main.addOperation {
                         self.bannerList = classifyList
                         var bottomImages:[String]=[]
@@ -133,16 +145,22 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
                         self.BannerView.imageArray=bottomImages as [AnyObject]
                     }
                 }
+            }else {
+                print("网络错误")
             }
         }
     }
     
-    @objc func getWeekNew(){
-        weeknewdata.request { (weeknew) in
-            if let  weeknew = weeknew{
-                OperationQueue.main.addOperation {
-                    self.weeknewList = weeknew
-                    self.weekNewView.reloadData()
+    @objc func getRadio(){
+        radiodata.request { (radio) in
+            if let radio = radio{
+                if let radiolist = radio.list{
+                    self.radioList=radiolist
+                    var radiotxt:[String]=[]
+                    for radio in self.radioList{
+                        radiotxt.append(radio.descriptionBoard)
+                    }
+                    self.radioView.scrollLabel.setTexts(radiotxt)
                 }
             }else {
                 print("网络错误")
@@ -150,13 +168,18 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         }
     }
     
-    func getRadio(){
-        radiodata.request { (radio) in
-            var radiotxt:[String]=[]
-            for msg in (radio?.list)!{
-                radiotxt.append(msg.descriptionBoard)
+    
+    @objc func getWeekNew(){
+        weeknewdata.request { (weeknew) in
+            if let  weeknew = weeknew{
+                OperationQueue.main.addOperation {
+                    self.weeknewList = weeknew
+                    self.pageControl.numberOfPages = self.weeknewList.count/2
+                    self.weekNewView.reloadData()
+                }
+            }else {
+                print("网络错误")
             }
-            self.radioView.scrollLabel.setTexts(radiotxt)
         }
     }
     
@@ -166,9 +189,16 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
                 OperationQueue.main.addOperation {
                     self.weekhotList = weekhot
                     self.tableView.reloadData()
+                    //结束刷新
+                    self.MainscrollView.mj_header.endRefreshing()
                 }
             }else {
-                print("网络错误")
+                DispatchQueue.main.asyncAfter(deadline: .now()+3, execute:
+                    {
+                        SYIToast.alert(withTitleBottom: "网络错误！")
+                        //结束刷新
+                        self.MainscrollView.mj_header.endRefreshing()
+                })
             }
         }
     }
@@ -194,7 +224,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     private func initweekNewLab(){
-        weekNew = UIView(frame: CGRect(x:0, y:radioView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        weekNew = UIView(frame: CGRect(x:0, y:featuredTopics.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named: "weeknew_icon")
         weekNew.addSubview(icon)
@@ -245,7 +275,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func initLine(){
-        featuredTopics = UIView(frame: CGRect(x:0, y:BtnGroup.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 170)))
+        featuredTopics = UIView(frame: CGRect(x:0, y:BtnGroup.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 180)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named: "best_icon")
         featuredTopics.addSubview(icon)
@@ -258,14 +288,14 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         featuredTopics.addSubview(bestLab)
         incloudView.addSubview(featuredTopics)
         
-        let weeknewbtn = UIButton(frame:CGRect(x: SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+30) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:110)))
+        let weeknewbtn = UIButton(frame:CGRect(x: SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+20) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:110)))
         weeknewbtn.setImage(UIImage(named: "weeknew"), for: .normal)
         
         weeknewbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
         weeknewbtn.tag=1
         featuredTopics.addSubview(weeknewbtn)
         
-        let weekbestbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+30) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
+        let weekbestbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: kHeightRelIPhone6(height:bestLab.frame.bottom+20) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
         weekbestbtn.setImage(UIImage(named: "weekbest"), for: .normal)
         weekbestbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
         weekbestbtn.tag=2
@@ -274,7 +304,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         let weekhotbtn = UIButton(frame:CGRect(x:weeknewbtn.frame.right+SCREEN_WIDTH*0.2/3, y: weekbestbtn.frame.bottom+kHeightRelIPhone6(height:20) , width: SCREEN_WIDTH*0.4, height: kHeightRelIPhone6(height:45)))
         weekhotbtn.setImage(UIImage(named: "weekhot"), for: .normal)
         weekhotbtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
-        weekhotbtn.tag=2
+        weekhotbtn.tag=3
         featuredTopics.addSubview(weekhotbtn)
     }
     @objc func touchDownWithButton(button:UIButton) {
@@ -289,7 +319,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         }
     }
     private func initweekHotLab(){
-        weekHot = UIView(frame: CGRect(x:0, y:weekNewView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
+        weekHot = UIView(frame: CGRect(x:0, y:radioView.frame.maxY+10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 40)))
         let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
         icon.image=UIImage(named:"weekhot_icon")
         weekHot.addSubview(icon)
@@ -316,13 +346,24 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         weekNewView.showsHorizontalScrollIndicator = true
         weekNewView.delegate = self
         weekNewView.dataSource = self
+        weekNewView.showsVerticalScrollIndicator = false
+        weekNewView.showsHorizontalScrollIndicator = false
         incloudView.addSubview(weekNewView)
         weekNewView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
     }
     
+    func initpageControl(){
+        pageControl = UIPageControl(frame: CGRect(x: 0, y: weekNewView.frame.maxY - kHeightRelIPhone6(height: 12), width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 10)))
+        pageControl.backgroundColor=UIColor.white
+//        pageControl.numberOfPages = weeknewList.count
+        pageControl.currentPageIndicatorTintColor = UIColor.Main
+        // 未选中圆点颜色
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        incloudView.addSubview(pageControl)
+    }
     
     func initRadioView(){
-        radioView.frame = CGRect(x: 0, y: featuredTopics.frame.maxY, width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
+        radioView.frame = CGRect(x: 0, y: pageControl.frame.maxY+kHeightRelIPhone6(height: 10), width: SCREEN_WIDTH, height: kHeightRelIPhone6(height: 30))
         radioView.backgroundColor = UIColor.white;
         radioView.scrollLabel.setTexts([" "])
         radioView.scrollLabel.resume()
@@ -330,7 +371,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func initBanner() {
-        let placeholderImage = UIImage(named: "WechatIMG1")
+        let placeholderImage = UIImage(named: "loading")
         BannerView = SCCycleScrollView.cycleScrollView(frame: CGRect(x: 0, y:0, width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 150)),delegate: self,placeholderImage: placeholderImage)
         BannerView.delegate = self
         BannerView.timeInterval = 3.5
@@ -341,17 +382,21 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func cycleScrollView(_ cycleScrollView: SCCycleScrollView, didSelectItemAt index: Int) {
-        let web = WebViewController()
-        let detil = DetilViewController()
-        let classify = bannerList[index]
-        if classify.targetType==2{
-            detil.navtitle=classify.title
-            detil.productId=Int(classify.targetContent)
-            self.navigationController?.pushViewController(detil, animated: true)
-        }else if classify.targetType==3{
-            web.webtitle=classify.title
-            web.url = classify.targetContent
-            self.navigationController?.pushViewController(web, animated: true)
+        if BannerView.imageArray == nil{
+            
+        }else{
+            let web = WebViewController()
+            let detil = DetilViewController()
+            let classify = bannerList[index]
+            if classify.targetType==2{
+                detil.navtitle=classify.title
+                detil.productId=Int(classify.targetContent)
+                self.navigationController?.pushViewController(detil, animated: true)
+            }else if classify.targetType==3{
+                web.webtitle=classify.title
+                web.url = classify.targetContent
+                self.navigationController?.pushViewController(web, animated: true)
+            }
         }
     }
     // set up layout
@@ -377,7 +422,13 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         cell.quota.text = ("\(forTrailingZero(temp: (weeknewlist.minAmount as! Float)/1000)) ~ \(forTrailingZero(temp: (weeknewlist.maxAmount as! Float)/1000))万元")
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let witdh = collectionView.frame.width - (collectionView.contentInset.left*2)
+        let index = collectionView.contentOffset.x / witdh
+        let roundedIndex = round(index)
+        pageControl.currentPage = Int(roundedIndex)
+        
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let weeknewlist = weeknewList[indexPath.row]
         let detil = DetilViewController()
@@ -439,7 +490,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func initAmountofusers(){
-        amountofusers = UIView(frame: CGRect(x:0, y:tableView.frame.maxY+10,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 100)))
+        amountofusers = UIView(frame: CGRect(x:0, y:tableView.frame.maxY+kHeightRelIPhone6(height: 10),width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 100)))
         amountofusers.backgroundColor=UIColor.white
         incloudView.addSubview(amountofusers)
         

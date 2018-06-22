@@ -10,13 +10,39 @@ import UIKit
 
 class SettingViewController: BaseViewController {
     var navView = UIView()
+    var LoginOutBtn = UIButton()
+    var loginTag : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .default
         view.backgroundColor = UIColor.Gray
         initNavigationControlle()
         initView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        ifLogin()
+        if loginTag==0{
+            LoginOutBtn.isHidden=true
+        }else if loginTag==1{
+            LoginOutBtn.isHidden=false
+        }
+    }
+    
+    func ifLogin(){
+        let defaults = UserDefaults.standard
+        let userid = defaults.string(forKey: "userId")
+        let token = defaults.string(forKey: "token")
+        if (userid != nil)&&(token != nil){
+            loginTag=1
+        }else{
+            loginTag=0
+        }
+    }
+    
     func initNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
@@ -59,25 +85,36 @@ class SettingViewController: BaseViewController {
         btn.setTitleColor(UIColor.Main, for: .normal) //普通状态下文字的颜色
         btn.setTitleColor(UIColor.MainPress, for: .highlighted) //触摸状态下文字的颜色
         btn.setTitleColor(UIColor.gray, for: .disabled) //禁用状态下文字的颜色
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        btn.addTarget(self,action:#selector(goProtocolVC),for:.touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         background.addSubview(btn)
         
-        let LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: kHeightRelIPhone6(height: 40))))
+        LoginOutBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.8, height: kHeightRelIPhone6(height: 40))))
         LoginOutBtn.center = CGPoint(x: SCREEN_WIDTH / 2,
                              y: background.frame.maxY + 50)
-        LoginOutBtn.setTitle("退出当前账号", for:.normal)
-        LoginOutBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        LoginOutBtn.setTitle("安全退出", for:.normal)
+        LoginOutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         LoginOutBtn.backgroundColor = UIColor.Main
         LoginOutBtn.addTarget(self,action:#selector(loginOut),for:.touchUpInside)
         LoginOutBtn.setTitleColor(UIColor.white, for: .normal) //普通状态下文字的颜色
         LoginOutBtn.layer.cornerRadius = 20.0
         LoginOutBtn.clipsToBounds = true
         view.addSubview(LoginOutBtn)
-
     }
     
     @objc func loginOut(){
-        SYIToast.alert(withTitleBottom: "你点击了退出！")
+//        SYIToast.alert(withTitleBottom: "你点击了退出！")
+        UserDefaults.standard.removeObject(forKey: "userId")
+        UserDefaults.standard.removeObject(forKey: "token")
+        let mineVC=MineFragmentVC()
+        mineVC.loginTag=0
+        mineVC.tableView?.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func goProtocolVC(){
+        let protocolVC=ProtocolViewController()
+        self.navigationController?.pushViewController(protocolVC, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,16 +122,6 @@ class SettingViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .default
-    }
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        if parent == nil {
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-    }
     @objc func backBtnClicked() {
         print("H1自定义返回按钮点击")
         navigationController?.popViewController(animated: true)

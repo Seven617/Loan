@@ -35,7 +35,7 @@ extension String {
  */
 func labelSize(text:String ,attributes : [NSObject : AnyObject]) -> CGRect{
     var size = CGRect();
-    let size2 = CGSize(width: SCREEN_WIDTH-40, height: 0);//设置label的最大宽度
+    let size2 = CGSize(width: SCREEN_WIDTH-20, height: 0);//设置label的最大宽度
     size = text.boundingRect(with: size2, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes as? [NSAttributedStringKey : Any] , context: nil);
     return size
 }

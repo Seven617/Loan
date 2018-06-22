@@ -68,7 +68,7 @@ class SCCycleScrollViewCell: UICollectionViewCell {
                 //网络图片
                 if imageString.contains("http") {
                     let url = URL(string: imageString)
-                    
+                    imageView?.kf.indicatorType = .activity
                     imageView?.kf.setImage(with: url, placeholder: placeholderImage)
                 } else { //其它图片（暂指本地图片）
                     imageView.image = UIImage(named: imageString)

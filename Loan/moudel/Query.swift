@@ -62,8 +62,8 @@ struct querydata: Mappable {
 }
 
 extension querydata{
-    static func request(periodmax:Int?,periodmin:Int?,amountmax:Int?,amountmin:Int?,completion: @escaping ([querydata]?) -> Void){
-        let provider = MoyaProvider<NetworkService>()
+    static func request(periodmax:Int,periodmin:Int,amountmax:Int,amountmin:Int,completion: @escaping ([querydata]?) -> Void){
+        let provider = MoyaProvider<NetworkService>(manager: WebService.manager())
         provider.request(.query(periodmax: periodmax, periodmin: periodmin, amountmax: amountmax, amountmin: amountmin)) { (result) in
             switch result{
             case let .success(moyaResponse):

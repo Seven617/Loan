@@ -28,16 +28,18 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
     var amountmax=99999
     var amountmin=0
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
         initMenu()
         initTableView()
         Query()
-        //下拉刷新相关设置
-        header.lastUpdatedTimeLabel.isHidden = true
-        header.setRefreshingTarget(self, refreshingAction: #selector(LoanFragmentVC.headerRefresh))
-        tableView.mj_header = header
     }
     
     func intiNavigationControlle(){
@@ -55,11 +57,7 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
     }
     //顶部下拉刷新
     @objc func headerRefresh(){
-        print("下拉刷新.")
         Query()
-        sleep(2)
-        //结束刷新
-        tableView.mj_header.endRefreshing()
     }
     func initMenu(){
         menu = MoreDropDownMenu(origin: CGPoint(x: 0, y: navView.frame.maxY), andHeight: kHeightRelIPhone6(height:45))
@@ -112,9 +110,10 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
             }
         } else {
             if let aColumn = indexPath?.column, let aRow = indexPath?.row {
+                MBProgressHUD.showAdded(to: view, animated: true)
                 let x:Int = aColumn
                 let y:Int = aRow
-//                print("点击了 \(aColumn) - \(aRow) 项目")
+                //print("点击了 \(aColumn) - \(aRow) 项目")
                 if (x==0){
                     switch y {
                     case 0:
@@ -180,10 +179,12 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
                 }
             }
             Query()
+            //回滚到顶部
+            tableView.setContentOffset(CGPoint.zero, animated: false)
         }
     }
     func initTableView(){
-        tableView = UITableView(frame: CGRect(x:0, y:menu.frame.maxY+1 ,width: UIScreen.main.bounds.width, height:self.view.bounds.size.height  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - 50), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x:0, y:menu.frame.maxY+1 ,width: UIScreen.main.bounds.width, height:SCREEN_HEIGHT  -   (self.tabBarController?.tabBar.frame.size.height)! - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.shared.statusBarFrame.size.height - kHeightRelIPhone6(height: 45)), style: UITableViewStyle.plain)
         tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -193,25 +194,39 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
         //1.先设置样式
         tableView.ly_emptyView = MyDIYEmpty.diyNoData()
         //2.关闭自动显隐（此步可封装进自定义类中，相关调用就可省去这步）
-//        tableView.ly_emptyView.autoShowEmptyView = false
+        //        tableView.ly_emptyView.autoShowEmptyView = false
         self.view.addSubview(tableView)
+        
+        //下拉刷新相关设置
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.setRefreshingTarget(self, refreshingAction: #selector(LoanFragmentVC.headerRefresh))
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
+        tableView.ly_startLoading()
     }
     
     @objc func Query(){
-        tableView.ly_startLoading()
-        MBProgressHUD.showAdded(to: view, animated: true)
         querydata.request(periodmax: periodmax, periodmin: periodmin, amountmax: amountmax, amountmin: amountmin) { (query) in
             if let query = query {
-                OperationQueue.main.addOperation {
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                    self.loanList = query
-                    self.tableView.reloadData()
-                    self.tableView.ly_endLoading()
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute:
+                    {
+                        self.loanList = query
+                        //结束刷新
+                        self.tableView.mj_header.endRefreshing()
+                        self.tableView.reloadData()
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                })
             } else {
-                print("网络错误")
+                DispatchQueue.main.asyncAfter(deadline: .now()+3, execute:
+                    {
+                        SYIToast.alert(withTitleBottom: "网络错误！")
+                        //结束刷新
+                        self.tableView.mj_header.endRefreshing()
+                        
+                })
             }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -247,11 +262,11 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let news = loanList[indexPath.row]
         self.tableView.deselectRow(at: indexPath, animated: false)
-//        let alertController = UIAlertController(title: "提示!",
-//             message: "你选中了【\(news.name!)】",preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        self.present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "提示!",
+        //             message: "你选中了【\(news.name!)】",preferredStyle: .alert)
+        //        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+        //        alertController.addAction(cancelAction)
+        //        self.present(alertController, animated: true, completion: nil)
         let detil = DetilViewController()
         detil.productId=news.id
         detil.navtitle=news.name

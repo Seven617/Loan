@@ -56,7 +56,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     //画一条底部线
     
-    CGContextSetRGBStrokeColor(context, 219.0/255, 224.0/255, 228.0/255, 1);//线条颜色
+    CGContextSetRGBStrokeColor(context, 221.0/255, 221.0/255, 221.0/255, 1);//线条颜色
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, rect.size.width,0);
     CGContextMoveToPoint(context, 0, rect.size.height);

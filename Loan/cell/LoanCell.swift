@@ -23,7 +23,7 @@ class LoanCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        img.frame = CGRect(x: kWithRelIPhone6(width: 10), y: kHeightRelIPhone6(height: 8), width: kWithRelIPhone6(width: 50), height: kHeightRelIPhone6(height:50))
+        img.frame = CGRect(x: kWithRelIPhone6(width: 20), y: kHeightRelIPhone6(height: 8), width: kWithRelIPhone6(width: 50), height: kHeightRelIPhone6(height:50))
         img.image  = UIImage(named:"AppIcon")
         img.layer.cornerRadius = 10
         img.clipsToBounds = true
@@ -50,7 +50,7 @@ class LoanCell: UITableViewCell {
         quota.frame = CGRect(x: quotalab.frame.right, y: name.frame.bottom+lineMargin , width: kWithRelIPhone6(width: 100), height: kHeightRelIPhone6(height:10))
         quota.textColor = UIColor.red
         quota.textAlignment = .left
-        quota.text = "Wait loading..."
+        quota.text = "Wait for loading..."
         quota.font = UIFont.systemFont(ofSize: 13)
         let quotatext:String = quota.text!//获取label的text
         let quotaattributes = [kCTFontAttributeName: quota.font!]//计算label的字体
@@ -66,7 +66,7 @@ class LoanCell: UITableViewCell {
         let rateslabtext:String = quotalab.text!//获取label的text
         let rateslabattributes = [kCTFontAttributeName: rateslab.font!]//计算label的字体
         rateslab.frame = labelSize(text: rateslabtext, attributes: rateslabattributes)//调用计算label宽高的方法
-        rateslab.mj_origin = CGPoint(x: quota.frame.right+lineMargin*6, y:name.frame.bottom+lineMargin)
+        rateslab.mj_origin = CGPoint(x: quota.frame.right+lineMargin*5, y:name.frame.bottom+lineMargin)
         
         rates.frame = CGRect(x: rateslab.frame.right , y: name.frame.bottom , width: kWithRelIPhone6(width: 50), height: kHeightRelIPhone6(height:10))
         rates.textColor = UIColor.red

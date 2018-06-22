@@ -12,11 +12,13 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
   
     var tableView:UITableView?
     var allnames:Dictionary<Int, [String]>?
+    var loginTag : Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
+        ifLogin()
         //初始化数据，这一次数据，我们放在属性列表文件里
         self.allnames =  [
             0:[String]([
@@ -25,8 +27,6 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
                 "联系客服",
                 "关于我们"])
         ];
-
-        //print(self.allnames as Any)
         //创建表视图
         tableView = UITableView(frame: CGRect(x:0, y:navH, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height), style:.grouped)
         tableView!.delegate = self
@@ -41,6 +41,25 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         tableView!.tableHeaderView = header
         view.addSubview(self.tableView!)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        ifLogin()
+        tableView?.reloadData()
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    func ifLogin(){
+        let defaults = UserDefaults.standard
+        let userid = defaults.string(forKey: "userId")
+        let token = defaults.string(forKey: "token")
+        if (userid != nil)&&(token != nil){
+            loginTag=1
+        }else{
+            loginTag=0
+        }
+    }
+    
     func intiNavigationControlle(){
         
         // 自定义导航栏视图
@@ -99,16 +118,27 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
             let data = self.allnames?[secno]
             if(secno == 0)
             {
+                let defaults = UserDefaults.standard
+                let mobile = defaults.string(forKey: "mobile")
+                let string = mobile?.replacingOccurrences(of: (mobile! as NSString).substring(with: NSRange(location: 3, length: 4)), with: "****")
                 let cell = tableView.dequeueReusableCell(withIdentifier: identify,
                 for: indexPath as IndexPath) as UITableViewCell
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-                let image = UIImage(named:"touxiang")
-                cell.imageView?.layer.cornerRadius = 30.0
+                let image = UIImage(named:"head")
+                if loginTag==0{
+                    cell.textLabel?.text = "请登录"
+                }else if loginTag==1{
+                    cell.textLabel?.text = string
+                }
+                let itemSize = CGSize(width: 50, height: 50)
+                UIGraphicsBeginImageContextWithOptions(itemSize, false, 0.0)
+                let imageRect = CGRect(x: 0.0, y: 0.0, width: itemSize.width, height: itemSize.height)
+                image?.draw(in: imageRect)
+                cell.imageView?.layer.cornerRadius = 15.0
                 cell.imageView?.clipsToBounds = true
-                cell.imageView?.image = image
-                cell.textLabel?.text = "Seven617"
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
-//                cell.textLabel?.text = data![indexPath.row]
+                cell.imageView?.image = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
                 return cell
             }else
             {
@@ -141,7 +171,11 @@ class MineFragmentVC: BaseViewController , UITableViewDelegate, UITableViewDataS
         tableView.deselectRow(at: indexPath, animated: true)
         if(itemString == "用户ID")
         {
-            navigationController?.pushViewController(UserInfoViewController(), animated: true)
+            if loginTag==0{
+                navigationController?.pushViewController(LoginViewController(), animated: true)
+            }else if loginTag==1{
+                navigationController?.pushViewController(UserInfoViewController(), animated: true)
+            }
         }else if(itemString == "联系客服"){
             navigationController?.pushViewController(CustomerServiceViewController(), animated: true)
         }else if(itemString == "关于我们"){

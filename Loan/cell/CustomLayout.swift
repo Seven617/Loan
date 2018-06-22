@@ -13,6 +13,7 @@ class CustomLayout: UICollectionViewLayout {
     var padding: CGFloat = 10     // 内部每个cell的间距
     var column: Int = 4      // 每页有多少列
     var row: Int = 1        // 每页有多少行
+    var pageControl: UIPageControl!
     
     private var layoutAttr: [UICollectionViewLayoutAttributes] = []
     
@@ -83,3 +84,16 @@ class CustomLayout: UICollectionViewLayout {
     
     
 }
+//extension CustomLayout: UICollectionViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offset = scrollView.contentOffset
+//        // 随着滑动改变pageControl的状态
+//        pageControl.currentPage = Int(offset.x / SCREEN_WIDTH)
+//        // 选中圆点颜色
+//        pageControl.currentPageIndicatorTintColor = UIColor.Main
+//        // 未选中圆点颜色
+//        pageControl.pageIndicatorTintColor = UIColor.gray
+//        
+//    }
+//    
+//}

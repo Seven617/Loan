@@ -7,6 +7,7 @@
 //  登录
 
 import UIKit
+import MBProgressHUD
 
 class LoginViewController: BaseViewController,UITextFieldDelegate {
     var navView = UIView()
@@ -172,8 +173,9 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         let labelTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.labelClick))
         leb.addGestureRecognizer(labelTapGestureRecognizer)
         leb.isUserInteractionEnabled = true
-        view.addSubview(leb)
         leb.attributedText = str
+        view.addSubview(leb)
+        
     
     }
     
@@ -246,6 +248,10 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
             }else if(passwordEdt.text?.isEmpty)!{
                 SYIToast.alert(withTitleBottom: "验证码不能为空!")
             }else if(isTelNumber(num: mobilePhoneEdt.text! as NSString)){
+                let hud = MBProgressHUD.showAdded(to: view, animated: true)
+                hud.isUserInteractionEnabled=false
+                //设置提示文字
+                hud.label.text = "登录中..."
                 LoginIndexResponse.request(name: mobilePhoneEdt.text!, code: passwordEdt.text!) { (login) in
                     if let login = login{
                         if login == 1{
@@ -295,8 +301,12 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
                     userDefault.set((login.userId)!, forKey: "userId")
                     userDefault.set((login.token)!, forKey: "token")
                     userDefault.set(self.mobilePhoneEdt.text, forKey: "mobile")
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     self.navigationController?.popViewController(animated: true)
                 }
+            }else{
+                print("网络错误")
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
     }

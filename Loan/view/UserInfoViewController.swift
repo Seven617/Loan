@@ -86,7 +86,6 @@ class UserInfoViewController: BaseViewController, UITableViewDelegate, UITableVi
                             }else{
                                 MBProgressHUD.hide(for: self.view, animated: true)
                                 SYIToast.alert(withTitleBottom: "信息保存失败!")
-                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     }

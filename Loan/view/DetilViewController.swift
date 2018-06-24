@@ -25,27 +25,31 @@ class DetilViewController: BaseViewController {
     //产品介绍
     var DescriptionString : String!="加载中"
     //link连接
-    var link:String!
+    var link:String!="加载中"
     //费率
     var detilrates:String!="加载中"
     //额度
     var detilquota:String!="加载中"
     //logo
-    var detillogo:String!
+    var detillogo:String!="加载中"
     //跳转到下个界面的标志
     var nextVC : Int!
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.setNavigationBarHidden(true, animated: animated)
         ifLogin()
+        getDetil()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Gray
         intiNavigationControlle()
+        getInfoLab()
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.isUserInteractionEnabled=false
+        //设置提示文字
+        hud.label.text = "loading..."
         view.ly_startLoading()
-        MBProgressHUD.showAdded(to: view, animated: true)
-        getDetil()
     }
     func intiNavigationControlle(){
         // 自定义导航栏视图
@@ -79,12 +83,8 @@ class DetilViewController: BaseViewController {
                     print(checktoken)
                     DispatchQueue.main.async {
                         if checktoken == 0{
-//                            self.goH5Btn.isUserInteractionEnabled=false//交互关闭
-//                            self.goH5Btn.alpha=0.4;//透明度
                             self.nextVC=0
                         }else if checktoken == 1{
-//                            self.goH5Btn.isUserInteractionEnabled = true
-//                            self.goH5Btn.alpha=1;//透明度
                             self.nextVC=1
                         }
                     }
@@ -106,13 +106,11 @@ class DetilViewController: BaseViewController {
                 self.detillogo=detil.logo
                 self.detilquota=("\((detil.minAmount as! Float)/1000) ~ \((detil.maxAmount as! Float)/1000)万")
                 self.detilrates=("\(detil.minRate.description!) %")
-                self.getInfoLab()
                 MBProgressHUD.hide(for: self.view, animated: true)
-                self.view.ly_endLoading()
+                self.getInfoLab()
             }else{
                 print("网络错误")
                 MBProgressHUD.hide(for: self.view, animated: true)
-                self.view.ly_endLoading()
             }
             
         }
@@ -128,7 +126,8 @@ class DetilViewController: BaseViewController {
         let img=UIImageView(frame: CGRect(x:SCREEN_WIDTH/6 - kWithRelIPhone6(width: 25), y: kHeightRelIPhone6(height: 10), width: kWithRelIPhone6(width: 60), height: kHeightRelIPhone6(height:60)))
         let url = URL(string: detillogo)
         img.kf.indicatorType = .activity
-        img.kf.setImage(with: url )
+        let placeholderImage = UIImage(named: "AppIcon")
+        img.kf.setImage(with: url ,placeholder: placeholderImage)
         img.layer.cornerRadius = 10
         img.clipsToBounds = true
         topHead.addSubview(img)
@@ -297,6 +296,13 @@ class DetilViewController: BaseViewController {
         goH5Btn.layer.cornerRadius = 20.0
         goH5Btn.clipsToBounds = true
         self.view.addSubview(goH5Btn)
+        
+        // 初始化动画的持续时间，类型和子类型
+        let transition = CATransition()
+        transition.duration = 0
+        transition.type = kCATransitionFade
+        // 执行刚才添加好的动画
+        self.view.layer.add(transition, forKey: nil)
     }
     
     @objc func gotoh5(){

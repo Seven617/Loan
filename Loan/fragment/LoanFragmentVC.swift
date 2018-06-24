@@ -214,6 +214,7 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
                         //结束刷新
                         self.tableView.mj_header.endRefreshing()
                         self.tableView.reloadData()
+                        self.tableView.ly_endLoading()
                         MBProgressHUD.hide(for: self.view, animated: true)
                 })
             } else {

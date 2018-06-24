@@ -49,21 +49,16 @@ class IDCardViewController: BaseViewController,UITextFieldDelegate {
         idCardField.backgroundColor = UIColor.white
         idCardField.textAlignment = .left
         idCardField.placeholder = "请输入身份证号码"
-        idCardField.borderStyle = .roundedRect
+        idCardField.borderStyle = UITextBorderStyle.none
+        idCardField.keyboardType = .numbersAndPunctuation
         idCardField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         idCardField.text = str
+        idCardField.delegate = self
         view.addSubview(idCardField);
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
         idCardField.leftView = paddingView
         idCardField.leftViewMode = .always
-        idCardField.becomeFirstResponder()
-      
-        let accessoryView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width, height: kHeightRelIPhone6(height: 1))))
-        accessoryView.backgroundColor = UIColor.Line
-        let keyboard = DigitalKeyboard(view, accessoryView: accessoryView, field: idCardField)
-        idCardField.inputView = keyboard
-        idCardField.becomeFirstResponder()
-        idCardField.delegate = self
+        
         
         //创建一个保存按钮
         SaveNameBtn = UIButton(frame: (CGRect(x: 0, y: 0, width: SCREEN_WIDTH*0.5, height: 40)))

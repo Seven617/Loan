@@ -35,13 +35,6 @@
 		044F17A520B927F200BFF5CB /* ASAdverRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F17A420B927F200BFF5CB /* ASAdverRollView.m */; };
 		044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */; };
 		044FA73820B421B400497CE9 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA73720B421B400497CE9 /* IDCardViewController.swift */; };
-		044FE44320DC9E04001FBC7A /* DigitalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */; };
-		044FE44520DC9E1E001FBC7A /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */; };
-		044FE44C20DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */; };
-		044FE44D20DC9E3D001FBC7A /* Keyboard_Backspace@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */; };
-		044FE44E20DC9E3D001FBC7A /* Keyboard_Backspace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */; };
-		044FE44F20DC9E3D001FBC7A /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */; };
-		044FE45020DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */; };
 		044FE45220DCFB2B001FBC7A /* ProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FE45120DCFB2B001FBC7A /* ProtocolViewController.swift */; };
 		0450BB0320B56758002780DA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450BB0220B56758002780DA /* WebViewController.swift */; };
 		0451298C20BFD4CD005D8971 /* ScrollActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451298B20BFD4CD005D8971 /* ScrollActionView.m */; };
@@ -138,13 +131,6 @@
 		044F17A420B927F200BFF5CB /* ASAdverRollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAdverRollView.m; sourceTree = "<group>"; };
 		044FA73520B3EE7700497CE9 /* UpdateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameViewController.swift; sourceTree = "<group>"; };
 		044FA73720B421B400497CE9 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
-		044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalKeyboard.swift; sourceTree = "<group>"; };
-		044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DigitalKeyboard.bundle; sourceTree = "<group>"; };
-		044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
-		044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@3x.png"; sourceTree = "<group>"; };
-		044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@2x.png"; sourceTree = "<group>"; };
-		044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
-		044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
 		044FE45120DCFB2B001FBC7A /* ProtocolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolViewController.swift; sourceTree = "<group>"; };
 		0450BB0220B56758002780DA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0451298A20BFD4CD005D8971 /* ScrollActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollActionView.h; path = ../../../../../Desktop/WebTest/WebTest/source/scrollmenu/ScrollActionView.h; sourceTree = "<group>"; };
@@ -343,28 +329,6 @@
 			path = rollingView;
 			sourceTree = "<group>";
 		};
-		044FE43C20DC95EA001FBC7A /* keyBoard */ = {
-			isa = PBXGroup;
-			children = (
-				044FE44620DC9E2A001FBC7A /* images */,
-				044FE44220DC9E04001FBC7A /* DigitalKeyboard.swift */,
-				044FE44420DC9E1E001FBC7A /* DigitalKeyboard.bundle */,
-			);
-			path = keyBoard;
-			sourceTree = "<group>";
-		};
-		044FE44620DC9E2A001FBC7A /* images */ = {
-			isa = PBXGroup;
-			children = (
-				044FE44920DC9E3D001FBC7A /* Keyboard_Backspace@2x.png */,
-				044FE44820DC9E3D001FBC7A /* Keyboard_Backspace@3x.png */,
-				044FE44A20DC9E3D001FBC7A /* Keyboard_DismissKey.png */,
-				044FE44720DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png */,
-				044FE44B20DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		045202AB20ABDECC008E181C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,7 +402,6 @@
 		04556CC920AD378300B48E54 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				044FE43C20DC95EA001FBC7A /* keyBoard */,
 				0481168920D0C6F800644CDE /* emptyView */,
 				048665FB20C8DE0100BF4DED /* scrollview */,
 				04A083F220C306F9002C7386 /* banner */,
@@ -618,15 +581,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044FE44C20DC9E3D001FBC7A /* Keyboard_DismissKey@2x.png in Resources */,
 				04EA971D20B7E50400BC12C3 /* WKJSPOST.html in Resources */,
 				04ECEAEC20B89BE9001DFD1B /* Assets.xcassets in Resources */,
 				0419359220A55D04006D5CF3 /* LaunchScreen.storyboard in Resources */,
-				044FE44E20DC9E3D001FBC7A /* Keyboard_Backspace@2x.png in Resources */,
-				044FE45020DC9E3D001FBC7A /* Keyboard_DismissKey@3x.png in Resources */,
-				044FE44F20DC9E3D001FBC7A /* Keyboard_DismissKey.png in Resources */,
-				044FE44D20DC9E3D001FBC7A /* Keyboard_Backspace@3x.png in Resources */,
-				044FE44520DC9E1E001FBC7A /* DigitalKeyboard.bundle in Resources */,
 				0410108D20B2CD240066903C /* city.plist in Resources */,
 				0419358D20A55D03006D5CF3 /* Main.storyboard in Resources */,
 			);
@@ -729,7 +686,6 @@
 				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
 				045202A920ABDE9D008E181C /* TabBarController.swift in Sources */,
 				047E0AD120D36ED500FDE00F /* WeekBestViewController.swift in Sources */,
-				044FE44320DC9E04001FBC7A /* DigitalKeyboard.swift in Sources */,
 				04EA972320B7E51D00BC12C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				0419359C20A55F4C006D5CF3 /* GuideViewController.swift in Sources */,
 				044FA73620B3EE7700497CE9 /* UpdateNameViewController.swift in Sources */,

@@ -77,7 +77,6 @@ class AboutUsViewController: BaseViewController {
     }
  
     @objc func backBtnClicked() {
-        print("H1自定义返回按钮点击")
         navigationController?.popViewController(animated: true)
     }
 

@@ -11,7 +11,7 @@ import UIKit
 typealias idCardClosure=(_ string:String)->Void
 class IDCardViewController: BaseViewController,UITextFieldDelegate {
     var str:String?
-    var idCardField:UITextField!
+    var idCardField:OttoTextField!
     var SaveNameBtn:UIButton!
     //声明一个闭包
     var testClosure:idCardClosure?
@@ -25,7 +25,7 @@ class IDCardViewController: BaseViewController,UITextFieldDelegate {
     func intiNavigationControlle(){
         // 自定义导航栏视图
         let navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
-        navView.backgroundColor = UIColor.lightGray
+        navView.backgroundColor = UIColor.Gray
         view.addSubview(navView)
         
         // 导航栏返回按钮
@@ -45,15 +45,17 @@ class IDCardViewController: BaseViewController,UITextFieldDelegate {
     
     func initView(){
         //创建一个文本显示lab
-        idCardField = UITextField(frame:CGRect(x:0,y: navH+20,width: SCREEN_WIDTH,height: 50));
+        idCardField = OttoTextField(frame:CGRect(x:0,y: navH+20,width: SCREEN_WIDTH,height: 50));
         idCardField.backgroundColor = UIColor.white
         idCardField.textAlignment = .left
         idCardField.placeholder = "请输入身份证号码"
         idCardField.borderStyle = UITextBorderStyle.none
-        idCardField.keyboardType = .numbersAndPunctuation
+        idCardField.keyboardType = .numberPad
+        idCardField.numberKeyboardType = .certNo
         idCardField.clearButtonMode = .whileEditing  //编辑时出现清除按钮
         idCardField.text = str
         idCardField.delegate = self
+        idCardField.inputAccessoryView = addToolbar()
         view.addSubview(idCardField);
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
         idCardField.leftView = paddingView
@@ -73,14 +75,32 @@ class IDCardViewController: BaseViewController,UITextFieldDelegate {
         SaveNameBtn.clipsToBounds = true
         view.addSubview(SaveNameBtn)
     }
- 
-    // 利用代理方法控制字符数量
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else{
-            return true
-        }
-        let textLength = text.count + string.count - range.length
-        return textLength<=18
+    func addToolbar() -> UIToolbar? {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 35))
+        toolbar.tintColor = UIColor.blue
+        toolbar.backgroundColor = UIColor.gray
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let bar = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(self.textFieldShouldReturn))
+        toolbar.items =  [space, bar]
+        return toolbar
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        idCardField.resignFirstResponder()
+        return true
+    }
+//    // 利用代理方法控制字符数量
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text else{
+//            return true
+//        }
+//        let textLength = text.count + string.count - range.length
+//        return textLength<=18
+//    }
+    
+    // 收起键盘
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {

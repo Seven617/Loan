@@ -15,6 +15,8 @@ class WeekHotViewController: BaseViewController,SCCycleScrollViewDelegate,UITabl
     var BannerView : SCCycleScrollView!
     var navView = UIView()
     var tableView:UITableView!
+    //本周热门（文字）
+    var weekHot = UIView()
     // 顶部刷新
     let header = MJRefreshNormalHeader()
     
@@ -29,6 +31,7 @@ class WeekHotViewController: BaseViewController,SCCycleScrollViewDelegate,UITabl
     
     func initView(){
         initBanner()
+        initweekHotLab()
         initTableView()
     }
     
@@ -39,7 +42,7 @@ class WeekHotViewController: BaseViewController,SCCycleScrollViewDelegate,UITabl
     func initNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
-        navView.backgroundColor = UIColor.lightGray
+        navView.backgroundColor = UIColor.Gray
         view.addSubview(navView)
         
         // 导航栏返回按钮
@@ -124,9 +127,22 @@ class WeekHotViewController: BaseViewController,SCCycleScrollViewDelegate,UITabl
             }
         }
     }
-    
+    private func initweekHotLab(){
+        weekHot = UIView(frame: CGRect(x:0, y:BannerView.frame.maxY+kHeightRelIPhone6(height: 10) ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 30)))
+        let icon = UIImageView(frame: CGRect(x:10, y:10 ,width: kWithRelIPhone6(width: 15), height:kHeightRelIPhone6(height: 15)))
+        icon.image=UIImage(named:"weekhot_icon")
+        weekHot.addSubview(icon)
+        
+        let weekLab = UILabel(frame: CGRect(x:icon.frame.maxX+10, y:10 ,width: UIScreen.main.bounds.width, height:kHeightRelIPhone6(height: 15)))
+        weekLab.text = "热门贷款"
+        weekLab.textColor = UIColor.Font1st
+        weekLab.font = UIFont.systemFont(ofSize: 14)
+        weekHot.addSubview(weekLab)
+        weekHot.backgroundColor = UIColor.white
+        self.view.addSubview(weekHot)
+    }
     func initTableView(){
-        tableView = UITableView(frame: CGRect(x: 0, y: BannerView.frame.bottom, width: view.bounds.width, height: SCREEN_HEIGHT - kHeightRelIPhone6(height: 150) - kHeightRelIPhone6(height: navH)), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: weekHot.frame.bottom, width: view.bounds.width, height: SCREEN_HEIGHT - kHeightRelIPhone6(height: 150) - kHeightRelIPhone6(height: 40) - kHeightRelIPhone6(height: navH)), style: UITableViewStyle.plain)
         tableView.register(LoanCell.self,forCellReuseIdentifier: "SampleCell")
         tableView.dataSource = self
         tableView.delegate = self

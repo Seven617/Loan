@@ -46,7 +46,7 @@ class SettingViewController: BaseViewController {
     func initNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
-        navView.backgroundColor = UIColor.lightGray
+        navView.backgroundColor = UIColor.Gray
         view.addSubview(navView)
         
         // 导航栏返回按钮

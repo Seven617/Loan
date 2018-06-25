@@ -62,6 +62,10 @@
 		0481169720D0C77500644CDE /* LYEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481169120D0C77500644CDE /* LYEmptyView.m */; };
 		0481169820D0C77500644CDE /* MyDIYEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481169320D0C77500644CDE /* MyDIYEmpty.m */; };
 		0481169920D0C77500644CDE /* UIView+LYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481169420D0C77500644CDE /* UIView+LYExtension.m */; };
+		048657D920E0B80700E913A2 /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048657D520E0B80700E913A2 /* KeyboardView.m */; };
+		048657DA20E0B80700E913A2 /* OttoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 048657D820E0B80700E913A2 /* OttoTextField.m */; };
+		048657DE20E0B8E200E913A2 /* OttoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048657DC20E0B8E200E913A2 /* OttoTextView.m */; };
+		048657E120E0B91E00E913A2 /* KeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 048657E020E0B91E00E913A2 /* KeyboardButton.m */; };
 		0486660120C8DE8E00BF4DED /* WeekHot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048665FD20C8DE8E00BF4DED /* WeekHot.swift */; };
 		0486660220C8DE8E00BF4DED /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048665FE20C8DE8E00BF4DED /* Banner.swift */; };
 		0486660320C8DE8E00BF4DED /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048665FF20C8DE8E00BF4DED /* Radio.swift */; };
@@ -167,6 +171,15 @@
 		0481169220D0C77500644CDE /* UIView+Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Empty.h"; sourceTree = "<group>"; };
 		0481169320D0C77500644CDE /* MyDIYEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDIYEmpty.m; sourceTree = "<group>"; };
 		0481169420D0C77500644CDE /* UIView+LYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LYExtension.m"; sourceTree = "<group>"; };
+		048657D520E0B80700E913A2 /* KeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardView.m; sourceTree = "<group>"; };
+		048657D620E0B80700E913A2 /* KeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardView.h; sourceTree = "<group>"; };
+		048657D720E0B80700E913A2 /* OttoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OttoTextField.h; sourceTree = "<group>"; };
+		048657D820E0B80700E913A2 /* OttoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OttoTextField.m; sourceTree = "<group>"; };
+		048657DB20E0B84900E913A2 /* OttoKeyboardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OttoKeyboardView.h; sourceTree = "<group>"; };
+		048657DC20E0B8E200E913A2 /* OttoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OttoTextView.m; sourceTree = "<group>"; };
+		048657DD20E0B8E200E913A2 /* OttoTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OttoTextView.h; sourceTree = "<group>"; };
+		048657DF20E0B91D00E913A2 /* KeyboardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardButton.h; sourceTree = "<group>"; };
+		048657E020E0B91E00E913A2 /* KeyboardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardButton.m; sourceTree = "<group>"; };
 		048665FD20C8DE8E00BF4DED /* WeekHot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHot.swift; sourceTree = "<group>"; };
 		048665FE20C8DE8E00BF4DED /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		048665FF20C8DE8E00BF4DED /* Radio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
@@ -402,6 +415,7 @@
 		04556CC920AD378300B48E54 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				048657D420E0B7D800E913A2 /* keyBoard */,
 				0481168920D0C6F800644CDE /* emptyView */,
 				048665FB20C8DE0100BF4DED /* scrollview */,
 				04A083F220C306F9002C7386 /* banner */,
@@ -431,6 +445,22 @@
 				0481169420D0C77500644CDE /* UIView+LYExtension.m */,
 			);
 			path = emptyView;
+			sourceTree = "<group>";
+		};
+		048657D420E0B7D800E913A2 /* keyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				048657DB20E0B84900E913A2 /* OttoKeyboardView.h */,
+				048657DF20E0B91D00E913A2 /* KeyboardButton.h */,
+				048657E020E0B91E00E913A2 /* KeyboardButton.m */,
+				048657D620E0B80700E913A2 /* KeyboardView.h */,
+				048657D520E0B80700E913A2 /* KeyboardView.m */,
+				048657DD20E0B8E200E913A2 /* OttoTextView.h */,
+				048657DC20E0B8E200E913A2 /* OttoTextView.m */,
+				048657D720E0B80700E913A2 /* OttoTextField.h */,
+				048657D820E0B80700E913A2 /* OttoTextField.m */,
+			);
+			path = keyBoard;
 			sourceTree = "<group>";
 		};
 		048665FB20C8DE0100BF4DED /* scrollview */ = {
@@ -669,6 +699,7 @@
 				0410108B20B2CD240066903C /* UIView+CZHExtension.m in Sources */,
 				0486660120C8DE8E00BF4DED /* WeekHot.swift in Sources */,
 				0452030220ABF47F008E181C /* UIFont+Extension.swift in Sources */,
+				048657D920E0B80700E913A2 /* KeyboardView.m in Sources */,
 				0452030920ABF4C3008E181C /* NavigationController.swift in Sources */,
 				047E0ACF20D36E5900FDE00F /* WeekHotViewController.swift in Sources */,
 				044D9DE220B6887500A9A519 /* SYIToast.m in Sources */,
@@ -681,6 +712,7 @@
 				045552D320DB87DD0024668F /* InfoSave.swift in Sources */,
 				0419359F20A55F70006D5CF3 /* HomeFragmentVC.swift in Sources */,
 				0452225220AA77C7005AB69E /* AboutUsViewController.swift in Sources */,
+				048657DE20E0B8E200E913A2 /* OttoTextView.m in Sources */,
 				0452030020ABF47F008E181C /* UIButton+Extension.swift in Sources */,
 				04960B0D20A98471007B58D8 /* SettingViewController.swift in Sources */,
 				04A083F520C3070B002C7386 /* SCCycleScrollView.swift in Sources */,
@@ -713,6 +745,7 @@
 				0443B52D20D8D32C00F094CC /* AuthCode.swift in Sources */,
 				041935A120A55F7F006D5CF3 /* LoanFragmentVC.swift in Sources */,
 				0481169620D0C77500644CDE /* UIView+Empty.m in Sources */,
+				048657DA20E0B80700E913A2 /* OttoTextField.m in Sources */,
 				0410107020B2ACBC0066903C /* UIView+Extension.swift in Sources */,
 				044FE45220DCFB2B001FBC7A /* ProtocolViewController.swift in Sources */,
 				044D9DE120B6887500A9A519 /* SYIToast+SYCategory.m in Sources */,
@@ -734,6 +767,7 @@
 				047E0ACB20D35E7800FDE00F /* LoginViewController.swift in Sources */,
 				0486660320C8DE8E00BF4DED /* Radio.swift in Sources */,
 				04556CC820AD2E4E00B48E54 /* BaseViewController.swift in Sources */,
+				048657E120E0B91E00E913A2 /* KeyboardButton.m in Sources */,
 				04EA971E20B7E50400BC12C3 /* WkwebViewConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

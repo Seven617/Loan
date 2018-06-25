@@ -51,7 +51,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
     func initNavigationControlle(){
         // 自定义导航栏视图
         navView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: navH))
-        navView.backgroundColor = UIColor.lightGray
+        navView.backgroundColor = UIColor.Gray
         view.addSubview(navView)
         
         // 导航栏返回按钮
@@ -231,6 +231,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         navigationController?.popViewController(animated: true)
         }
         if (button.tag==2) {
+            self.view.endEditing(true)
             if(mobilePhoneEdt.text?.isEmpty)!{
                 SYIToast.alert(withTitleBottom: "手机号不能为空!")
             }else if(isTelNumber(num: mobilePhoneEdt.text! as NSString)){
@@ -258,9 +259,11 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
                             self.getToken()
                         }else if login == 0{
                             SYIToast.alert(withTitleBottom: "登录失败!请检查验证码是否正确！")
+                            MBProgressHUD.hide(for: self.view, animated: true)
                         }
                     }else {
                         print("网络错误")
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     }
                 }
             }
@@ -292,6 +295,10 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         }
     }
 
+    // 收起键盘
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     func getToken(){
         let userDefault = UserDefaults.standard
         logindata.request(name: mobilePhoneEdt.text!, code: passwordEdt.text!) { (login) in

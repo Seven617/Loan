@@ -90,8 +90,8 @@ extension NetworkService: TargetType{
     
     
     var baseURL: URL{
-        let baseUrl = "http://kbd.kbfoo.com/freemarketApi"
-//        let baseUrl = "http://192.168.2.111:8380/freemarket-web"
+//        let baseUrl = "http://kbd.kbfoo.com/freemarketApi"
+        let baseUrl = "http://192.168.2.111:8380/freemarket-web"
         return URL(string: baseUrl)!
     }
     

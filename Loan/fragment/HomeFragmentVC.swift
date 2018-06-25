@@ -334,6 +334,8 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         
         let seemoreBtn = UIButton(frame: CGRect(x:SCREEN_WIDTH-80, y:10 ,width: kWithRelIPhone6(width: 80), height:kHeightRelIPhone6(height: 15)))
         seemoreBtn.setTitle("查看更多", for:.normal)
+        seemoreBtn.addTarget(self,action:#selector(touchDownWithButton),for:.touchUpInside)
+        seemoreBtn.tag=3
         seemoreBtn.setTitleColor(UIColor.Font3rd, for: .normal) //普通状态下文字的颜色
         seemoreBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         weekHot.addSubview(seemoreBtn)
@@ -512,7 +514,7 @@ class HomeFragmentVC: BaseViewController,UICollectionViewDelegate,UICollectionVi
         amountofusers.addSubview(useheart)
         
         let user = UILabel(frame: CGRect(x:0,y:useheart.frame.bottom+kHeightRelIPhone6(height: 15) ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 20)))
-        user.text="234万6578位"
+        user.text="2,346,578位"
         user.textAlignment = .center
         user.textColor=UIColor.orange
         user.font = UIFont.systemFont(ofSize: 18)

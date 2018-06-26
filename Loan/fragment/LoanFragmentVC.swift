@@ -254,6 +254,31 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
         cell.name.text = news.name
         cell.quota.text = ("\(news.minAmount.description!) - \(news.maxAmount.description!)")
         cell.rates.text = ("\(news.minRate.description!) %")
+        let a:Int = news.rateUnit as! Int
+        var time:String?=nil
+        switch(a)
+        {
+        case 1 :
+            //要執行動作
+            time="年"
+            break
+        case 2 :
+            //要執行動作
+            time="月"
+            break
+        case 3 :
+            //要執行動作
+            time="日"
+            break
+        case 4 :
+            //要執行動作
+            time="笔"
+            break
+        default :
+            //要執行動作
+            break
+        }
+        cell.rateslab.text = time!+"费率"
         cell.descriptionlab.text = news.comment
         return cell
     }
@@ -270,7 +295,7 @@ class LoanFragmentVC: BaseViewController,MoreDropDownMenuDataSource, MoreDropDow
         //        self.present(alertController, animated: true, completion: nil)
         let detil = DetilViewController()
         detil.productId=news.id
-        detil.navtitle=news.name
+//        detil.navtitle=news.name
         self.navigationController?.pushViewController(detil, animated: true)
     }
     

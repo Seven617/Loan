@@ -118,7 +118,7 @@ class WeekBestViewController: BaseViewController,SCCycleScrollViewDelegate,UITab
             let detil = DetilViewController()
             let classify = bannerList[index]
             if classify.targetType==2{
-                detil.navtitle=classify.title
+//                detil.navtitle=classify.title
                 detil.productId=Int(classify.targetContent)
                 self.navigationController?.pushViewController(detil, animated: true)
             }else if classify.targetType==3{
@@ -186,6 +186,31 @@ class WeekBestViewController: BaseViewController,SCCycleScrollViewDelegate,UITab
         cell.name.text = news.name
         cell.quota.text = ("\(news.minAmount.description!) - \(news.maxAmount.description!)")
         cell.rates.text = ("\(news.minRate.description!) %")
+        let a:Int = news.rateUnit as! Int
+        var time:String?=nil
+        switch(a)
+        {
+        case 1 :
+            //要執行動作
+            time="年"
+            break
+        case 2 :
+            //要執行動作
+            time="月"
+            break
+        case 3 :
+            //要執行動作
+            time="日"
+            break
+        case 4 :
+            //要執行動作
+            time="笔"
+            break
+        default :
+            //要執行動作
+            break
+        }
+        cell.rateslab.text = time!+"费率"
         cell.descriptionlab.text = news.comment
         return cell
     }
@@ -197,7 +222,7 @@ class WeekBestViewController: BaseViewController,SCCycleScrollViewDelegate,UITab
         self.tableView.deselectRow(at: indexPath, animated: false)
         let detil = DetilViewController()
         detil.productId=news.id
-        detil.navtitle=news.name
+//        detil.navtitle=news.name
         self.navigationController?.pushViewController(detil, animated: true)
     }
     

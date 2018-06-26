@@ -39,6 +39,7 @@ struct weekspeeddata: Mappable {
     var maxAmount : AnyObject!
     var minAmount : AnyObject!
     var minRate : AnyObject!
+    var rateUnit : AnyObject!
     
     init?(map: Map) {
         
@@ -52,6 +53,7 @@ struct weekspeeddata: Mappable {
         maxAmount <- map["maxAmount"]
         minAmount <- map["minAmount"]
         minRate <- map["minRate"]
+        rateUnit <- map["rateUnit"]
     }
 }
 

@@ -13,7 +13,8 @@ import MBProgressHUD
 class DetilViewController: BaseViewController {
     var navView = UIView()
     var titleLabel = UILabel()
-    var navtitle:String!
+//    var navtitle:String!
+    var nameLab:String?
     var productId:Int!
     var goH5Btn = UIButton()
     //关键提示
@@ -28,6 +29,8 @@ class DetilViewController: BaseViewController {
     var link:String!="加载中"
     //费率
     var detilrates:String!="加载中"
+    //费率类型
+    var rateUnit:String!="参考月费率"
     //额度
     var detilquota:String!="加载中"
     //logo
@@ -65,7 +68,7 @@ class DetilViewController: BaseViewController {
         navView.addSubview(backBtn)
         // 导航栏标题
         titleLabel = UILabel(frame: CGRect(x: 0, y: topY, width: SCREEN_WIDTH, height: navH - topY))
-        titleLabel.text = navtitle
+        titleLabel.text = nameLab
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
@@ -98,6 +101,7 @@ class DetilViewController: BaseViewController {
     func getDetil(){
         detildata.request(id: productId) { (detil) in
             if let detil = detil {
+                self.nameLab=detil.name
                 self.CommentString=detil.comment
                 self.OtherInfoString=detil.otherInfo
                 self.ApplyConditionString=detil.applyCondition
@@ -106,8 +110,35 @@ class DetilViewController: BaseViewController {
                 self.detillogo=detil.logo
                 self.detilquota=("\((detil.minAmount as! Float)/1000) ~ \((detil.maxAmount as! Float)/1000)万")
                 self.detilrates=("\(detil.minRate.description!) %")
+                let a:Int = detil.rateUnit as! Int
+                var time:String?=nil
+                switch(a)
+                {
+                case 1 :
+                    //要執行動作
+                    time="年"
+                    break
+                case 2 :
+                    //要執行動作
+                    time="月"
+                    break
+                case 3 :
+                    //要執行動作
+                    time="日"
+                    break
+                case 4 :
+                    //要執行動作
+                    time="笔"
+                    break
+                default :
+                    //要執行動作
+                    break
+                }
+                self.rateUnit = "参考"+time!+"费率"
                 MBProgressHUD.hide(for: self.view, animated: true)
+                self.intiNavigationControlle()
                 self.getInfoLab()
+               
             }else{
                 print("网络错误")
                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -136,7 +167,11 @@ class DetilViewController: BaseViewController {
         name.font = UIFont.systemFont(ofSize: 18)
         name.textColor=UIColor.white
         name.textAlignment = .left
-        name.text = navtitle
+        name.text = nameLab ?? "loading..."
+        let nametext:String = name.text!//获取label的text
+        let nameattributes = [kCTFontAttributeName: name.font!]//计算label的字体
+        name.frame = labelSize(text: nametext, attributes: nameattributes)//调用计算label宽高的方法
+        name.mj_origin = CGPoint(x: img.frame.right+kWithRelIPhone6(width: 10), y:kHeightRelIPhone6(height: img.frame.height/2))
         topHead.addSubview(name)
         
         
@@ -165,7 +200,7 @@ class DetilViewController: BaseViewController {
         rateslab.font = UIFont.systemFont(ofSize: 14)
         rateslab.textColor=UIColor.white
         rateslab.textAlignment = .center
-        rateslab.text = "参考月费率"
+        rateslab.text = rateUnit
         topHead.addSubview(rateslab)
         
         let OutView = UIView(frame: CGRect(x:0, y:topHead.frame.bottom ,width: SCREEN_WIDTH, height:kHeightRelIPhone6(height: 350)))
@@ -309,7 +344,7 @@ class DetilViewController: BaseViewController {
         let loginVC=LoginViewController()
         let web = WebViewController()
         web.url=link
-        web.webtitle=navtitle
+        web.webtitle=nameLab
         guard nextVC==0 else {
             self.navigationController?.pushViewController(web, animated: true)
             return

@@ -159,7 +159,7 @@ class LoginViewController: BaseViewController,UITextFieldDelegate {
         LoginInBtn.tag=3
         view.addSubview(LoginInBtn)
         
-        let str = NSMutableAttributedString(string: "点击“确定”表示您同意《快便贷用户使用协议》")
+        let str = NSMutableAttributedString(string: "点击“登录”表示您同意《快便贷用户使用协议》")
         //更改字体
         if let aSize = UIFont(name: "HelveticaNeue-Bold", size: 15) {
             str.addAttribute(kCTFontAttributeName as NSAttributedStringKey, value: aSize, range: NSRange(location: 11, length: 11))

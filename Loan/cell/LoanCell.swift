@@ -62,11 +62,11 @@ class LoanCell: UITableViewCell {
         rateslab.font = UIFont.systemFont(ofSize: 13)
         rateslab.textAlignment = .left
         rateslab.textColor=UIColor.Font2nd
-        rateslab.text = "费率"
-        let rateslabtext:String = quotalab.text!//获取label的text
+        rateslab.text = "月费率"
+        let rateslabtext:String = rateslab.text!//获取label的text
         let rateslabattributes = [kCTFontAttributeName: rateslab.font!]//计算label的字体
         rateslab.frame = labelSize(text: rateslabtext, attributes: rateslabattributes)//调用计算label宽高的方法
-        rateslab.mj_origin = CGPoint(x: quota.frame.right+lineMargin*5, y:name.frame.bottom+lineMargin)
+        rateslab.mj_origin = CGPoint(x: quota.frame.right+lineMargin*4, y:name.frame.bottom+lineMargin)
         
         rates.frame = CGRect(x: rateslab.frame.right , y: name.frame.bottom , width: kWithRelIPhone6(width: 50), height: kHeightRelIPhone6(height:10))
         rates.textColor = UIColor.red
